@@ -1,5 +1,17 @@
 @charset "ISO-8859-1";
 
+footer{
+	position: static;
+  	right: 0;
+ 	bottom: 0;
+  	left: 0;
+  	padding: 1rem;
+  	width: 100%;
+  	
+}
+
+
+
 .w3-theme-l5 {color:#000 !important; background-color:#255498 !important}
 .w3-theme-l4 {color:#000 !important; background-color:#255498 !important}
 .w3-theme-l3 {color:#000 !important; background-color:#255498 !important}
