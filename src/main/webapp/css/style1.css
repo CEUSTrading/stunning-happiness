@@ -7,7 +7,9 @@ footer{
   	left: 0;
   	padding: 1rem;
   	width: 100%;
-  	
+  	border-top: 2px solid;
+  	border-top-color: #001F4C;
+  	border-top-width: 90%;
 }
 
 
