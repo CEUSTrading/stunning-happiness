@@ -8,6 +8,35 @@
     <servlet-name>HelloWorld</servlet-name>
     <url-pattern>/helloworld</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>GoogleAuthController</servlet-name>
+    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+    <init-param>
+  		<param-name>provider</param-name> <param-value>Google</param-value>
+ 	</init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleAuthController</servlet-name>
+    <url-pattern>/googleAuth</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>GoogleOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+  		<param-name>provider</param-name> <param-value>Google</param-value>
+ 	</init-param>
+ 	<init-param>
+  		<param-name>onSuccess</param-name>
+  		<param-value>redirect:/exitoGoogle.html</param-value>
+ 	</init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/Google</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index1_1.html</welcome-file>
   </welcome-file-list>

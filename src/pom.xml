@@ -135,7 +135,12 @@
 			<version>${google.client.version}</version>
 		</dependency>
 
-
+		<!-- Google People Client Library -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-people</artifactId>
+			<version>v1-rev262-1.23.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

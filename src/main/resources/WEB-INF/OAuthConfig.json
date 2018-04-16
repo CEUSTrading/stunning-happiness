@@ -1,0 +1,9 @@
+{
+	"Google":{
+		"tokenUrl":"https://www.googleapis.com/oauth2/v4/token",
+		"clientId":"80519301831-4qks127fvb5dqjn939obomu4ldb8mm44.apps.googleusercontent.com",
+		"clientSecret":"rp94jLkiMMNyhDh-BcTP-uJl",
+		"authorizationFormUrl":"https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes":["https://www.googleapis.com/auth/contacts"]
+	}
+}
