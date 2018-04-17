@@ -29,7 +29,7 @@
  	</init-param>
  	<init-param>
   		<param-name>onSuccess</param-name>
-  		<param-value>redirect:/exitoGoogle.html</param-value>
+  		<param-value>redirect:/exitoGoogle.jsp</param-value>
  	</init-param>
   </servlet>
   <servlet-mapping>
