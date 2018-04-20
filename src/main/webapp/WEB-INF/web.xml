@@ -9,6 +9,28 @@
     <url-pattern>/helloworld</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <description></description>
+    <display-name>CoinmapController</display-name>
+    <servlet-name>CoinmapController</servlet-name>
+    <servlet-class>aiss.controller.CoinmapController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoinmapController</servlet-name>
+    <url-pattern>/CoinmapController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>CoinmapLocationController</display-name>
+    <servlet-name>CoinmapLocationController</servlet-name>
+    <servlet-class>aiss.controller.CoinmapLocationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoinmapLocationController</servlet-name>
+    <url-pattern>/CoinmapLocationController</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <servlet-name>GoogleAuthController</servlet-name>
     <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
