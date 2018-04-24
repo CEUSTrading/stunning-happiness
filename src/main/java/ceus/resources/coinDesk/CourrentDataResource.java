@@ -9,7 +9,7 @@ import ceus.model.coinDesk.Bpi;
 
 public class CourrentDataResource {
 
-	private String uri = "https://api.coindesk.com/v1/bpi/currentprice/";
+	private static String uri = "https://api.coindesk.com/v1/bpi/currentprice/";
 
 	/*
 	 * public Double[] getTupleValor(String mon1, String mon2) {
@@ -30,7 +30,7 @@ public class CourrentDataResource {
 	 * }
 	 */
 
-	public Double getValor(String mon) {
+	public static Double getValor(String mon) {
 		double res = 0.0;
 		ClientResource cr = null;
 		mon.toUpperCase();

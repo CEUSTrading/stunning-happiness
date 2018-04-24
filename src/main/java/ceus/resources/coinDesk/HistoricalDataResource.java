@@ -10,9 +10,9 @@ import ceus.model.coinDesk.HistoricalData;
 
 public class HistoricalDataResource {
 
-	private String uri = "https://api.coindesk.com/v1/bpi/historical/close.json";
+	private static String uri = "https://api.coindesk.com/v1/bpi/historical/close.json";
 	
-	public Map<LocalDate, Double> getHistoricalData(){
+	public static Map<LocalDate, Double> getHistoricalData(){
 		Map<LocalDate, Double> res =  null;
 		ClientResource cr = null;
 		
