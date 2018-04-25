@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import ceus.model.GoogleLogin.GooglePerson;
 import ceus.model.resources.GooglePersonResource;
 
-public class GoogleLoginController {
+public class GoogleLoginController extends HttpServlet{
 private static final Logger log = Logger.getLogger(CoinmapController.class.getName());
 	
 	private static final long serialVersionUID = 1L;
@@ -36,10 +36,14 @@ private static final Logger log = Logger.getLogger(CoinmapController.class.getNa
 		//GooglePersonResource gpr = new GooglePersonResource();
 		GooglePerson gp = GooglePersonResource.getInfo(request);
 		
+		System.out.println(gp);
 		if(gp != null) {
-			rd = request.getRequestDispatcher("exitoGoogle.jsp");
 			request.setAttribute("logged-user-name", gp.getNames().get(0).getDisplayName());
 			request.setAttribute("logged-user-email", gp.getEmailAddresses().get(0).getValue());
+			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email [" + gp.getNames().get(0).getDisplayName() + ", " + gp.getEmailAddresses().get(0).getValue() + "]");
+			System.out.println("Seteados logged-user-name y logged-user-email [" + gp.getNames().get(0).getDisplayName() + ", " + gp.getEmailAddresses().get(0).getValue() + "]");
+			rd = request.getRequestDispatcher("exitoGoogle.jsp");
+			rd.forward(request, response);
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving this person");
 			rd = request.getRequestDispatcher("error.jsp");
