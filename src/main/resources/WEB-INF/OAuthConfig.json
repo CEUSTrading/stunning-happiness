@@ -1,0 +1,17 @@
+{
+	"Google":{
+		"tokenUrl":"https://www.googleapis.com/oauth2/v4/token",
+		"clientId":"80519301831-4qks127fvb5dqjn939obomu4ldb8mm44.apps.googleusercontent.com",
+		"clientSecret":"rp94jLkiMMNyhDh-BcTP-uJl",
+		"authorizationFormUrl":"https://accounts.google.com/o/oauth2/v2/auth",
+		"scopes":["https://www.googleapis.com/auth/plus.login",
+		"https://www.googleapis.com/auth/userinfo.profile",
+		"https://www.googleapis.com/auth/user.emails.read",
+		"https://www.googleapis.com/auth/contacts",
+		"https://www.googleapis.com/auth/user.addresses.read",
+		"https://www.googleapis.com/auth/user.phonenumbers.read",
+		"https://www.googleapis.com/auth/userinfo.email",
+		"https://www.googleapis.com/auth/user.birthday.read",
+		"https://www.googleapis.com/auth/contacts.readonly"]
+	}
+}

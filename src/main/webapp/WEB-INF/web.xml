@@ -8,6 +8,57 @@
     <servlet-name>HelloWorld</servlet-name>
     <url-pattern>/helloworld</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>CoinmapController</display-name>
+    <servlet-name>CoinmapController</servlet-name>
+    <servlet-class>aiss.controller.CoinmapController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoinmapController</servlet-name>
+    <url-pattern>/CoinmapController</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <description></description>
+    <display-name>CoinmapLocationController</display-name>
+    <servlet-name>CoinmapLocationController</servlet-name>
+    <servlet-class>aiss.controller.CoinmapLocationController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CoinmapLocationController</servlet-name>
+    <url-pattern>/CoinmapLocationController</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>GoogleAuthController</servlet-name>
+    <servlet-class>aiss.controller.oauth.GenericAuthController</servlet-class>
+    <init-param>
+  		<param-name>provider</param-name> <param-value>Google</param-value>
+ 	</init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleAuthController</servlet-name>
+    <url-pattern>/googleAuth</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>GoogleOAuth2Callback</servlet-name>
+    <servlet-class>aiss.controller.oauth.OAuth2Callback</servlet-class>
+    <init-param>
+  		<param-name>provider</param-name> <param-value>Google</param-value>
+ 	</init-param>
+ 	<init-param>
+  		<param-name>onSuccess</param-name>
+  		<param-value>redirect:/exitoGoogle.jsp</param-value>
+ 	</init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GoogleOAuth2Callback</servlet-name>
+    <url-pattern>/oauth2callback/Google</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index1_1.html</welcome-file>
   </welcome-file-list>

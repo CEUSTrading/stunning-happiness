@@ -8,7 +8,11 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 50%;
+        width: 50%;
+        position: fixed;
+        left: 50%;
+        border: 3px solid #73AD21;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -20,12 +24,7 @@
   </head>
   <body>
     <div id="map"></div>
-    
-    
     <script>
-    
-
-    
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
