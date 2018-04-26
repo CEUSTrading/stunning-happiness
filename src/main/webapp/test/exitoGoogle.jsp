@@ -10,8 +10,8 @@
 <title>Probando el login de Google</title>
 </head>
 <body>
-	<p>Token de google: ${sessionScope.Google-token}</p>
-	<p>Nombre de la persona registrada: ${logged-user.nombre}</p>
-	<p>Email de la persona registrada: ${logged-user-email}</p>
+	<c:forEach items="${requestScope.Infos}" var="info">
+		<p><c:out value="${info}"></c:out></p>
+	</c:forEach>
 </body>
 </html>
