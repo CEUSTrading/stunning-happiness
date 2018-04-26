@@ -10,7 +10,8 @@
 <title>Probando el login de Google</title>
 </head>
 <body>
-	<p>Nombre de la persona registrada: <c:out value="${requestScope.logged-user-name}"></c:out></p>
-	<p>Email de la persona registrada: <c:out value="${requestScope.logged-user-email}"></c:out></p>
+	<p>Token de google: ${sessionScope.Google-token}</p>
+	<p>Nombre de la persona registrada: ${logged-user.nombre}</p>
+	<p>Email de la persona registrada: ${logged-user-email}</p>
 </body>
 </html>
