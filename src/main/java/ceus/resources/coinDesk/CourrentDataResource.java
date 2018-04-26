@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.restlet.resource.ClientResource;
 
+import com.google.appengine.repackaged.com.google.gson.Gson;
+
 import ceus.model.coinDesk.Bpi;
 
 public class CourrentDataResource {
@@ -31,7 +33,7 @@ public class CourrentDataResource {
 	 */
 
 	public static Double getValor(String mon) {
-		double res = 0.0;
+		Double res = null;
 		ClientResource cr = null;
 		mon.toUpperCase();
 
