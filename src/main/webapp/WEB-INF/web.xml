@@ -33,6 +33,17 @@
 		<servlet-name>CoinmapLocationController</servlet-name>
 		<url-pattern>/CoinmapLocationController</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<description></description>
+		<display-name>BlockchainAddressController</display-name>
+		<servlet-name>BlockchainAddressController</servlet-name>
+		<servlet-class>aiss.controller.BlockchainAddressController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlockchainAddressController</servlet-name>
+		<url-pattern>/BlockchainAddressController</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<description></description>

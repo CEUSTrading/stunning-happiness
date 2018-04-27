@@ -10,8 +10,7 @@
 <title>Probando el login de Google</title>
 </head>
 <body>
-	<c:forEach items="${requestScope.Infos}" var="info">
-		<p><c:out value="${info}"></c:out></p>
-	</c:forEach>
+	<p>Nombre: <c:out value="${requestScope.Infos[0]}"></c:out></p>
+	<p>Email: <c:out value="${requestScope.Infos[1]}"></c:out></p>
 </body>
 </html>
