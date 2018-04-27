@@ -9,6 +9,6 @@
 <body>
 
 	<h2>Valor actual BitCoin</h2>
-	<span>EUR: <c:out value="${valor}" /></span>
+	<span>EUR: ${sessionScope.valor}</span>
 </body>
 </html>
