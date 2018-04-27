@@ -9,6 +9,8 @@ import com.google.appengine.repackaged.com.google.gson.Gson;
 
 import ceus.model.coinDesk.Bpi;
 import ceus.model.coinDesk.CourrentData;
+import ceus.model.coinDesk.EUR;
+import ceus.model.coinDesk.USD;
 
 public class CourrentDataResource {
 
@@ -58,15 +60,30 @@ public class CourrentDataResource {
 			try {
 				cr = new ClientResource(uri + mon);
 				String s = cr.get().getText();
-				System.out.println(s);
+				System.out.println("JSON: "+s);
 				Gson gson = new Gson();
 				CourrentData cd = gson.fromJson(s, CourrentData.class);// gson.toJson(s, Bpi.class);//fromJson(s,
-																		// Bpi.class);
-				System.out.println(cd.toString());
-				Double rate = cd.getBpi().getEUR().getRateFloat();
-				System.out.println(rate);
+					// Bpi.class);
+				String s1 = gson.toJson(cd);
+				System.out.println(s1);
+				Bpi b = gson.fromJson(s1, Bpi.class);
+				System.out.println("VBPI: "+b);
+				Bpi bpi = cd.getBpi();
+				System.out.println("BPI: "+bpi.toString());
+				String s2 = gson.toJson(bpi);
+				System.out.println("JSON2: "+s2);
+				EUR eur = gson.fromJson(s2, EUR.class);//bpi.getEUR();
+				System.out.println("EUR: "+eur);
+				
+				Double rate = eur.getRateFloat();
+				System.out.println("RATE_FLOAT: "+rate);
 				res = rate;
-				System.out.println(res);
+				System.out.println("Valor: "+res);
+				/*EUR eur = gson.fromJson(s, EUR.class);
+				String s1 = gson.toJson(eur);
+				System.out.println(s1);
+				res = eur.getRateFloat();
+				System.out.println(eur);*/
 
 			} catch (Exception e) {
 				System.err.println("Error al consultar los datos de Coindesk. Params:{" + mon + "}. Query: " + uri);
@@ -79,7 +96,7 @@ public class CourrentDataResource {
 				System.out.println(s);
 				Gson gson = new Gson();
 				Bpi bpi = gson.fromJson(s, Bpi.class);
-				res = new Double(bpi.getGBP().getRate());
+				//res = new Double(bpi.getGBP().getRate());
 				System.out.println(res);
 			} catch (Exception e) {
 				System.err.println("Error al consultar los datos de Coindesk. Params:{" + mon + "}. Query: " + uri);

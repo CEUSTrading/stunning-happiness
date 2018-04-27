@@ -1,11 +1,6 @@
 
 package ceus.model.coinDesk;
 
-import java.util.HashMap;
-import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -27,8 +22,6 @@ public class USD {
     private String description;
     @JsonProperty("rate_float")
     private Double rateFloat;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("code")
     public String getCode() {
@@ -68,16 +61,6 @@ public class USD {
     @JsonProperty("rate_float")
     public void setRateFloat(Double rateFloat) {
         this.rateFloat = rateFloat;
-    }
-
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
     }
 
 }
