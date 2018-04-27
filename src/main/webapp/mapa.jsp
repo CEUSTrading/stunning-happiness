@@ -23,6 +23,9 @@
     </style>
   </head>
   <body>
+  	<c:forEach items="${requestScope.venues}" var="venue">
+	<span hidden>Venue name: <c:out value="${venue.name}" /> <br></span>
+	</c:forEach>
     <div id="map"></div>
     <script>
       var map;
