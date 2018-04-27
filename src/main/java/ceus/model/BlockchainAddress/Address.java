@@ -35,8 +35,6 @@ public class Address {
     private Integer totalSent;
     @JsonProperty("final_balance")
     private Integer finalBalance;
-    @JsonProperty("txs")
-    private List<Tx> txs = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -98,16 +96,6 @@ public class Address {
     @JsonProperty("final_balance")
     public void setFinalBalance(Integer finalBalance) {
         this.finalBalance = finalBalance;
-    }
-
-    @JsonProperty("txs")
-    public List<Tx> getTxs() {
-        return txs;
-    }
-
-    @JsonProperty("txs")
-    public void setTxs(List<Tx> txs) {
-        this.txs = txs;
     }
 
     @JsonAnyGetter

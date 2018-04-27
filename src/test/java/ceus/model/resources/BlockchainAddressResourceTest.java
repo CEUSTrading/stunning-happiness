@@ -22,7 +22,7 @@ public class BlockchainAddressResourceTest {
 	
 	@Test
 	public void testGetInfoTestAddress() {
-		Address info = BlockchainAddressResource.getInfoFromAddress("mpVk7FtVwaCjWQuBFiByGZGLo8cbJ3Tjoy");
+		Address info = BlockchainAddressResource.getInfoFromAddress("mgyJ5qjF5N7hhvW7aQV9cb3Jt3HpH4B9V1");
 		assertNotNull("No information retrieved", info);
 		
 		System.out.println("Listing all the information from the address");

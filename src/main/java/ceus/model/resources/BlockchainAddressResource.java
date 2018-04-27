@@ -16,13 +16,13 @@ public class BlockchainAddressResource {
 	public static Address getInfoFromAddress(String address) {
 		String url = null;
 		String firstChar = address.substring(0, 1);
-		if (firstChar.equals("m") || firstChar.equals("2")) {
+		if (firstChar.equals("m") || firstChar.equals("2") || firstChar.equals("n")) {
 			log.info("The address is from the testnet");
-			url = urltest + address;
+			url = urltest  + address;
 			log.info("Retrieving info from " + url);
 		} else {
 			log.info("The address is from the mainnet");
-			url = urlmain + address;
+			url = urlmain  + address;
 			log.info("Retrieving info from " + url);
 		}
 		

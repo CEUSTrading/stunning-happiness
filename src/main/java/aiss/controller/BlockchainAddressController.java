@@ -40,9 +40,9 @@ public class BlockchainAddressController extends HttpServlet{
 		
 		if(address != null) {
 			List<String> valores = new ArrayList<>();
-			Integer totalSent = addr.getTotalSent() / 100000000;
-			Integer totalReceived = addr.getTotalReceived() / 100000000;
-			Integer finalBalance = addr.getFinalBalance() / 100000000;
+			Double totalSent = ((double) addr.getTotalSent()) / 100000000;
+			Double totalReceived = ((double) addr.getTotalReceived()) / 100000000;
+			Double finalBalance = ((double) addr.getFinalBalance()) / 100000000;
 			valores.add(addr.getAddress());
 			valores.add(totalSent.toString());
 			valores.add(totalReceived.toString());
