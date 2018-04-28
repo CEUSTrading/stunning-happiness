@@ -23,38 +23,32 @@
     </style>
   </head>
   <body>
-  		<c:forEach items="${requestScope.venues}" var="venue">
-			<span hidden=""  id="Venue">['<c:out value="${venue.name}"/>', <c:out value="${venue.lat}"/>, <c:out value="${venue.lon}"/>]</span>
-		</c:forEach>
+		<span hidden="" id="Name"><c:out value="${requestScope.venues[0]}"/></span>
+		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
+		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
     <div id="map"></div>
     <script>
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 6,
+          zoom: 1,
           center: new google.maps.LatLng(40.2871091,-3.7984027),
           mapTypeId: 'roadmap'
         });
+        var nameString = document.getElementById('Name').innerHTML;
+        var latString = document.getElementById('Lat').innerHTML;
+        var lonString = document.getElementById('Lon').innerHTML;
+		
+		var nameArray = nameString.split("#|");
+		var latArray = latString.split("#|");
+		var lonArray = lonString.split("#|");
         
-        var venues = document.getElementsById('Venue');
-        var marcadores = [];
-
-        for (var i = 0; i < venues.length; i++) {
-        	marcadores.push(venues[i]);
-        }
-        /*var marcadores = [
-        	['Perico', 31.385064, 2.173404],
-        	['Jacinta', 41.119019, 2.245212],
-        	['Clorox', 21.9794, 1.821426],
-        	['Sarin', 1.60034, 0.609762],
-        	];*/
-        
-        for (var i = 0; i < marcadores.length; i++) {
-        	var myLatLng = new google.maps.LatLng(marcadores[i][1], marcadores[i][2]);
+        for (var i = 0; i < (nameArray.length)-1; i++) {
+        	var myLatLng = new google.maps.LatLng(latArray[i], lonArray[i]);
         	var marker = new google.maps.Marker({
         	    position: myLatLng,
         	    map: map,
-            	title: marcadores[i][0],
+            	title: nameArray[i],
         	  });
         	};
         // Create a <script> tag and set the USGS URL as the source.
