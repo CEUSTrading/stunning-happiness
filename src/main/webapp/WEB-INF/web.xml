@@ -22,7 +22,7 @@
 		<servlet-name>CoinmapController</servlet-name>
 		<url-pattern>/CoinmapController</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>BlockchainConverterController</display-name>
@@ -32,6 +32,17 @@
 	<servlet-mapping>
 		<servlet-name>BlockchainConverterController</servlet-name>
 		<url-pattern>/BlockchainConverterController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>BlockchainPriceController</display-name>
+		<servlet-name>BlockchainPriceController</servlet-name>
+		<servlet-class>aiss.controller.BlockchainPriceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlockchainPriceController</servlet-name>
+		<url-pattern>/BlockchainPriceController</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

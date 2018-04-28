@@ -48,7 +48,33 @@
 		    Manuel Cecilio Pérez Gutiérrez<br /> <br />
 		</p>
 		<span><a href="googleAuth">Login con Google</a></span> <br />
-		<span><a href="view/Values.jsp">Valor actual</a></span>
+		<form action="BlockchainPriceController">
+			<select name="moneda-price">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
+			<input type="submit" value="Consultar precio de 1BTC">
+		</form>
 		<form id="searchForm" action="CoinmapController" method="post">
 			<input type="submit" name="searchBtn" title="probarAllVenues"
 				value="Probar AllVenues">
