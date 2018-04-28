@@ -33,8 +33,8 @@
 		<servlet-name>CoinmapLocationController</servlet-name>
 		<url-pattern>/CoinmapLocationController</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<servlet>
 		<description></description>
 		<display-name>BlockchainAddressController</display-name>
 		<servlet-name>BlockchainAddressController</servlet-name>
@@ -43,6 +43,17 @@
 	<servlet-mapping>
 		<servlet-name>BlockchainAddressController</servlet-name>
 		<url-pattern>/BlockchainAddressController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>TelegramController</display-name>
+		<servlet-name>TelegramController</servlet-name>
+		<servlet-class>aiss.controller.TelegramController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TelegramController</servlet-name>
+		<url-pattern>/TelegramController</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
