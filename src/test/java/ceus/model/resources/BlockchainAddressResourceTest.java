@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import ceus.model.BlockchainAddress.Address;
+import ceus.resources.BlockchainAddressResource;
 
 public class BlockchainAddressResourceTest {
 	

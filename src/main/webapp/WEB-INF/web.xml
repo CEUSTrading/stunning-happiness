@@ -16,7 +16,7 @@
 		<description></description>
 		<display-name>CoinmapController</display-name>
 		<servlet-name>CoinmapController</servlet-name>
-		<servlet-class>aiss.controller.CoinmapController</servlet-class>
+		<servlet-class>ceus.controller.CoinmapController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CoinmapController</servlet-name>
@@ -27,7 +27,7 @@
 		<description></description>
 		<display-name>BlockchainConverterController</display-name>
 		<servlet-name>BlockchainConverterController</servlet-name>
-		<servlet-class>aiss.controller.BlockchainConverterController</servlet-class>
+		<servlet-class>ceus.controller.BlockchainConverterController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BlockchainConverterController</servlet-name>
@@ -38,7 +38,7 @@
 		<description></description>
 		<display-name>BlockchainPriceController</display-name>
 		<servlet-name>BlockchainPriceController</servlet-name>
-		<servlet-class>aiss.controller.BlockchainPriceController</servlet-class>
+		<servlet-class>ceus.controller.BlockchainPriceController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BlockchainPriceController</servlet-name>
@@ -49,7 +49,7 @@
 		<description></description>
 		<display-name>CoinmapLocationController</display-name>
 		<servlet-name>CoinmapLocationController</servlet-name>
-		<servlet-class>aiss.controller.CoinmapLocationController</servlet-class>
+		<servlet-class>ceus.controller.CoinmapLocationController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>CoinmapLocationController</servlet-name>
@@ -60,7 +60,7 @@
 		<description></description>
 		<display-name>BlockchainAddressController</display-name>
 		<servlet-name>BlockchainAddressController</servlet-name>
-		<servlet-class>aiss.controller.BlockchainAddressController</servlet-class>
+		<servlet-class>ceus.controller.BlockchainAddressController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>BlockchainAddressController</servlet-name>
@@ -71,7 +71,7 @@
 		<description></description>
 		<display-name>TelegramController</display-name>
 		<servlet-name>TelegramController</servlet-name>
-		<servlet-class>aiss.controller.TelegramController</servlet-class>
+		<servlet-class>ceus.controller.TelegramController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>TelegramController</servlet-name>
@@ -82,7 +82,7 @@
 		<description></description>
 		<display-name>GoogleLoginController</display-name>
 		<servlet-name>GoogleLoginController</servlet-name>
-		<servlet-class>aiss.controller.GoogleLoginController</servlet-class>
+		<servlet-class>ceus.controller.GoogleLoginController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>GoogleLoginController</servlet-name>
@@ -121,13 +121,13 @@
 	
 	<servlet>
 		<description></description>
-		<display-name>CourrentDataController</display-name>
-		<servlet-name>CourrentDataController</servlet-name>
-		<servlet-class>ceus.controller.coinDesk.CourrentDataController</servlet-class>
+		<display-name>CurrentDataController</display-name>
+		<servlet-name>CurrentDataController</servlet-name>
+		<servlet-class>ceus.controller.CurrentDataController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>CourrentDataController</servlet-name>
-		<url-pattern>/courrentDataController</url-pattern>
+		<servlet-name>CurrentDataController</servlet-name>
+		<url-pattern>/currentDataController</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>

@@ -4,6 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
+import ceus.resources.BlockchainConverterResource;
+
 public class BlockchainConverterResourceTest {
 	
 	@Test

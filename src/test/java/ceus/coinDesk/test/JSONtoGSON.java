@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import com.google.appengine.repackaged.com.google.gson.Gson;
 
-import ceus.model.coinDesk.Bpi;
-import ceus.model.coinDesk.CourrentData;
-import ceus.model.coinDesk.EUR;
-import ceus.model.coinDesk.Time;
+import ceus.model.CoinDesk.Bpi;
+import ceus.model.CoinDesk.CourrentData;
+import ceus.model.CoinDesk.EUR;
+import ceus.model.CoinDesk.Time;
 
 public class JSONtoGSON {
 
