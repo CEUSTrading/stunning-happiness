@@ -102,12 +102,8 @@
 		<td><form id="searchForm" action="CoinmapController" method="post">
 		<input type="submit" name="searchBtn" title="probarAllVenues" value="Probar AllVenues"></form></td>
 		</tr>
-		<!--<input type="submit" name="searchBtnLocation" title="VenuesInLocation" value="Probar VenuesInLocation"></form>-->
-		<form action="CoinmapLocationController" method="post">
-			<input type="text" name="lat1" placeholder="lat1">
-			<input type="text" name="lat2" placeholder="lat2">
-			<input type="text" name="lon1" placeholder="lon1">
-			<input type="text" name="lon2" placeholder="lon2">
+		<form id="searchForm" action="CoinmapLocationController" method="post">
+			<input type="text" name="City" placeholder="Ciudad/localidad">
 			<input type="submit" value="Probar VenuesInLocation">
 		</form>
 	</table>

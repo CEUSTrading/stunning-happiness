@@ -26,41 +26,60 @@
 		<span hidden="" id="Name"><c:out value="${requestScope.venues[0]}"/></span>
 		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
 		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
+		<span hidden="" id="Cat"><c:out value="${requestScope.venues[3]}"/></span>
     <div id="map"></div>
     <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 1,
-          center: new google.maps.LatLng(40.2871091,-3.7984027),
-          mapTypeId: 'roadmap'
-        });
+    	// Array de información de las localizaciones obtenidas de coinmap
         var nameString = document.getElementById('Name').innerHTML;
         var latString = document.getElementById('Lat').innerHTML;
         var lonString = document.getElementById('Lon').innerHTML;
-		
+        var catString = document.getElementById('Cat').innerHTML;
+        
 		var nameArray = nameString.split("#|");
 		var latArray = latString.split("#|");
 		var lonArray = lonString.split("#|");
-        
-        for (var i = 0; i < (nameArray.length)-1; i++) {
+		var catArray = catString.split("#|");
+
+		//creo el mapa
+		 var map;
+	      function initMap() {
+	    	var centroLatLon = new google.maps.LatLng(latArray[0] ,lonArray[0]);
+	        map = new google.maps.Map(document.getElementById('map'), {
+	          zoom: 10,
+	          center: centroLatLon,
+	          mapTypeId: 'roadmap'
+	        });
+	    
+	       	//Ventanas de información start
+      	var myLatLng = new google.maps.LatLng(latArray[1], lonArray[1]);
+	       	var contentString = '<div id="content">'+
+          '<h1 id="firstHeading" class="firstHeading">'+nameArray[1]+'</h1>'+
+          '<h2 id="secondHeading" class="secondHeading">'+catArray[1]+'</h2>'+
+          '<p><a href="https://www.google.es/maps/place/"'+myLatLng+'>'+myLatLng+'</a>'+
+          '</p>'+
+          '</div>';
+          //ventana de información End
+	        var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+	      //creo los marcadores de los arrays anteriormente mencionados
+        for (var i = 1; i < (nameArray.length)-1; i++) {
         	var myLatLng = new google.maps.LatLng(latArray[i], lonArray[i]);
         	var marker = new google.maps.Marker({
         	    position: myLatLng,
         	    map: map,
             	title: nameArray[i],
         	  });
-        	};
-        // Create a <script> tag and set the USGS URL as the source.
-        //var script = document.createElement('script');
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        //script.src = 'http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp';
-        //document.getElementsByTagName('head')[0].appendChild(script);
-      }
 
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
+        	};
+        	
+              }
+      	
+	   	//Ventanas de información de negocio
+	   	 marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+		//forma de la ventana
       window.eqfeed_callback = function(results) {
         for (var i = 0; i < results.features.length; i++) {
           var coords = results.features[i].geometry.coordinates;
