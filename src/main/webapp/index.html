@@ -1,87 +1,147 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>CEUS prototype</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style1.css">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
-  </head>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>CEUS</title>
+<link rel="stylesheet" href="css/ceustyle.css">
+<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<script>
+	window.twttr = (function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
+		if (d.getElementById(id))
+			return t;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = "https://platform.twitter.com/widgets.js";
+		fjs.parentNode.insertBefore(js, fjs);
 
-  <body>
-  	<div class="w3-bar w3-theme-dark">
-  		<div class="w3-left w3-container w3-padding">
-  		<a href="index.html" title="Volver a la página principal"><img src="images/protologo2.png" height="50" width="50" alt="Prototype logo"/></a></div>
-  		<div class="w3-right w3-container w3-padding"><p><b>Versión prototipo</b></p></div>
-  	</div>
-  	<header class = "w3-container w3-theme w3-padding">
-	  	<div class = "w3-center">
-	  		<h4>Bienvenido a </h4>
-	  		<h1 class = "w3-jumbo w3-animate-bottom">CEUS</h1>
-	  		<div class="w3-padding-32">
-      			<button class="w3-btn w3-xlarge w3-theme-dark w3-hover-theme" 
-      			onclick="window.location.href='helloworld'"
-      			style="font-weight:900;">Hello World Servlet</button>
-    	</div>
-	  	</div>
-  	
-  	</header>
-  	<div class="w3-container">
-		<h4 class="w3-center">CEUS significa</h4>
-		<h2 class="w3-center"><b>C</b>ryptocurrency <b>E</b>xchange <b>U</b>nified <b>S</b>ervice</h2>
-		<h4 class="w3-center">O, en español,</h4>
-		<h2 class="w3-center">Servicio Unificado de Intercambio de Criptomonedas</h2>
-	</div>
-    <div class="w3-card-4 w3-container w3-center">
-    	<h4>Este es un proyecto para AISS hecho por:</h4>
-			Jose Manuel López Carnicer<br/>
-			Manuel Cecilio Pérez Gutierrez<br/>
-			Gonzalo García Granés<br/><br/>
-    </div>
-    
-     <div class="g-signin2" data-onsuccess="onSignIn" id="myP"></div>
-      <img id="myImg"><br>
-      <p id="name"></p>
-      <div id="status">
-   </div>
-   <script type="text/javascript">
-      function onSignIn(googleUser) {
-      // window.location.href='success.jsp';
-      var profile = googleUser.getBasicProfile();
-      var imagurl=profile.getImageUrl();
-      var name=profile.getName();
-      var email=profile.getEmail();
-      document.getElementById("myImg").src = imagurl;
-      document.getElementById("name").innerHTML = name;
-      document.getElementById("myP").style.visibility = "hidden";
-      document.getElementById("status").innerHTML = 'Welcome '+name+'!<a href=success.jsp?                  
-      email='+email+'&name='+name+'/>Continue with Google login</a></p>'
-   }
-   </script>
-   <button onclick="myFunction()">Sign Out</button>
-   <script>
-      function myFunction() {
-      gapi.auth2.getAuthInstance().disconnect();
-      location.reload();
-   }
-   </script>
-    
-	<h4 class="w3-center">¡Hasta pronto!</h4>
-	<div class="w3-container">
-	<footer class="w3-container w3-center">
-		<div class="w3-container w3-quarter w3-padding-32">
-			<a href="index.html"><img src="images/protologo2black.png" alt="Logo black" width="75" height="75"/></a>
+		t._e = [];
+		t.ready = function(f) {
+			t._e.push(f);
+		};
+
+		return t;
+	}(document, "script", "twitter-wjs"));
+</script>
+</head>
+
+<body>
+	<div class="nav">
+		<div id=nav-iz>
+			<img alt="logo" src="images/protologo2white.png" class="logo" />
 		</div>
-		<div class="w3-container w3-quarter">
-			<h4 class="w3-center">Más información</h4>
-			<div class="w3-container w3-center">
-			<a href="error.html">Términos y condiciones</a><br/>
-			<a href="error.html">Contacto</a><br/>
-			<a href="aboutus.html">Sobre nosotros</a><br/>
-			</div>
+	</div>
+
+	<div class="landing-page">
+		<h4>Bienvenido a</h4>
+		<h1>CEUS</h1>
+	</div>
+
+	<div class="desc">
+		<h3>Prototipo funcional de las características del pryecto</h3>
+		
+		<p>1. Autenticación con Google</p>
+		<span><a href="googleAuth">Login con Google</a></span> <br /> <br />
+		<p>2. Valor de un BTC en diferentes monedas a través de la API de Blockchain </p>
+		<form action="BlockchainPriceController">
+			<select name="moneda-price">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
+			<input type="submit" value="Consultar precio de 1BTC">
+		</form> <br />
+		
+		<!--  <form id="searchForm" action="CoinmapController" method="post">
+			<input type="submit" name="searchBtn" title="probarAllVenues"
+				value="Probar AllVenues">
+		</form> -->
+		<p>3. Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
+		<form id="searchForm" action="CoinmapLocationController" method="post">
+			<input type="text" name="City" placeholder="Ciudad/localidad">
+			<input type="submit" value="Probar VenuesInLocation">
+		</form> <br />
+		
+		<p>4. Consulta del balance de una dirección de la Blockchain</p>
+		<form action="BlockchainAddressController" method="post">
+			<input type="text" name="address"
+				placeholder="Introduce tu dirección">
+				<input type="submit" value="Comprobar">
+		</form> <br />
+
+		<p>5. Enviar un mensaje a través del navegador al canal de Telegram @CryptoEUS</p>
+		<form action="TelegramController" method="post">
+			<input type="text" name="telegram-message" placeholder="Escribe algo">
+			<input type="submit" name="Enviar">
+		</form> <br />
+		
+		<p>6. Convertir una cantidad dada de cualquier moneda a BTC</p>
+		<form action="BlockchainConverterController">
+			<input type="text" name="cantidad" placeholder="Cantidad">
+			<select name="moneda">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
+			<input type="submit" value="Convertir a BTC">
+		</form>
+
+	</div>
+
+	<footer>
+		<div id="fot-iz">
+			<img alt="logo" src="./images/protologo2black.png"
+				class="logo-footer" /> </br> <a class="twitter-follow-button"
+				href="https://twitter.com/CryptoEUS" data-size="large"
+				data-show-count="false"> Siguenos @CryptoEUS</a>
+		</div>
+		<div id="fot-der">
+			<ul>
+				<h5>Más Información:</h5>
+				<li><a href="tyc.html">Términos y condiciones</a></li>
+				<li><a href="mailto:contact.ceus@gmail.com">Contacto</a></li>
+				<li><a href="aboutus.html">Sobre nosotros</a></li>
+			</ul>
 		</div>
 	</footer>
-	</div>
-  </body>
+
+</body>
 </html>
