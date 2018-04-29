@@ -25,6 +25,28 @@
 
 	<servlet>
 		<description></description>
+		<display-name>BlockchainConverterController</display-name>
+		<servlet-name>BlockchainConverterController</servlet-name>
+		<servlet-class>aiss.controller.BlockchainConverterController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlockchainConverterController</servlet-name>
+		<url-pattern>/BlockchainConverterController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>BlockchainPriceController</display-name>
+		<servlet-name>BlockchainPriceController</servlet-name>
+		<servlet-class>aiss.controller.BlockchainPriceController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlockchainPriceController</servlet-name>
+		<url-pattern>/BlockchainPriceController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
 		<display-name>CoinmapLocationController</display-name>
 		<servlet-name>CoinmapLocationController</servlet-name>
 		<servlet-class>aiss.controller.CoinmapLocationController</servlet-class>
@@ -32,6 +54,28 @@
 	<servlet-mapping>
 		<servlet-name>CoinmapLocationController</servlet-name>
 		<url-pattern>/CoinmapLocationController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>BlockchainAddressController</display-name>
+		<servlet-name>BlockchainAddressController</servlet-name>
+		<servlet-class>aiss.controller.BlockchainAddressController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BlockchainAddressController</servlet-name>
+		<url-pattern>/BlockchainAddressController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<description></description>
+		<display-name>TelegramController</display-name>
+		<servlet-name>TelegramController</servlet-name>
+		<servlet-class>aiss.controller.TelegramController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TelegramController</servlet-name>
+		<url-pattern>/TelegramController</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

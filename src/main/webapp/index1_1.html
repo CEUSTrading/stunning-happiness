@@ -5,8 +5,6 @@
 <title>CEUS</title>
 <link rel="stylesheet" href="css/style1_1.css">
 <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
-<meta name="google-signin-client_id" content="80519301831-4qks127fvb5dqjn939obomu4ldb8mm44.apps.googleusercontent.com">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	window.twttr = (function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
@@ -25,38 +23,6 @@
 		return t;
 	}(document, "script", "twitter-wjs"));
 </script>
-<script src="https://apis.google.com/js/platform.js" async defer></script>
- <script>
-      function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-        
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        
-        //Getting all to be shown
-        $(".g-signin2").css("display", "none");
-        $(".data-google").css("display", "block");
-        $("#name").text("Bienvenido, " + profile.getName());
-      };
-    </script>
-    <script>
-    	function signOut(){
-    		var auth2 = gapi.auth2.getAuthInstance();
-    		auth2.signOut().then(function(){
-    			alert("Sesión cerrada correctamente.");
-    			$(".g-signin2").css("display", "block");
-    		    $(".data-google").css("display", "none");
-    		})
-    	}
-    </script>
 </head>
 
 <body>
@@ -64,43 +30,102 @@
 		<div id=nav-iz>
 			<img alt="logo" src="images/protologo2white.png" class="logo" />
 		</div>
-		<div id=nav-der>
-			<div class="data-google">
-				<p id="name"></p>
-				<button onclick="signOut()">Cerrar sesión</button>
-			</div>
-		</div>
 	</div>
 
 	<div class="landing-page">
 		<h4>Bienvenido a</h4>
 		<h1>CEUS</h1>
-		<div class="pls-center"><div class="g-signin2" data-onsuccess="onSignIn"></div></div>
 		<button class="boton-dark">HelloWorld</button>
 	</div>
 
 	<div class="desc">
 		<h3>Cryptocurrency Exchange Unified System</h3>
 		<p>o en español</p>
-		<h3>Servicio Unificado de Intercambio de Criptomonedas</h3>
-		<br />
+		<h3>Servicio Unificado de Intercambio de Criptomonedas</h3> <br />
 		<h4>Proyecto para AIIS, realizado por:</h4>
-		<p>
-			Gonzalo García Granés<br /> Jose Manuel López Carnicer<br /> Manuel
-			Cecilio Pérez Gutiérrez<br /> <br />
+		<p> Gonzalo García Granés<br />
+		    Jose Manuel López Carnicer<br />
+		    Manuel Cecilio Pérez Gutiérrez<br /> <br />
 		</p>
-		<a href="googleAuth">Login con Google</a><br />
-    <span><a href="courrentDataController">valor actual</a></span>
-		<form id="searchForm" action="CoinmapController" method="post">
-			<input type="submit" name="searchBtn" title="probarAllVenues" value="Probar AllVenues">
+
+		<span><a href="googleAuth">Login con Google</a></span> <br />
+		<form action="BlockchainPriceController">
+			<select name="moneda-price">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
+			<input type="submit" value="Consultar precio de 1BTC">
 		</form>
-		
+		<form id="searchForm" action="CoinmapController" method="post">
+			<input type="submit" name="searchBtn" title="probarAllVenues"
+				value="Probar AllVenues">
+		</form>
+
 		<form action="CoinmapLocationController" method="post">
-			<input type="text" name="lat1" placeholder="lat1">
+			<input type="text" name="lat1" placeholder="lat1"> 
 			<input type="text" name="lat2" placeholder="lat2">
 			<input type="text" name="lon1" placeholder="lon1">
 			<input type="text" name="lon2" placeholder="lon2">
 			<input type="submit" value="Probar VenuesInLocation">
+		</form>
+		
+		<form action="BlockchainAddressController" method="post">
+			<input type="text" name="address"
+				placeholder="Introduce tu dirección">
+				<input type="submit" value="Comprobar">
+		</form>
+
+		<form action="TelegramController" method="post">
+			<input type="text" name="telegram-message" placeholder="Escribe algo">
+			<input type="submit" name="Enviar">
+		</form>
+		
+		<form action="BlockchainConverterController">
+			<input type="text" name="cantidad" placeholder="Cantidad">
+			<select name="moneda">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
 		</form>
 
 	</div>
@@ -108,9 +133,9 @@
 	<footer>
 		<div id="fot-iz">
 			<img alt="logo" src="./images/protologo2black.png"
-				class="logo-footer" /> </br>
-			<a class="twitter-follow-button" href="https://twitter.com/CryptoEUS"
-				data-size="large" data-show-count="false"> Siguenos @CryptoEUS</a>
+				class="logo-footer" /> </br> <a class="twitter-follow-button"
+				href="https://twitter.com/CryptoEUS" data-size="large"
+				data-show-count="false"> Siguenos @CryptoEUS</a>
 		</div>
 		<div id="fot-der">
 			<ul>
