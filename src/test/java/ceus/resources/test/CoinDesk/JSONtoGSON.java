@@ -1,4 +1,4 @@
-package ceus.coinDesk.test;
+package ceus.resources.test.CoinDesk;
 
 import static org.junit.Assert.assertNotNull;
 

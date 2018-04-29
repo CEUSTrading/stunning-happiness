@@ -1,4 +1,4 @@
-package ceus.model.resources;
+package ceus.resources.test;
 
 import static org.junit.Assert.assertNotNull;
 
