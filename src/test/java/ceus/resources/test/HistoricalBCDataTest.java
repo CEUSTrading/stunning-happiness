@@ -1,6 +1,6 @@
 package ceus.resources.test;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Map;
 
 import org.junit.Test;
@@ -16,9 +16,9 @@ public class HistoricalBCDataTest {
 		
 		HistoricalData h = HistoricalBCData.getHistoricalDataDef();
 		System.out.println("Recogiendo valores");
-		Map<Integer, Double> r = HistoricalBCDataController.getMapUSD(h);
-		for(Integer d : r.keySet()) {
-			System.out.println("Dia: "+d+" -> "+r.get(d));
+		Map<Date, Double> r = HistoricalBCDataController.getMapUSD(h);
+		for(Date d : r.keySet()) {
+			System.out.println(d+" -> "+r.get(d));
 		}
 		
 	}
