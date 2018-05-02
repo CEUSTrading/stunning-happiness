@@ -118,16 +118,16 @@
 		<servlet-name>GoogleOAuth2Callback</servlet-name>
 		<url-pattern>/oauth2callback/Google</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
-		<display-name>CurrentDataController</display-name>
-		<servlet-name>CurrentDataController</servlet-name>
-		<servlet-class>ceus.controller.CurrentDataController</servlet-class>
+		<display-name>HistoricalBCDataController</display-name>
+		<servlet-name>HistoricalBCDataController</servlet-name>
+		<servlet-class>ceus.controller.HistoricalBCDataController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>CurrentDataController</servlet-name>
-		<url-pattern>/currentDataController</url-pattern>
+		<servlet-name>HistoricalBCDataController</servlet-name>
+		<url-pattern>/HistoricalBCDataController</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
