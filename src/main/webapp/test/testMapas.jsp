@@ -94,6 +94,12 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7AUgzLoCOLuNWjWlYQEHVTuVqP7jUJtI&callback=initMap">
     </script>
+    <table>
+    	<tr><th>Nombre</th></tr>
+    	<c:forEach items="${requestScope.names}" var="name">
+    	<tr><td><c:out value="${name}"></c:out></td></tr>
+    	</c:forEach>
+    </table>
   </body>
 </html>
 

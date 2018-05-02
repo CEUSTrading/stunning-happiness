@@ -2,6 +2,7 @@ package ceus.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -61,9 +62,11 @@ public class CoinmapLocationController extends HttpServlet {
 			String slat = lat+"#|";
 			String slon = lon+"#|";
 			String scat = null;
-			
+			List<String> names = new ArrayList<>();
+			List<String> categories = new ArrayList<>();
 			for(int i=0 ; i<venues.getVenues().size(); i++) {
 				sname+= venues.getVenues().get(i).getName()+"#|";
+				names.add(venues.getVenues().get(i).getName());
 				slat+= venues.getVenues().get(i).getLat().toString()+"#|";
 				slon+= venues.getVenues().get(i).getLon().toString()+"#|";
 				scat+= venues.getVenues().get(i).getCategory().toString()+"#|";
@@ -75,6 +78,7 @@ public class CoinmapLocationController extends HttpServlet {
 			info.add(scat);
 			rd = request.getRequestDispatcher("test/testMapas.jsp");
 			request.setAttribute("venues", info);
+			request.setAttribute("names", names);
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving venues");
 			rd = request.getRequestDispatcher("error.jsp");

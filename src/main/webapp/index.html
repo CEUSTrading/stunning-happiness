@@ -71,30 +71,32 @@
 			<input type="submit" value="Consultar precio de 1BTC">
 		</form> <br />
 		
-		<!--  <form id="searchForm" action="CoinmapController" method="post">
+		<p>3. Listado de todos los lugares del mundo donde se pueden usar BTC</p>
+		<form id="searchForm" action="CoinmapController" method="post">
 			<input type="submit" name="searchBtn" title="probarAllVenues"
 				value="Probar AllVenues">
-		</form> -->
-		<p>3. Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
+		</form> <br />
+		
+		<p>4. Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
 		<form id="searchForm" action="CoinmapLocationController" method="post">
 			<input type="text" name="City" placeholder="Ciudad/localidad">
 			<input type="submit" value="Probar VenuesInLocation">
 		</form> <br />
 		
-		<p>4. Consulta del balance de una dirección de la Blockchain</p>
+		<p>5. Consulta del balance de una dirección de la Blockchain</p>
 		<form action="BlockchainAddressController" method="post">
 			<input type="text" name="address"
 				placeholder="Introduce tu dirección">
 				<input type="submit" value="Comprobar">
 		</form> <br />
 
-		<p>5. Enviar un mensaje a través del navegador al canal de Telegram @CryptoEUS</p>
+		<p>6. Enviar un mensaje a través del navegador al canal de Telegram @CryptoEUS</p>
 		<form action="TelegramController" method="post">
 			<input type="text" name="telegram-message" placeholder="Escribe algo">
 			<input type="submit" name="Enviar">
 		</form> <br />
 		
-		<p>6. Convertir una cantidad dada de cualquier moneda a BTC</p>
+		<p>7. Convertir una cantidad dada de cualquier moneda a BTC</p>
 		<form action="BlockchainConverterController">
 			<input type="text" name="cantidad" placeholder="Cantidad">
 			<select name="moneda">
@@ -122,14 +124,38 @@
 				<option value="TWD">TWD</option>
 			</select>
 			<input type="submit" value="Convertir a BTC">
-		</form>
-
-	<p>7. Mostrar historico de valores de BTC</p>
+		</form> <br />
+		
+	<p>8. Mostrar historico de valores de BTC</p>
 	<form action="HistoricalBCDataController">
 		<label>Seleccionar los días a mostrar de historico</label>
-		<input type="text" name="nCons" placeholder="Días" />
+		<input type="number" min="1" max="30" name="nCons" placeholder="Días" /> <br />
 		<label>Seleccionar la moneda a mostrar de historico</label>
-		<input type="text" name="cCons" placeholder="USD" />
+		<select name="cCons">
+				<option value="EUR">EUR</option>
+				<option value="USD">USD</option>
+				<option value="GBP">GBP</option>
+				<option value="AUD">AUD</option>
+				<option value="BRL">BRL</option>
+				<option value="CAD">CAD</option>
+				<option value="CHF">CHF</option>
+				<option value="CLP">CLP</option>
+				<option value="CNY">CNY</option>
+				<option value="DKK">DKK</option>
+				<option value="HKD">HKD</option>
+				<option value="INR">INR</option>
+				<option value="ISK">ISK</option>
+				<option value="JPY">JPY</option>
+				<option value="KRW">KRW</option>
+				<option value="NZD">NZD</option>
+				<option value="PLN">PLN</option>
+				<option value="RUB">RUB</option>
+				<option value="SEK">SEK</option>
+				<option value="SGD">SGD</option>
+				<option value="THB">THB</option>
+				<option value="TWD">TWD</option>
+			</select>
+		<!--  <input type="text" name="cCons" placeholder="USD" /> -->
 		<input type="submit" value="Mostrar historico" />
 	</form>
 

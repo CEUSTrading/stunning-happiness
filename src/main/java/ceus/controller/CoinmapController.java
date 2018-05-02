@@ -37,7 +37,7 @@ public class CoinmapController extends HttpServlet {
 		Venues allvenues = cmap.getAllVenues();
 		
 		if(allvenues != null) {
-			rd = request.getRequestDispatcher("test/testMapas.jsp");
+			rd = request.getRequestDispatcher("test/testAllVenues.jsp");
 			request.setAttribute("venues", allvenues.getVenues());
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving venues");

@@ -12,12 +12,12 @@ import ceus.resources.TelegramResource;
 
 public class TelegramResourceTest {
 	
-	@Test
-	public void testPostMessage() {
-		Boolean success = TelegramResource.postMessage("Prueba en JUnit");
-		
-		assertTrue("The message was posted", success);
-	}
+//	@Test
+//	public void testPostMessage() {
+//		Boolean success = TelegramResource.postMessage("Prueba en JUnit");
+//		
+//		assertTrue("The message was posted", success);
+//	}
 	
 	@Test
 	public void testCombined() {
