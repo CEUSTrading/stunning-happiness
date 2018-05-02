@@ -1,8 +1,7 @@
 package ceus.controller;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,7 +34,7 @@ public class HistoricalBCDataController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Map<Integer, Double> res = new HashMap<>();
+		Map<Date, Double> res = new HashMap<>();
 		HistoricalData h = null;
 
 		log.log(Level.INFO, "Recogiendo valores de consulta.");
@@ -50,13 +49,13 @@ public class HistoricalBCDataController extends HttpServlet {
 			if (cur.equals("USD")) {
 				res = getMapUSD(h);
 				log.log(Level.INFO, "Valores recogidos en USD");
-			} else if (cur.equals("GBP")) {
-				res = getMapGBP(h);
-				log.log(Level.INFO, "Valores recogidos en GBP");
-			} else if (cur.equals("EUR")) {
-				res = getMapEUR(h);
-				log.log(Level.INFO, "Valores recogidos en EUR");
-			}
+//			} else if (cur.equals("GBP")) {
+//				res = getMapGBP(h);
+//				log.log(Level.INFO, "Valores recogidos en GBP");
+//			} else if (cur.equals("EUR")) {
+//				res = getMapEUR(h);
+//				log.log(Level.INFO, "Valores recogidos en EUR");
+		}
 
 			request.setAttribute("map", res);
 			request.getRequestDispatcher("test/testHistoricalData.jsp").forward(request, response);
@@ -67,13 +66,13 @@ public class HistoricalBCDataController extends HttpServlet {
 		}
 	}
 
-	public static Map<Integer, Double> getMapUSD(HistoricalData h) {
-		Map<Integer, Double> res = new HashMap<>();
+	public static Map<Date, Double> getMapUSD(HistoricalData h) {
+		Map<Date, Double> res = new HashMap<>();
 		List<Value> s = h.getValues();
-
 		for (Value v : s) {
 			System.out.println(v.getY());
-			res.put(v.getX(), v.getY());
+			Date time=new Date((long)v.getX()*1000);
+			res.put(time, v.getY());
 		}
 
 		return res;
