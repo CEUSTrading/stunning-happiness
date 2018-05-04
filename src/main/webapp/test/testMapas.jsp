@@ -27,6 +27,7 @@
 		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
 		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
 		<span hidden="" id="Cat"><c:out value="${requestScope.venues[3]}"/></span>
+		<span hidden="" id="Address"><c:out value="${requestScope.venues[4]}"/></span>
     <div id="map"></div>
     <script>
     	// Array de información de las localizaciones obtenidas de coinmap
@@ -34,11 +35,13 @@
         var latString = document.getElementById('Lat').innerHTML;
         var lonString = document.getElementById('Lon').innerHTML;
         var catString = document.getElementById('Cat').innerHTML;
+        var addressString = document.getElementById('Address').innerHTML;
         
 		var nameArray = nameString.split("#|");
 		var latArray = latString.split("#|");
 		var lonArray = lonString.split("#|");
 		var catArray = catString.split("#|");
+		var addressArray = addressString.split("#|");
 
 		//creo el mapa
 		 var map;
@@ -50,18 +53,6 @@
 	          mapTypeId: 'roadmap'
 	        });
 	    
-	       	//Ventanas de información start
-      	var myLatLng = new google.maps.LatLng(latArray[1], lonArray[1]);
-	       	var contentString = '<div id="content">'+
-          '<h1 id="firstHeading" class="firstHeading">'+nameArray[1]+'</h1>'+
-          '<h2 id="secondHeading" class="secondHeading">'+catArray[1]+'</h2>'+
-          '<p><a href="https://www.google.es/maps/place/"'+myLatLng+'>'+myLatLng+'</a>'+
-          '</p>'+
-          '</div>';
-          //ventana de información End
-	        var infowindow = new google.maps.InfoWindow({
-              content: contentString
-            });
 	      //creo los marcadores de los arrays anteriormente mencionados
         for (var i = 1; i < (nameArray.length)-1; i++) {
         	var myLatLng = new google.maps.LatLng(latArray[i], lonArray[i]);
@@ -70,36 +61,23 @@
         	    map: map,
             	title: nameArray[i],
         	  });
-
-        	};
-        	
-              }
-      	
-	   	//Ventanas de información de negocio
-	   	 marker.addListener('click', function() {
-          infowindow.open(map, marker);
-        });
-		//forma de la ventana
-      window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-        }
+            var content = '<h3>'+nameArray[i]+'</h3></br>'+
+            'Dirección: '+addressArray[i]+'</br>'+
+            '<a href="https://www.google.com/maps?q='+latArray[i]+','+lonArray[i]+'" target="_blank">Como ir.</a>';
+          	//Ventanas de información de negocio
+            var infowindow = new google.maps.InfoWindow()
+            google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+    	   	    return function() {
+    	   	        infowindow.setContent(content);
+    	   	        infowindow.open(map,marker);
+    	   	    };
+    	   	})(marker,content,infowindow));
+        	};	
       }
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7AUgzLoCOLuNWjWlYQEHVTuVqP7jUJtI&callback=initMap">
     </script>
-    <table>
-    	<tr><th>Nombre</th></tr>
-    	<c:forEach items="${requestScope.names}" var="name">
-    	<tr><td><c:out value="${name}"></c:out></td></tr>
-    	</c:forEach>
-    </table>
   </body>
 </html>
 
