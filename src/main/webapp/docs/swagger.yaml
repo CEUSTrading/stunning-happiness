@@ -1,0 +1,270 @@
+---
+swagger: "2.0"
+info:
+  description: This the api for the CEUS project, made for AISS.
+  version: 1.0.0
+  title: CEUS API
+  contact:
+    email: contact.ceus@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: cryptoeus.appspot.com
+basePath: /api
+tags:
+- name: Blockchain
+  description: Calls to get information about the Blockchain
+- name: Venues
+  description: Calls to interact with the places where you can use BTC
+schemes:
+- https
+paths:
+  /blockchain/address/{address}:
+    get:
+      tags:
+      - Blockchain
+      summary: returns the total balance of the address (on BTC)
+      description: When you pass an address, either from the main or the test net, this call returns the current total amount of BTC  that address. You can convert to Satoshi by multiplying by 10^8.
+      operationId: getAddress
+      produces:
+      - application/json
+      parameters:
+      - name: address
+        in: path
+        description: The address you want to know the balance of, on base58.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, balance of the address
+          schema:
+            $ref: '#/definitions/address'
+        400:
+          description: bad request
+  /blockchain/detailed-address/{address}:
+    get:
+      tags:
+      - Blockchain
+      summary: returns a detailed balance of the address (in BTC)
+      description: When you pass an address, this method returns a detailed balance of the address, incluiding the total amount of BTC received and spent, plus the final balance.
+      operationId: getDetailedAddress
+      produces:
+      - aplication/json
+      parameters:
+      - name: address
+        in: path
+        description: The address you want to know the balance of, on base58.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, balance of the address
+          schema:
+            $ref: '#/definitions/detailed-address'
+        400:
+          description: bad request
+  /blockchain/current-price/{currency}:
+    get:
+      tags:
+      - Blockchain
+      summary: returns the price of 1BTC
+      description: When you pass a fiat currency symbol (EUR, USD, GBP...), it returns the current priceof 1BTC in the specified currency.
+      operationId: getCurrentPrice
+      produces:
+      - aplication/json
+      parameters:
+      - name: currency
+        in: path
+        description: The fiat currency symbol.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, price
+          schema:
+            $ref: '#/definitions/current-price'
+        400:
+          description: bad request
+        404:
+          description: the query was valid but the specified currency isn't
+  /venues:
+    get:
+      tags:
+      - Venues
+      summary: returns all the venues (on the database) where you can use BTC
+      description: Calling this method will return all the venues registered both on our database and on Coimap's where you can use BTC 55kms around the specified city. If you don't provide a city, it returns all the venues in the database.
+      operationId: getVenues
+      produces:
+      - aplication/json
+      parameters:
+      - name: location
+        in: query
+        description: The name of the city you want to know the venues from.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, venues
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/get-venues-ex1'
+        400:
+          description: bad request
+    post:
+      tags:
+      - Venues
+      summary: adds a new venue to our database.
+      description: This method lets you add a new Venue-object to our databse.
+      operationId: addVenue
+      consumes:
+      - aplication/json
+      parameters:
+      - in: body
+        name: venue
+        description: The venue you want to add.
+        required: true
+        schema:
+          $ref: '#/definitions/get-venues-ex1'
+      responses:
+        201:
+          description: OK, venue created
+        400:
+          description: bad request
+        401:
+          description: venue was already created
+    put:
+      tags:
+      - Venues
+      summary: updates a venue on our database.
+      description: This method lets you update a Venue that is in our database.
+      operationId: updateVenues
+      consumes:
+      - aplication/json
+      produces:
+      - aplication/json
+      parameters:
+      - in: body
+        name: venue
+        description: The venue you want to update, updated.
+        required: true
+        schema:
+          $ref: '#/definitions/get-venues-ex1'
+      responses:
+        200:
+          description: OK, venue updated
+          schema:
+            $ref: '#/definitions/get-venues-ex1'
+        400:
+          description: bad request
+        404:
+          description: venue not found
+        405:
+          description: the venue was found but it's not on our database
+    delete:
+      tags:
+      - Venues
+      summary: deletes a venue from our database.
+      description: This method lets you delete a Venue that is on our database.
+      operationId: deleteVenueus
+      consumes:
+      - aplication/json
+      parameters:
+      - in: body
+        name: venue
+        description: The venue you want to delete.
+        required: true
+        schema:
+          $ref: '#/definitions/get-venues-ex1'
+      responses:
+        200:
+          description: OK, venue deleted
+        400:
+          description: bad request
+        404:
+          description: venue not found
+        405:
+          description: the venue was found but it's not on our database
+definitions:
+  address:
+    type: object
+    required:
+    - address
+    - finalBalance
+    properties:
+      address:
+        type: string
+        format: base58
+        example: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
+      finalBalance:
+        type: number
+        example: 12.3412843
+    example:
+      address: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
+      finalBalance: 12.3412843
+  detailed-address:
+    type: object
+    required:
+    - address
+    - finalBalance
+    - totalReceived
+    - totalSpent
+    properties:
+      address:
+        type: string
+        format: base58
+        example: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
+      totalReceived:
+        type: number
+        example: 12.132435
+      totalSpent:
+        type: number
+        example: 10.132435
+      finalBalance:
+        type: number
+        example: 2.0
+  current-price:
+    type: object
+    required:
+    - currentPrice
+    - symbol
+    properties:
+      symbol:
+        type: string
+        format: fiat currency symbol
+        example: EUR
+      currentPrice:
+        type: number
+        example: 7492.81
+  get-venues-ex1:
+    type: object
+    required:
+    - city
+    - email
+    - facebook
+    - id
+    - lat
+    - lon
+    - name
+    properties:
+      id:
+        type: string
+        example: "8225"
+      name:
+        type: string
+        example: One And All
+      lat:
+        type: number
+        example: 50.1220639499942
+      lon:
+        type: number
+        example: -5.53289830684662
+      city:
+        type: string
+        example: Penzance
+      facebook:
+        type: string
+        example: cryptodechange
+      email:
+        type: string
+        example: contact@cryptodechange.com

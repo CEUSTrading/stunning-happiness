@@ -126,12 +126,12 @@
 			<input type="submit" value="Convertir a BTC">
 		</form> <br />
 		
-	<p>8. Mostrar historico de valores de BTC</p>
+	<p>8. Mostrar historico de valores de BTC en USD</p>
 	<form action="HistoricalBCDataController">
 		<label>Seleccionar los días a mostrar de historico</label>
 		<input type="number" min="1" max="30" name="nCons" placeholder="Días" /> <br />
-		<label>Seleccionar la moneda a mostrar de historico</label>
-		<select name="cCons">
+		<!-- <label>Seleccionar la moneda a mostrar de historico</label>
+	 	<select name="cCons">
 				<option value="EUR">EUR</option>
 				<option value="USD">USD</option>
 				<option value="GBP">GBP</option>
@@ -154,8 +154,8 @@
 				<option value="SGD">SGD</option>
 				<option value="THB">THB</option>
 				<option value="TWD">TWD</option>
-			</select>
-		<!--  <input type="text" name="cCons" placeholder="USD" /> -->
+			</select> -->
+		<input type="text" name="cCons" value="USD" hidden="" />
 		<input type="submit" value="Mostrar historico" />
 	</form>
 
@@ -175,6 +175,7 @@
 				<li><a href="mailto:contact.ceus@gmail.com">Contacto</a></li>
 				<li><a href="aboutus.html">Sobre nosotros</a></li>
 				<li><a href="politicaPrivacidad.html">Política de privacidad</a>
+				<li><a href="http://cryptoeus.appspot.com/docs/index.html">Documentación de la api</a></li>
 			</ul>
 		</div>
 	</footer>

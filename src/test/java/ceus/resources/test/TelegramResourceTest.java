@@ -22,7 +22,8 @@ public class TelegramResourceTest {
 	@Test
 	public void testCombined() {
 		EUR price = BlockchainPriceResource.getPrices().getEUR();
-		Integer minutes = (Integer) (LocalDateTime.now().getMinuteOfHour() < 10? "0" + LocalDateTime.now().getMinuteOfHour() : LocalDateTime.now().getMinuteOfHour());
+		Integer m = LocalDateTime.now().getMinuteOfHour();
+		String minutes = m < 10? "0" + m : m.toString();
 		String message = "El precio de 1BTC a las " + LocalDateTime.now().getHourOfDay() + ":" 
 				+ minutes + " es de " + price.getLast() + price.getSymbol() + "\n"
 				+ "Más información en cryptoeus.appspot.com";
