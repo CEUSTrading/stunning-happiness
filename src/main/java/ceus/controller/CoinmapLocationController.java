@@ -38,8 +38,8 @@ public class CoinmapLocationController extends HttpServlet {
 		RequestDispatcher rd = null;
 		
 		String city = request.getParameter("City");
-		GeocodingResource gr = new GeocodingResource();
-		GeocodingSearchLatLon location = gr.getLocationInfo(city);
+		//GeocodingResource gr = new GeocodingResource();
+		GeocodingSearchLatLon location = GeocodingResource.getLocationInfo(city);
 		
 		String lat = location.getResults().get(0).getGeometry().getLocation().getLat().toString();
 		String lon = location.getResults().get(0).getGeometry().getLocation().getLng().toString();
@@ -54,8 +54,8 @@ public class CoinmapLocationController extends HttpServlet {
 		
 		log.log(Level.INFO, "Requesting all venues from CoinMap");
 		
-		CoinmapResource cmap = new CoinmapResource();
-		Venues venues = cmap.getVenuesInLocation(lon1.toString(), lon2.toString(), lat1.toString(), lat2.toString());
+		//CoinmapResource cmap = new CoinmapResource();
+		Venues venues = CoinmapResource.getVenuesInLocation(lon1.toString(), lon2.toString(), lat1.toString(), lat2.toString());
 		
 		if(venues != null) {
 			String sname = "centro"+"#|";
@@ -63,7 +63,7 @@ public class CoinmapLocationController extends HttpServlet {
 			String slon = lon+"#|";
 			String scat = null;
 			List<String> names = new ArrayList<>();
-			List<String> categories = new ArrayList<>();
+			//List<String> categories = new ArrayList<>();
 			for(int i=0 ; i<venues.getVenues().size(); i++) {
 				sname+= venues.getVenues().get(i).getName()+"#|";
 				names.add(venues.getVenues().get(i).getName());
