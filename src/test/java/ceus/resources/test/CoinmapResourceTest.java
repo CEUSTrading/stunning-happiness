@@ -17,7 +17,7 @@ public class CoinmapResourceTest {
 	static CoinmapResource cmr2 = new CoinmapResource();
 	
 	@Test
-	public void testGetAll() throws UnsupportedEncodingException {
+	public void testGetAllVenues() throws UnsupportedEncodingException {
 		Venues allVenues = cmr1.getAllVenues();
 		assertNotNull("The collection of venues is null", allVenues);
 		

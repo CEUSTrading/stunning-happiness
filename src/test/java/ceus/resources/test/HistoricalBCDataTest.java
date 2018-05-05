@@ -12,7 +12,7 @@ import ceus.resources.HistoricalBCData;
 public class HistoricalBCDataTest {
 
 	@Test
-	public void test1() {
+	public void testHistoricalBlockchainData() {
 		
 		HistoricalData h = HistoricalBCData.getHistoricalDataDef();
 		System.out.println("Recogiendo valores");

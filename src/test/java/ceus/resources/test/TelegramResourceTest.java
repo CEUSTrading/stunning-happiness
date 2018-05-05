@@ -20,7 +20,7 @@ public class TelegramResourceTest {
 //	}
 	
 	@Test
-	public void testCombined() {
+	public void testTelegramCombined() {
 		EUR price = BlockchainPriceResource.getPrices().getEUR();
 		Integer m = LocalDateTime.now().getMinuteOfHour();
 		String minutes = m < 10? "0" + m : m.toString();
