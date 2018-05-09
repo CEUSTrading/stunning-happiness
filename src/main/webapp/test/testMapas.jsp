@@ -61,15 +61,22 @@
         	    map: map,
             	title: nameArray[i],
         	  });
-            var content = '<h3>'+nameArray[i]+'</h3></br>'+
+            var content = '<h3>'+nameArray[i]+'</h3>'+
+            'Tipo: '+catArray[i]+'</br>'+
             'Dirección: '+addressArray[i]+'</br>'+
             '<a href="https://www.google.com/maps?q='+latArray[i]+','+lonArray[i]+'" target="_blank">Como ir.</a>';
           	//Ventanas de información de negocio
             var infowindow = new google.maps.InfoWindow()
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
     	   	    return function() {
-    	   	        infowindow.setContent(content);
-    	   	        infowindow.open(map,marker);
+    	   	    	/*
+    	   	    	en vez de una pantalla de infowindow, se muestra la información del negocio
+    	   	    	para que sean ventanas de infowindow basta con descomentar las dos líneas
+    	   	    	*/
+    	   	    	var escribir = document.getElementById("Write");
+    	   	    	escribir.innerHTML = content;
+    	   	       //infowindow.setContent(content);
+    	   	       //infowindow.open(map,marker);
     	   	    };
     	   	})(marker,content,infowindow));
         	};	
@@ -78,6 +85,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7AUgzLoCOLuNWjWlYQEHVTuVqP7jUJtI&callback=initMap">
     </script>
+    <p id="Write"></p>
   </body>
 </html>
 
