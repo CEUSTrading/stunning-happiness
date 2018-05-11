@@ -89,7 +89,7 @@ public class CoinmapLocationController extends HttpServlet {
 				slat += venues.getVenues().get(i).getLat().toString() + "#|";
 				slon += venues.getVenues().get(i).getLon().toString() + "#|";
 				scat += venues.getVenues().get(i).getCategory().toString() + "#|";
-
+			}
 			ArrayList<String> info = new ArrayList<String>();
 			info.add(sname);
 			info.add(slat);
