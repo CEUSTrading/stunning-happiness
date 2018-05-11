@@ -84,7 +84,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
 			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
-			res.put(fecha, v.getY()+" $");
+			res.put(fecha, Math.floor(v.getY()*100)/100+" $");
 		}
 
 		return res;
@@ -99,7 +99,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
 			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
-			res.put(fecha, (i*v.getY())+" £");
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" £");
 		}
 
 		return res;
@@ -114,7 +114,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
 			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
-			res.put(fecha, (i*v.getY())+" €");
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" €");
 		}
 
 		return res;
@@ -129,7 +129,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
 			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
-			res.put(fecha, (i*v.getY())+" ¥");
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" ¥");
 		}
 
 		return res;
@@ -144,7 +144,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
 			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
-			res.put(fecha, (i*v.getY())+" ₩");
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" ₩");
 		}
 
 		return res;
