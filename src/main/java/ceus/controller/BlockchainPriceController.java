@@ -33,6 +33,7 @@ public class BlockchainPriceController extends HttpServlet {
 	 */
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		RequestDispatcher rd = null;
 		String mon = request.getParameter("moneda-price");
 		log.log(Level.INFO, "Requesting all info from Blockchain.info");
