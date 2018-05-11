@@ -11,10 +11,10 @@ import ceus.model.Geocoding.Location;
 
 public class GeocodingResource {
 	
-	private String YOUR_API_KEY="AIzaSyCIxX8GwG003OjPask0y4Xvkcj16wfwigQ";
+	private static String YOUR_API_KEY="AIzaSyCIxX8GwG003OjPask0y4Xvkcj16wfwigQ";
 	private static final Logger log = Logger.getLogger(Location.class.getName());
 
-	public GeocodingSearchLatLon getLocationInfo(String City) {
+	public static GeocodingSearchLatLon getLocationInfo(String City) {
 		String sCity = City.replace(" ", "+");
 		GeocodingSearchLatLon res= null;
 		

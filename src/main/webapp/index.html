@@ -45,28 +45,11 @@
 		<p>2. Valor de un BTC en diferentes monedas a través de la API de Blockchain </p>
 		<form action="BlockchainPriceController">
 			<select name="moneda-price">
-				<option value="EUR">EUR</option>
-				<option value="USD">USD</option>
-				<option value="GBP">GBP</option>
-				<option value="AUD">AUD</option>
-				<option value="BRL">BRL</option>
-				<option value="CAD">CAD</option>
-				<option value="CHF">CHF</option>
-				<option value="CLP">CLP</option>
-				<option value="CNY">CNY</option>
-				<option value="DKK">DKK</option>
-				<option value="HKD">HKD</option>
-				<option value="INR">INR</option>
-				<option value="ISK">ISK</option>
-				<option value="JPY">JPY</option>
-				<option value="KRW">KRW</option>
-				<option value="NZD">NZD</option>
-				<option value="PLN">PLN</option>
-				<option value="RUB">RUB</option>
-				<option value="SEK">SEK</option>
-				<option value="SGD">SGD</option>
-				<option value="THB">THB</option>
-				<option value="TWD">TWD</option>
+				<option value="1">USD</option>
+				<option value="2">EUR</option>
+				<option value="3">GBP</option>
+				<option value="4">KRW</option>
+				<option value="5">JPY</option>
 			</select>
 			<input type="submit" value="Consultar precio de 1BTC">
 		</form> <br />
@@ -90,7 +73,8 @@
 				<input type="submit" value="Comprobar">
 		</form> <br />
 
-		<p>6. Enviar un mensaje con el precio actual de 1BTC a través del navegador al canal de Telegram @CryptoEUS</p>
+		<p>6. Enviar un mensaje con el precio actual de 1BTC a través del navegador
+		 al canal de Telegram <a href="https://t.me/CryptoEUS">@CryptoEUS</a></p>
 		<form action="TelegramController" method="post">
 			<input type="submit" name="Enviar">
 		</form> <br />
@@ -99,28 +83,11 @@
 		<form action="BlockchainConverterController">
 			<input type="text" name="cantidad" placeholder="Cantidad">
 			<select name="moneda">
-				<option value="EUR">EUR</option>
 				<option value="USD">USD</option>
+				<option value="EUR">EUR</option>
 				<option value="GBP">GBP</option>
-				<option value="AUD">AUD</option>
-				<option value="BRL">BRL</option>
-				<option value="CAD">CAD</option>
-				<option value="CHF">CHF</option>
-				<option value="CLP">CLP</option>
-				<option value="CNY">CNY</option>
-				<option value="DKK">DKK</option>
-				<option value="HKD">HKD</option>
-				<option value="INR">INR</option>
-				<option value="ISK">ISK</option>
-				<option value="JPY">JPY</option>
 				<option value="KRW">KRW</option>
-				<option value="NZD">NZD</option>
-				<option value="PLN">PLN</option>
-				<option value="RUB">RUB</option>
-				<option value="SEK">SEK</option>
-				<option value="SGD">SGD</option>
-				<option value="THB">THB</option>
-				<option value="TWD">TWD</option>
+				<option value="JPY">JPY</option>
 			</select>
 			<input type="submit" value="Convertir a BTC">
 		</form> <br />
@@ -129,32 +96,14 @@
 	<form action="HistoricalBCDataController">
 		<label>Seleccionar los días a mostrar de historico</label>
 		<input type="number" min="1" max="30" name="nCons" placeholder="Días" /> <br />
-		<!-- <label>Seleccionar la moneda a mostrar de historico</label>
+		<label>Seleccionar la moneda a mostrar de historico</label>
 	 	<select name="cCons">
-				<option value="EUR">EUR</option>
-				<option value="USD">USD</option>
-				<option value="GBP">GBP</option>
-				<option value="AUD">AUD</option>
-				<option value="BRL">BRL</option>
-				<option value="CAD">CAD</option>
-				<option value="CHF">CHF</option>
-				<option value="CLP">CLP</option>
-				<option value="CNY">CNY</option>
-				<option value="DKK">DKK</option>
-				<option value="HKD">HKD</option>
-				<option value="INR">INR</option>
-				<option value="ISK">ISK</option>
-				<option value="JPY">JPY</option>
-				<option value="KRW">KRW</option>
-				<option value="NZD">NZD</option>
-				<option value="PLN">PLN</option>
-				<option value="RUB">RUB</option>
-				<option value="SEK">SEK</option>
-				<option value="SGD">SGD</option>
-				<option value="THB">THB</option>
-				<option value="TWD">TWD</option>
-			</select> -->
-		<input type="text" name="cCons" value="USD" hidden="" />
+				<option value="1">USD</option>
+				<option value="2">EUR</option>
+				<option value="3">GBP</option>
+				<option value="4">KRW</option>
+				<option value="5">JPY</option>
+			</select>
 		<input type="submit" value="Mostrar historico" />
 	</form>
 

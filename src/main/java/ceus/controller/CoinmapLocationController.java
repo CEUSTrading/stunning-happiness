@@ -63,7 +63,7 @@ public class CoinmapLocationController extends HttpServlet {
 		Double lon2 = (Double.parseDouble(lon) + 0.5);
 
 		log.log(Level.INFO, "Requesting all venues from CoinMap");
-
+    
 		// consigo la información de los negocios en ese radio de búsqueda
 		CoinmapResource cmap = new CoinmapResource();
 		Venues venues = cmap.getVenuesInLocation(lon1.toString(), lon2.toString(), lat1.toString(), lat2.toString());
@@ -89,7 +89,7 @@ public class CoinmapLocationController extends HttpServlet {
 				slat += venues.getVenues().get(i).getLat().toString() + "#|";
 				slon += venues.getVenues().get(i).getLon().toString() + "#|";
 				scat += venues.getVenues().get(i).getCategory().toString() + "#|";
-			}
+
 			ArrayList<String> info = new ArrayList<String>();
 			info.add(sname);
 			info.add(slat);

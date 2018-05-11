@@ -13,99 +13,63 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ceus.model.BlockchainPrice.Price;
+import ceus.model.BlockchainPrice.USD;
 import ceus.resources.BlockchainPriceResource;
+import ceus.resources.ExchangeLayerResource;
 
 public class BlockchainPriceController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(BlockchainPriceController.class.getName());
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	 /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+
 	public BlockchainPriceController() {
 		super();
 	}
-	
+
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		RequestDispatcher rd = null;
-		String mon = request.getParameter("moneda-price");
 		log.log(Level.INFO, "Requesting all info from Blockchain.info");
 		Price all = BlockchainPriceResource.getPrices();
-		
-		if(all != null) {
+		Integer cur = new Integer(request.getParameter("moneda-price"));
+
+		if (all != null) {
 			List<String> results = new ArrayList<>();
-			if(mon.equals("EUR")) {
-				results.add(all.getEUR().getLast().toString());
-				results.add(all.getEUR().getSymbol());
-			} else if (mon.equals("USD")) {
-				results.add(all.getUSD().getLast().toString());
-				results.add(all.getUSD().getSymbol());
-			} else if (mon.equals("GBP")) {
-				results.add(all.getGBP().getLast().toString());
-				results.add(all.getGBP().getSymbol());
-			} else if (mon.equals("AUD")) {
-				results.add(all.getAUD().getLast().toString());
-				results.add(all.getAUD().getSymbol());
-			} else if (mon.equals("BRL")) {
-				results.add(all.getBRL().getLast().toString());
-				results.add(all.getBRL().getSymbol());
-			}  else if (mon.equals("CAD")) {
-				results.add(all.getCAD().getLast().toString());
-				results.add(all.getCAD().getSymbol());
-			} else if (mon.equals("CHF")) {
-				results.add(all.getCHF().getLast().toString());
-				results.add(all.getCHF().getSymbol());
-			} else if (mon.equals("CLP")) {
-				results.add(all.getCLP().getLast().toString());
-				results.add(all.getCLP().getSymbol());
-			}  else if (mon.equals("CNY")) {
-				results.add(all.getCNY().getLast().toString());
-				results.add(all.getCNY().getSymbol());
-			} else if (mon.equals("DKK")) {
-				results.add(all.getDKK().getLast().toString());
-				results.add(all.getDKK().getSymbol());
-			}  else if (mon.equals("HKD")) {
-				results.add(all.getHKD().getLast().toString());
-				results.add(all.getHKD().getSymbol());
-			} else if (mon.equals("INR")) {
-				results.add(all.getINR().getLast().toString());
-				results.add(all.getINR().getSymbol());
-			} else if (mon.equals("ISK")) {
-				results.add(all.getISK().getLast().toString());
-				results.add(all.getISK().getSymbol());
-			} else if (mon.equals("JPY")) {
-				results.add(all.getJPY().getLast().toString());
-				results.add(all.getJPY().getSymbol());
-			} else if (mon.equals("KRW")) {
-				results.add(all.getKRW().getLast().toString());
-				results.add(all.getKRW().getSymbol());
-			} else if (mon.equals("NZD")) {
-				results.add(all.getNZD().getLast().toString());
-				results.add(all.getNZD().getSymbol());
-			} else if (mon.equals("PLN")) {
-				results.add(all.getPLN().getLast().toString());
-				results.add(all.getPLN().getSymbol());
-			} else if (mon.equals("RUB")) {
-				results.add(all.getRUB().getLast().toString());
-				results.add(all.getRUB().getSymbol());
-			} else if (mon.equals("SEK")) {
-				results.add(all.getSEK().getLast().toString());
-				results.add(all.getSEK().getSymbol());
-			} else if (mon.equals("SGD")) {
-				results.add(all.getSGD().getLast().toString());
-				results.add(all.getSGD().getSymbol());
-			} else if (mon.equals("THB")) {
-				results.add(all.getTHB().getLast().toString());
-				results.add(all.getTHB().getSymbol());
-			} else if (mon.equals("TWD")) {
-				results.add(all.getTWD().getLast().toString());
-				results.add(all.getTWD().getSymbol());
+			switch (cur) {
+			case 1:
+				USD d = all.getUSD();
+				results.add((Math.floor(d.getLast()*100)/100)+"");
+				results.add(d.getSymbol());
+			case 2:
+				Double e = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
+				results.add(e.toString());
+				results.add("€");
+			case 3:
+				Double l = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDGBP();
+				results.add((Math.floor(l*100)/100)+"");
+				results.add("£");
+			case 4:
+				Double k = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
+				results.add((Math.floor(k*100)/100)+"");
+				results.add("₩");
+			case 5:
+				Double j = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDJPY();
+				results.add((Math.floor(j*100)/100)+"");
+				results.add("¥");
+			default:
+				USD dl = all.getUSD();
+				results.add((Math.floor(dl.getLast()*100)/100)+"");
+				results.add(dl.getSymbol());
 			}
 			request.setAttribute("results", results);
 			rd = request.getRequestDispatcher("test/testPrecios.jsp");
@@ -115,8 +79,9 @@ public class BlockchainPriceController extends HttpServlet {
 		}
 		rd.forward(request, response);
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
