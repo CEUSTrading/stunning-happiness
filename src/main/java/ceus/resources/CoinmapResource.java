@@ -13,7 +13,7 @@ public class CoinmapResource {
 	
 	 private static final Logger log = Logger.getLogger(Venues.class.getName());
 	
-	public Venues getAllVenues() throws UnsupportedEncodingException{
+	public static Venues getAllVenues() throws UnsupportedEncodingException{
 		
 		String url = "http://coinmap.org/api/v1/venues/";
 		
@@ -25,7 +25,7 @@ public class CoinmapResource {
 		return res;
 	}
 	
-	public Venues getVenuesInLocation(String lon1, String lon2, String lat1, String lat2) {
+	public static Venues getVenuesInLocation(String lon1, String lon2, String lat1, String lat2) {
 		
 		String url = "http://coinmap.org/api/v1/venues/?lon1=" + lon1 + "&lon2=" + lon2 + "&lat1=" + lat1 + "&lat2=" + lat2;
 		

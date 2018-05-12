@@ -12,12 +12,12 @@ import ceus.resources.HistoricalBCData;
 public class HistoricalBCDataTest {
 
 	@Test
-	public void test1() {
+	public void testHistoricalBlockchainData() {
 		
 		HistoricalData h = HistoricalBCData.getHistoricalDataDef();
 		System.out.println("Recogiendo valores");
-		Map<Date, Double> r = HistoricalBCDataController.getMapUSD(h);
-		for(Date d : r.keySet()) {
+		Map<String, String> r = HistoricalBCDataController.getMapUSD(h);
+		for(String d : r.keySet()) {
 			System.out.println(d+" -> "+r.get(d));
 		}
 		

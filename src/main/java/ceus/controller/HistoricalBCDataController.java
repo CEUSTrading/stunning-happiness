@@ -1,7 +1,6 @@
 package ceus.controller;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.repackaged.org.joda.time.LocalDateTime;
+
 import ceus.model.BlockChain.Historical.HistoricalData;
 import ceus.model.BlockChain.Historical.Value;
+import ceus.resources.ExchangeLayerResource;
 import ceus.resources.HistoricalBCData;
 
 public class HistoricalBCDataController extends HttpServlet {
@@ -34,78 +36,118 @@ public class HistoricalBCDataController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Map<Date, Double> res = new HashMap<>();
+		Map<String, String> res = new HashMap<>();
 		HistoricalData h = null;
 
 		log.log(Level.INFO, "Recogiendo valores de consulta.");
 		Integer n = new Integer(request.getParameter("nCons"));
-		String cur = request.getParameter("cCons");
+		Integer cur = new Integer(request.getParameter("cCons"));
+
 		if (n.equals(new Integer("30"))) {
 			h = HistoricalBCData.getHistoricalDataDef();
 		} else {
 			h = HistoricalBCData.getHistoricalData(n);
 		}
-		if (h != null) {
-			if (cur.equals("USD")) {
-				res = getMapUSD(h);
-				log.log(Level.INFO, "Valores recogidos en USD");
-//			} else if (cur.equals("GBP")) {
-//				res = getMapGBP(h);
-//				log.log(Level.INFO, "Valores recogidos en GBP");
-//			} else if (cur.equals("EUR")) {
-//				res = getMapEUR(h);
-//				log.log(Level.INFO, "Valores recogidos en EUR");
-		}
 
+		if (h != null) {
+			switch (cur) {
+			case 1:
+				res = getMapUSD(h);
+				break;
+			case 2:
+				res = getMapEUR(h);
+				break;
+			case 3:
+				res = getMapGBP(h);
+				break;
+			case 4:
+				res = getMapKRW(h);
+				break;
+			case 5:
+				res = getMapJPY(h);
+				break;
+			default:
+				res = getMapUSD(h);
+				break;
+			}
 			request.setAttribute("map", res);
 			request.getRequestDispatcher("test/testHistoricalData.jsp").forward(request, response);
-
-		}else {
+		} else {
 			log.severe("Error al recoger los valores.");
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
 
-	public static Map<Date, Double> getMapUSD(HistoricalData h) {
-		Map<Date, Double> res = new HashMap<>();
+	public static Map<String, String> getMapUSD(HistoricalData h) {
+		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 		for (Value v : s) {
-			System.out.println(v.getY());
-			Date time=new Date((long)v.getX()*1000);
-			res.put(time, v.getY());
+			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
+			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
+			res.put(fecha, Math.floor(v.getY()*100)/100+" $");
 		}
 
 		return res;
 	}
 
-	public static Map<Integer, Double> getMapGBP(HistoricalData h) {
-		Map<Integer, Double> res = new HashMap<>();
+	public static Map<String, String> getMapGBP(HistoricalData h) {
+		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
-		final float i = 0.719154f;
+		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDGBP();
 
 		for (Value v : s) {
-			System.out.println(v.getY());
-			res.put(v.getX(), i * v.getY());
+			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
+			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" £");
 		}
 
 		return res;
 	}
 
-	public static Map<Integer, Double> getMapEUR(HistoricalData h) {
-		Map<Integer, Double> res = new HashMap<>();
+	public static Map<String, String> getMapEUR(HistoricalData h) {
+		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
-		final float i = 0.806942f;
+		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
 
 		for (Value v : s) {
-			System.out.println(v.getY());
-			res.put(v.getX(), i * v.getY());
+			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
+			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" €");
 		}
 
 		return res;
 	}
 
-	// mapEUR
+	public static Map<String, String> getMapJPY(HistoricalData h) {
+		Map<String, String> res = new HashMap<>();
+		List<Value> s = h.getValues();
+
+		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
+
+		for (Value v : s) {
+			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
+			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" ¥");
+		}
+
+		return res;
+	}
+
+	public static Map<String, String> getMapKRW(HistoricalData h) {
+		Map<String, String> res = new HashMap<>();
+		List<Value> s = h.getValues();
+
+		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
+
+		for (Value v : s) {
+			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
+			String fecha = time.getDayOfMonth()+"/"+time.getMonthOfYear()+"/"+time.getYear();
+			res.put(fecha, (Math.floor(i*v.getY()*100)/100)+" ₩");
+		}
+
+		return res;
+	}
 
 }
