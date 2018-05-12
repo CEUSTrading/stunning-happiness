@@ -14,9 +14,11 @@ public class TelegramResource {
 	private static final String botid = "586602031:AAHniBeZSWsN_XOiyLiDvRv9FRlsb4ZiaMM";
 	private static final String channelid = "@CryptoEUS";
 
-	public static Boolean postMessage(String message) {
+	public static Boolean postMessage(Double valor) {
 		Boolean res = false;
 		log.info("Trying to send a message to @CryptoEUS");
+		String message = "El precio de 1BTC en este instante es de " + valor + "€\n"
+				+ "Más información en cryptoeus.appspot.com";
 		try {
 			String url = urlbase + botid + "/sendMessage?chat_id=" + channelid + "&text=" + message;
 			ClientResource cr = new ClientResource(url);

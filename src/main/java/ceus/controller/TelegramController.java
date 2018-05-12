@@ -34,9 +34,8 @@ public class TelegramController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Double price = BlockchainPriceResource.getPrices().getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
 		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR())*100)/100;
-		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
-				+ "Más información en cryptoeus.appspot.com";
-		boolean successTelegram = TelegramResource.postMessage(message);
+		
+		boolean successTelegram = TelegramResource.postMessage(value);
 		boolean successTwitter = false;
 		try {
 			successTwitter = TwitterPost.publicarTweet();

@@ -15,22 +15,14 @@ import ceus.resources.TelegramResource;
 
 public class TelegramResourceTest {
 	
-//	@Test
-//	public void testPostMessage() {
-//		Boolean success = TelegramResource.postMessage("Prueba en JUnit");
-//		
-//		assertTrue("The message was posted", success);
-//	}
-	
 	@Test
 	public void testTelegramCombined() {
-		Double price = BlockchainPriceResource.getPrices().getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
-		Double value = Math.floor(price*100)/100;
-		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
-				+ "Más información en cryptoeus.appspot.com";
-		boolean success = TelegramResource.postMessage(message);
+		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR())*100)/100;
+		boolean success = TelegramResource.postMessage(value);
 		
 		assertTrue("The message was posted", success);
+		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
+				+ "Más información en cryptoeus.appspot.com";
 		System.out.println(message);
 	}
 

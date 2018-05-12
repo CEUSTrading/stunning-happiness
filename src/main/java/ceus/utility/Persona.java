@@ -5,14 +5,12 @@ import java.util.List;
 public class Persona {
 	private String nombre;
 	private String email;
-	private String pass;
 	private List<String> direcciones;
 	
-	public Persona(String nombre, String email, String pass, List<String> direcciones) {
+	public Persona(String nombre, String email, List<String> direcciones) {
 		super();
 		this.nombre = nombre;
 		this.email = email;
-		this.pass = pass;
 		this.direcciones = direcciones;
 	}
 
@@ -34,14 +32,6 @@ public class Persona {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPass() {
-		return pass;
-	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
 	}
 
 	public List<String> getDirecciones(){

@@ -36,7 +36,7 @@ public class TwitterPost {
 			log.log(Level.FINE, "Tweet updated");
 		}else {
 			res = false;
-			log.log(Level.WARNING, "Something goes wrong");
+			log.log(Level.WARNING, "Something went wrong");
 		}
 		return res;
 	}
