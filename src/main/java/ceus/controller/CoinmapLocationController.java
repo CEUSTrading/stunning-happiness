@@ -51,8 +51,7 @@ public class CoinmapLocationController extends HttpServlet {
 		} else {
 			
 		}
-		GeocodingResource gr = new GeocodingResource();
-		GeocodingSearchLatLon location = gr.getLocationInfo(city);
+		GeocodingSearchLatLon location = GeocodingResource.getLocationInfo(city);
 		// latitud y longitud del centro de la localidad
 		String lat = location.getResults().get(0).getGeometry().getLocation().getLat().toString();
 		String lon = location.getResults().get(0).getGeometry().getLocation().getLng().toString();

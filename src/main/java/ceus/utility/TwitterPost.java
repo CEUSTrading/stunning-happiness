@@ -21,14 +21,14 @@ public class TwitterPost {
 	
 	private static final Logger log = Logger.getLogger(Twitter.class.getName());
 	
-	public static boolean publicarTweet() throws TwitterException  {
+	public static boolean publicarTweet(Double valor) throws TwitterException  {
 		Boolean res = null;
 		
 		Twitter t = TwitterFactory.getSingleton();
 		t.setOAuthConsumer(API_KEY, SECRET);
 		t.setOAuthAccessToken(new AccessToken(ACCESS_TOKEN, ACCESS_TOKE_SECRET, USER_ID));
 		log.log(Level.FINE, "Setting credentials at Twitter");
-		Double valor = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR())*100)/100;
+		
 		log.log(Level.FINE, "Getting BTC value.");
 		Status s = t.updateStatus("El valor actual del BTC es de "+valor+" €.\nPara saber más: cryptoeus.appspot.com");
 		if(s!=null) {

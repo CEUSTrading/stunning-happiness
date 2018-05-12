@@ -90,7 +90,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		return res;
 	}
 
-	public static Map<String, String> getMapGBP(HistoricalData h) {
+	private static Map<String, String> getMapGBP(HistoricalData h) {
 		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
@@ -105,7 +105,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		return res;
 	}
 
-	public static Map<String, String> getMapEUR(HistoricalData h) {
+	private static Map<String, String> getMapEUR(HistoricalData h) {
 		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
@@ -120,7 +120,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		return res;
 	}
 
-	public static Map<String, String> getMapJPY(HistoricalData h) {
+	private static Map<String, String> getMapJPY(HistoricalData h) {
 		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
@@ -135,7 +135,7 @@ public class HistoricalBCDataController extends HttpServlet {
 		return res;
 	}
 
-	public static Map<String, String> getMapKRW(HistoricalData h) {
+	private static Map<String, String> getMapKRW(HistoricalData h) {
 		Map<String, String> res = new HashMap<>();
 		List<Value> s = h.getValues();
 
