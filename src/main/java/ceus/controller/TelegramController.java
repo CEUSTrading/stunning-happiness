@@ -15,6 +15,8 @@ import ceus.model.Telegram.TelegramMessage;
 import ceus.resources.BlockchainPriceResource;
 import ceus.resources.ExchangeLayerResource;
 import ceus.resources.TelegramResource;
+import ceus.utility.TwitterPost;
+import twitter4j.TwitterException;
 
 public class TelegramController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,13 +32,20 @@ public class TelegramController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Double price = BlockchainPriceResource.getPrices().getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
-		Double value = Math.floor(price*100)/100;
+		//Double price = BlockchainPriceResource.getPrices().getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
+		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR())*100)/100;
 		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
 				+ "Más información en cryptoeus.appspot.com";
-		boolean success = TelegramResource.postMessage(message);
+		boolean successTelegram = TelegramResource.postMessage(message);
+		boolean successTwitter = false;
+		try {
+			successTwitter = TwitterPost.publicarTweet();
+		} catch (TwitterException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		if (success) {
+		if (successTelegram && successTwitter) {
 			request.setAttribute("message", "Message posted successfully");
 			log.log(Level.FINE, "The message was properly posted");
 		}
