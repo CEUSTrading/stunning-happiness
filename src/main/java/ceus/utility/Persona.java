@@ -1,17 +1,17 @@
 package ceus.utility;
 
+import java.util.List;
+
 public class Persona {
 	private String nombre;
 	private String email;
-	private String pass;
-	private Monedero monedero;
+	private List<String> direcciones;
 	
-	public Persona(String nombre, String email, String pass, Monedero monedero) {
+	public Persona(String nombre, String email, List<String> direcciones) {
 		super();
 		this.nombre = nombre;
 		this.email = email;
-		this.pass = pass;
-		this.monedero = monedero;
+		this.direcciones = direcciones;
 	}
 
 	public Persona() {
@@ -34,20 +34,12 @@ public class Persona {
 		this.email = email;
 	}
 
-	public String getPass() {
-		return pass;
+	public List<String> getDirecciones(){
+		return direcciones;
 	}
-
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-
-	public Monedero getMonedero() {
-		return monedero;
-	}
-
-	public void setMonedero(Monedero monedero) {
-		this.monedero = monedero;
+	
+	public void setDirecciones(List<String> direcciones) {
+		this.direcciones = direcciones;
 	}
 	
 	
