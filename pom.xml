@@ -141,6 +141,15 @@
 			<artifactId>twitter4j-core</artifactId>
 			<version>[4.0,)</version>
 		</dependency>
+		
+		<!-- Ficheros mcpg -->
+		<dependency>
+			<groupId>org.mcpg</groupId>
+			<artifactId>ficheros</artifactId>
+			<version>1.2.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/lib/Ficheros1_2.jar</systemPath>
+		</dependency>
 
 	</dependencies>
 
