@@ -28,9 +28,11 @@ public class Scheduler extends HttpServlet{
 		try {
 			TwitterPost.publicarTweet(round);
 			TelegramResource.postMessage(round);
+			request.getRequestDispatcher("/index.html").forward(request, response);
 		}catch(Exception e) {
 			log.log(Level.SEVERE, "Se produjo un error");
 			e.printStackTrace();
+			request.getRequestDispatcher("/error.html").forward(request, response);
 		}
 		
 	}
