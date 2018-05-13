@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
 	<cron>
-		<url>/cron/Scheduler</url>
+		<url>/ceus/controller/Scheduler</url>
 		<target></target>
 		<decryption>send a tweet and a message between 9am to 15pm</decryption>
 		<schedule>every 3 hours from 09:00 to 15:01</schedule>

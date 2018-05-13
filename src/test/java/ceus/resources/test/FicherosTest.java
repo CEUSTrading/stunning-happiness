@@ -9,7 +9,7 @@ public class FicherosTest {
 
 	@Test
 	public void test1() {
-		boolean r = UtilFicheros.escribeFicheroCompleto("./ficheros/test1.txt", "Prueba 3", "##");
+		boolean r = UtilFicheros.escribeFicheroCompleto("./ficheros/test1.txt", "Prueba 4", "##");
 		assertTrue(r);
 	}
 	
