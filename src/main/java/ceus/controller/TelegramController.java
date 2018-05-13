@@ -36,7 +36,7 @@ public class TelegramController extends HttpServlet {
 		boolean successTelegram = TelegramResource.postMessage(value);
 		boolean successTwitter = false;
 		try {
-			successTwitter = TwitterPost.publicarTweet();
+			successTwitter = TwitterPost.publicarTweet(value);
 		} catch (TwitterException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
