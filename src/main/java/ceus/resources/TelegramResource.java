@@ -1,5 +1,6 @@
 package ceus.resources;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
@@ -16,7 +17,7 @@ public class TelegramResource {
 
 	public static Boolean postMessage(Double valor) {
 		Boolean res = false;
-		log.info("Trying to send a message to @CryptoEUS");
+		log.log(Level.INFO, "Trying to send a message to @CryptoEUS");
 		String message = "El precio de 1BTC en este instante es de " + valor + "€\n"
 				+ "Más información en cryptoeus.appspot.com";
 		try {
@@ -26,7 +27,7 @@ public class TelegramResource {
 			cr.setEntityBuffering(true);
 			res = true;
 		} catch (ResourceException re) {
-			log.severe("There was an error sending the message");
+			log.log(Level.SEVERE, "There was an error sending the message");
 			throw re;
 		}
 		return res;
