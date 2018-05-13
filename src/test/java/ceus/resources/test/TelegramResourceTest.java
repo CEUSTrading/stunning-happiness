@@ -24,6 +24,7 @@ public class TelegramResourceTest {
 		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
 				+ "Más información en cryptoeus.appspot.com";
 		System.out.println(message);
+
 	}
 
 }
