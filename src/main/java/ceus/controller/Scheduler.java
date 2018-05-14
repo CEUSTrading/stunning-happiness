@@ -26,13 +26,16 @@ public class Scheduler extends HttpServlet{
 		Double round = Math.floor(euro*100)/100;
 		
 		try {
+			log.log(Level.FINE, "Enviando Tweet");
 			TwitterPost.publicarTweet(round);
+			log.log(Level.FINE, "Enviando mensaje a Telegram");
 			TelegramResource.postMessage(round);
-			request.getRequestDispatcher("/index.html").forward(request, response);
+			log.log(Level.FINE, "Proceso completado");
+			//request.getRequestDispatcher("/index.html").forward(request, response);
 		}catch(Exception e) {
 			log.log(Level.SEVERE, "Se produjo un error");
 			e.printStackTrace();
-			request.getRequestDispatcher("/error.html").forward(request, response);
+			//request.getRequestDispatcher("/error.html").forward(request, response);
 		}
 		
 	}
