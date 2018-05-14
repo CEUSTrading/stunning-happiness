@@ -17,7 +17,7 @@ public class TelegramResourceTest {
 	
 	@Test
 	public void testTelegramCombined() {
-		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR())*100)/100;
+		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR()*100))/100;
 		boolean success = TelegramResource.postMessage(value);
 		
 		assertTrue("The message was posted", success);

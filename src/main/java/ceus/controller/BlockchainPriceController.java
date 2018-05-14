@@ -52,7 +52,7 @@ public class BlockchainPriceController extends HttpServlet {
 				results.add(d.getSymbol());
 			case 2:
 				Double e = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
-				results.add(e.toString());
+				results.add(Math.floor(e*100)/100+"");
 				results.add("€");
 			case 3:
 				Double l = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDGBP();

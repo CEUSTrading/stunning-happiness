@@ -1,5 +1,5 @@
 
-package ceus.model.layer;
+package ceus.model.Layer;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
