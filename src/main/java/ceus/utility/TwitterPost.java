@@ -17,7 +17,7 @@ public class TwitterPost {
 	protected static final String SECRET = "WlRdkuEe0hA6vmBvegklPtto98C7HZaX3uTC65fVccBIB2DdNp";
 	protected static final long USER_ID = 981535043049918465l;
 	protected static final String ACCESS_TOKEN = "981535043049918465-kcnAR6sHIfkcpwwl0l0DyFTIH3VBf96";
-	protected static final String ACCESS_TOKE_SECRET = "qHk6tsvxGChHw7aF0GF2PIEGK4vZTWnP4v5yF7KXFGFQs";
+	protected static final String ACCESS_TOKEN_SECRET = "qHk6tsvxGChHw7aF0GF2PIEGK4vZTWnP4v5yF7KXFGFQs";
 	
 	private static final Logger log = Logger.getLogger(Twitter.class.getName());
 	
@@ -26,7 +26,7 @@ public class TwitterPost {
 		
 		Twitter t = TwitterFactory.getSingleton();
 		t.setOAuthConsumer(API_KEY, SECRET);
-		t.setOAuthAccessToken(new AccessToken(ACCESS_TOKEN, ACCESS_TOKE_SECRET, USER_ID));
+		t.setOAuthAccessToken(new AccessToken(ACCESS_TOKEN, ACCESS_TOKEN_SECRET, USER_ID));
 		log.log(Level.FINE, "Setting credentials at Twitter");
 		
 		log.log(Level.FINE, "Getting BTC value.");
