@@ -6,13 +6,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ceus.utility.Place;
+import twitter4j.api.PlacesGeoResources;
 
 
 public class MapPlaceRepository implements PlaceRepository {
 
 	Map<String, Place> placesMap = new HashMap<>();
 	private static MapPlaceRepository instance = null;
-	private int index = 0; //Las ids tendrán un formato tal que "l"+index
+	private static Integer index = 0;
 	
 	public static MapPlaceRepository getInstance() {
 		if(instance == null) {
@@ -141,5 +142,6 @@ public class MapPlaceRepository implements PlaceRepository {
 	
 	public void deletePlace(String id) {
 		placesMap.remove(id);
+		placesMap.keySet().remove(id);
 	}
 }
