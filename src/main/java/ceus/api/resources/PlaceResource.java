@@ -54,7 +54,8 @@ public class PlaceResource {
 	}
 	
 	@GET
-	@Path("/{city}")
+	//@Path("?city={city}")
+	@Path("/by-city/{city}")
 	@Produces("application/json")
 	public static Collection<Place> getByCity(@PathParam("city") String city) { //Devuelve todos los places de la ciudad
 		log.info("Retrieving all the places in " + city);
@@ -62,12 +63,13 @@ public class PlaceResource {
 	}
 	
 	@GET
-	@Path("/location?lat1={lat1}&lat2={lat2}&lon1={lon1}&lon2={lon2}")
+	//@Path("/location?lat1={lat1}&lat2={lat2}&lon1={lon1}&lon2={lon2}")
+	@Path("/location/{lat1}&{lat2}&{lon1}&{lon2}")
 	@Produces("application/json")
 	public static Collection<Place> getByLocation(@PathParam("lat1") String lat1, 
 			@PathParam("lat2") String lat2, @PathParam("lon1") String lon1, @PathParam("lon2") String lon2){
 			//Devuelve todos los Places del cuadrado formado por lon1, lon2, lat1, lat2
-		log.info("Retrieving all the places in between latitudes" + lat1 + " and " + lat2 +
+		log.info("Retrieving all the places in between latitudes " + lat1 + " and " + lat2 +
 				" and longitudes " + lon1 + " and " + lon2);
 		return repository.getPlacesByLocation(lon1, lon2, lat1, lat2);
 	}

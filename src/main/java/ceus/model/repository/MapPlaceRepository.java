@@ -101,14 +101,14 @@ public class MapPlaceRepository implements PlaceRepository {
 	
 	public Collection<Place> getPlacesByLocation(String lon1, String lon2, String lat1, String lat2){
 		//Lon1, lat1 son arriba a la izquierda. Lon2, lat2 son abajo a la derecha
-		int ln1 = Integer.parseInt(lon1);
-		int ln2 = Integer.parseInt(lon2);
-		int lt1 = Integer.parseInt(lat1);
-		int lt2 = Integer.parseInt(lat2);
+		double ln1 = Double.parseDouble(lon1);
+		double ln2 = Double.parseDouble(lon2);
+		double lt1 = Double.parseDouble(lat1);
+		double lt2 = Double.parseDouble(lat2);
 		Collection<Place> res = new ArrayList<>();
 		for(Place l: placesMap.values()) {
-			int lon = Integer.parseInt(l.getLon());
-			int lat = Integer.parseInt(l.getLat());
+			double lon = Double.parseDouble(l.getLon());
+			double lat = Double.parseDouble(l.getLat());
 			if(lon > ln1 && lon < ln2) {
 				if(lat > lt1 && lat < lt2) {
 					res.add(l);
@@ -121,7 +121,7 @@ public class MapPlaceRepository implements PlaceRepository {
 	public Collection<Place> getPlacesByCity(String city){
 		Collection<Place> res = new ArrayList<>();
 		for(Place l: placesMap.values()) {
-			if(city.equals(l.getCity().toLowerCase())) {
+			if(city.equals(l.getCity())) {
 				res.add(l);
 			}
 		}
