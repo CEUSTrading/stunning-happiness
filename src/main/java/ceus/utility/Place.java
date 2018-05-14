@@ -44,6 +44,30 @@ public class Place {
 		this.twitter = twitter;
 		this.email = email;
 	}
+	
+	public Place(String s) {
+		String[] q = s.split("#");
+		if(q.length==8) {
+			this.name = q[0].trim();
+			this.lat = q[1].trim();
+			this.lon = q[2].trim();
+			this.city = q[3].trim();
+			this.category = q[4].trim();
+			this.facebook = q[5].trim();
+			this.twitter = q[6].trim();
+			this.email = q[7].trim();
+		}else {
+			this.id = q[0].trim();
+			this.name = q[1].trim();
+			this.lat = q[2].trim();
+			this.lon = q[3].trim();
+			this.city = q[4].trim();
+			this.category = q[5].trim();
+			this.facebook = q[6].trim();
+			this.twitter = q[7].trim();
+			this.email = q[8].trim();
+		}
+	}
 
 	public String getId() {
 		return id;
