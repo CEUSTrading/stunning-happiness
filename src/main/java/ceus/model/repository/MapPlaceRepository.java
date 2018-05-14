@@ -129,11 +129,12 @@ public class MapPlaceRepository implements PlaceRepository {
 		return res;
 	}
 	
-	public void addPlace(Place l) {
+	public Place addPlace(Place l) {
 		String id = "l" + index;
 		l.setId(id);
 		placesMap.put(id, l);
 		index++;
+		return l;
 	}
 	
 	public void updatePlace(Place l) {

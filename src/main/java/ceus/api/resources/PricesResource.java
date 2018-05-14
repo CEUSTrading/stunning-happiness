@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import org.jboss.resteasy.spi.BadRequestException;
 
@@ -78,11 +79,11 @@ public class PricesResource {
 			values.setSymbol("¥");
 			break;
 		case "KRW":
-			Double toKWR = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
-			values.set15m(values.get15m() * toKWR);
-			values.setBuy(values.getBuy() * toKWR);
-			values.setLast(values.getLast() * toKWR);
-			values.setSell(values.getSell() * toKWR);
+			Double toKRW = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
+			values.set15m(values.get15m() * toKRW);
+			values.setBuy(values.getBuy() * toKRW);
+			values.setLast(values.getLast() * toKRW);
+			values.setSell(values.getSell() * toKRW);
 			values.setSymbol("₩");
 			break;
 		default:
@@ -116,9 +117,9 @@ public class PricesResource {
 	}
 	
 	@GET
-	@Path("/convert/{mon}&{cant}")
+	@Path("/convert")
 	@Produces("text/plain")
-	public static String getConverted(@PathParam("mon") String mon, @PathParam("cant") String cant) { //Convertir una cantidad a BTC
+	public static String getConverted(@QueryParam("cur") String mon, @QueryParam("val") String cant) { //Convertir una cantidad a BTC
 		log.info("Converting " + cant + " " + mon + " to BTC");
 		return BlockchainConverterResource.getConversion(mon, cant);
 	}
