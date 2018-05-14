@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.ws.rs.core.Application;
 
 import ceus.api.resources.PlaceResource;
+import ceus.api.resources.PricesResource;
 
 public class PlacesApplication extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
@@ -13,6 +14,7 @@ public class PlacesApplication extends Application {
 	
 	public PlacesApplication() {
 		singletons.add(PlaceResource.getInstance());
+		singletons.add(PricesResource.getInstance());
 	}
 
 	@Override
