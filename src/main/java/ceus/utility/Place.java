@@ -1,7 +1,7 @@
 package ceus.utility;
 
 public class Place {
-	
+
 	private String id;
 	private String name;
 	private String lat;
@@ -11,9 +11,7 @@ public class Place {
 	private String facebook;
 	private String twitter;
 	private String email;
-	
-	
-	
+
 	public Place(String id, String name, String lat, String lon, String city, String category, String facebook,
 			String twitter, String email) {
 		super();
@@ -43,6 +41,19 @@ public class Place {
 		this.facebook = facebook;
 		this.twitter = twitter;
 		this.email = email;
+	}
+
+	public Place(String s) {
+		String[] q = s.split("#");
+		this.id = q[0].trim();
+		this.name = q[1].trim();
+		this.lat = q[2].trim();
+		this.lon = q[3].trim();
+		this.city = q[4].trim();
+		this.category = q[5].trim();
+		this.facebook = q[6].trim();
+		this.twitter = q[7].trim();
+		this.email = q[8].trim();
 	}
 
 	public String getId() {
@@ -116,6 +127,5 @@ public class Place {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
 }
