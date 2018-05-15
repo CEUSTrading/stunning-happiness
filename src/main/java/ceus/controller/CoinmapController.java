@@ -33,11 +33,11 @@ public class CoinmapController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
 		log.log(Level.INFO, "Requesting all venues from CoinMap");
-		Venues allvenues = CoinmapResource.getAllVenues();
+		Venues allVenues = CoinmapResource.getAllVenues();
 		
-		if(allvenues != null) {
+		if(allVenues != null) {
 			rd = request.getRequestDispatcher("test/testAllVenues.jsp");
-			request.setAttribute("venues", allvenues.getVenues());
+			request.setAttribute("venues", allVenues.getVenues());
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving venues");
 			rd = request.getRequestDispatcher("error.jsp");

@@ -48,7 +48,7 @@
 	      function initMap() {
 	    	var centroLatLon = new google.maps.LatLng(latArray[0] ,lonArray[0]);
 	        map = new google.maps.Map(document.getElementById('map'), {
-	          zoom: 10,
+	          zoom: 8,
 	          center: centroLatLon,
 	          mapTypeId: 'roadmap'
 	        });
