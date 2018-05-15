@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 
-import ceus.model.Map.Venues;
+import ceus.model.map.Venues;
 
 public class CoinmapResource {
 	

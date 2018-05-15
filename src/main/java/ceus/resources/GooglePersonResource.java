@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.restlet.resource.ClientResource;
 
-import ceus.model.GoogleLogin.GooglePerson;
+import ceus.model.google.login.GooglePerson;
 
 
 public class GooglePersonResource {

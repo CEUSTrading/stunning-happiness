@@ -7,8 +7,8 @@ import java.io.UnsupportedEncodingException;
 
 import org.junit.Test;
 
-import ceus.model.Map.Venue;
-import ceus.model.Map.Venues;
+import ceus.model.map.Venue;
+import ceus.model.map.Venues;
 import ceus.resources.CoinmapResource;
 
 public class CoinmapResourceTest {

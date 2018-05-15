@@ -4,8 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import ceus.model.Geocoding.GeocodingSearchLatLon;
-import ceus.model.Geocoding.Location;
+import ceus.model.google.geocoding.GeocodingSearchLatLon;
+import ceus.model.google.geocoding.Location;
 import ceus.resources.GeocodingResource;
 
 public class GeocodingResourceTest {

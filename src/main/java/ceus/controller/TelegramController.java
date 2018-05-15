@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import ceus.model.Telegram.TelegramMessage;
+import ceus.model.telegram.TelegramMessage;
 import ceus.resources.BlockchainPriceResource;
 import ceus.resources.ExchangeLayerResource;
 import ceus.resources.TelegramResource;

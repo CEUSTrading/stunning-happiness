@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 
-import ceus.model.Layer.ExchangeData;
+import ceus.model.layer.ExchangeData;
 
 public class ExchangeLayerResource {
 

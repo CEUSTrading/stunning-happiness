@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ceus.model.Map.Venues;
+import ceus.model.map.Venues;
 import ceus.resources.CoinmapResource;
 
 public class CoinmapController extends HttpServlet {

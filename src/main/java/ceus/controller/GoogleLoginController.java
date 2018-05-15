@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ceus.model.GoogleLogin.GooglePerson;
+import ceus.model.google.login.GooglePerson;
 import ceus.resources.GooglePersonResource;
 
 public class GoogleLoginController extends HttpServlet{

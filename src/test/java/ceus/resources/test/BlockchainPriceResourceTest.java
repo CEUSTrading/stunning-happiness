@@ -4,7 +4,7 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import ceus.model.BlockchainPrice.Price;
+import ceus.model.blockchain.price.Price;
 import ceus.resources.BlockchainPriceResource;
 
 public class BlockchainPriceResourceTest {

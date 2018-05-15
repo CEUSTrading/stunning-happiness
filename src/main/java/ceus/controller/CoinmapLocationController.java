@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ceus.model.Geocoding.GeocodingSearchLatLon;
-import ceus.model.Map.Venues;
+import ceus.model.google.geocoding.GeocodingSearchLatLon;
+import ceus.model.map.Venues;
 import ceus.resources.CoinmapResource;
 import ceus.resources.GeocodingResource;
 

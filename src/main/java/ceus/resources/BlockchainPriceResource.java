@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 
-import ceus.model.BlockchainPrice.Price;
+import ceus.model.blockchain.price.Price;
 
 public class BlockchainPriceResource {
 

@@ -13,7 +13,7 @@
 		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
 		<init-param>
 			<param-name>javax.ws.rs.Application</param-name>
-			<param-value>ceus.api.PlacesApplication</param-value>
+			<param-value>ceus.api.CEUSApplication</param-value>
 		</init-param>
 	</servlet>	
 	<servlet-mapping>
@@ -139,13 +139,13 @@
 
 	<servlet>
 		<description></description>
-		<display-name>HistoricalBCDataController</display-name>
-		<servlet-name>HistoricalBCDataController</servlet-name>
-		<servlet-class>ceus.controller.HistoricalBCDataController</servlet-class>
+		<display-name>BlockchainHistoricalDataController</display-name>
+		<servlet-name>BlockchainHistoricalDataController</servlet-name>
+		<servlet-class>ceus.controller.BlockchainHistoricalDataController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>HistoricalBCDataController</servlet-name>
-		<url-pattern>/HistoricalBCDataController</url-pattern>
+		<servlet-name>BlockchainHistoricalDataController</servlet-name>
+		<url-pattern>/BlockchainHistoricalDataController</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

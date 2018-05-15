@@ -4,8 +4,8 @@ import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
 
-import ceus.model.BlockchainAddress.Address;
-import ceus.model.Map.Venues;
+import ceus.model.blockchain.address.Address;
+import ceus.model.map.Venues;
 
 public class BlockchainAddressResource {
 

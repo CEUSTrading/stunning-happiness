@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import ceus.model.Telegram.TelegramMessage;
+import ceus.model.telegram.TelegramMessage;
 
 public class TelegramResource {
 

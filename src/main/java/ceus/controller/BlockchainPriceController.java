@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ceus.model.BlockchainPrice.Price;
-import ceus.model.BlockchainPrice.USD;
+import ceus.model.blockchain.price.Price;
+import ceus.model.blockchain.price.USD;
 import ceus.resources.BlockchainPriceResource;
 import ceus.resources.ExchangeLayerResource;
 

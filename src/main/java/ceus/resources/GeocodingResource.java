@@ -6,8 +6,8 @@ import java.util.logging.Logger;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
 
-import ceus.model.Geocoding.GeocodingSearchLatLon;
-import ceus.model.Geocoding.Location;
+import ceus.model.google.geocoding.GeocodingSearchLatLon;
+import ceus.model.google.geocoding.Location;
 
 public class GeocodingResource {
 	

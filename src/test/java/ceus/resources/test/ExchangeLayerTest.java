@@ -2,7 +2,7 @@ package ceus.resources.test;
 
 import org.junit.Test;
 
-import ceus.model.Layer.Quotes;
+import ceus.model.layer.Quotes;
 import ceus.resources.ExchangeLayerResource;
 
 public class ExchangeLayerTest {

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import ceus.model.BlockchainAddress.Address;
+import ceus.model.blockchain.address.Address;
 import ceus.resources.BlockchainAddressResource;
 
 public class BlockchainAddressController extends HttpServlet{
