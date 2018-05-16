@@ -1,5 +1,6 @@
 package ceus.utility;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Persona {
@@ -12,6 +13,12 @@ public class Persona {
 		this.nombre = nombre;
 		this.email = email;
 		this.direcciones = direcciones;
+	}
+	public Persona(String nombre, String email) {
+		super();
+		this.nombre = nombre;
+		this.email = email;
+		this.direcciones = new ArrayList<String>();
 	}
 
 	public Persona() {
@@ -40,6 +47,33 @@ public class Persona {
 	
 	public void setDirecciones(List<String> direcciones) {
 		this.direcciones = direcciones;
+	}
+	
+	public static Persona create(String s) {
+		String[] a = s.split("#");
+		List<String> l = new ArrayList<>();
+		a[2].trim().replace('[', ' ');
+		a[2].trim().replace(']', ' ');
+		
+		for(String d : a[2].trim().split(",")) {
+			l.add(d.trim());
+		}
+		
+		return new Persona(a[0].trim(), a[1].trim(), l);
+	}
+	
+	public String toStringFormat() {
+		String s = "";
+		
+		s=s+this.nombre + "#";
+		s=s+this.email + "#";
+		s+="[";
+		for(String t : this.direcciones) {
+			s+=t+", ";
+		}
+		s+="]";
+		
+		return s;
 	}
 	
 	
