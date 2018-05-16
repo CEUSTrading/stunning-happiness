@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: This the api for the CEUS project, made for AISS.
-  version: 1.0.0
+  version: 1.2.0
   title: CEUS API
   contact:
     email: contact.ceus@gmail.com
@@ -12,20 +12,42 @@ info:
 host: cryptoeus.appspot.com
 basePath: /api
 tags:
+- name: Places
+  description: Calls to interact with the places where you can use BTC
 - name: Blockchain
   description: Calls to get information about the Blockchain
-- name: Venues
-  description: Calls to interact with the places where you can use BTC
 schemes:
 - https
 paths:
-  /blockchain/address/{address}:
+  /blockchain/balance/{address}:
     get:
       tags:
       - Blockchain
       summary: returns the total balance of the address (on BTC)
-      description: When you pass an address, either from the main or the test net, this call returns the current total amount of BTC  that address. You can convert to Satoshi by multiplying by 10^8.
-      operationId: getAddress
+      description: When you pass an address, either from the main or the test net, this call returns the current total amount of BTC  that address in BTC.
+      operationId: getAddressBalance
+      produces:
+      - text/plain
+      parameters:
+      - name: address
+        in: path
+        description: The address you want to know the balance of, on base58.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, balance of the address
+          schema:
+            $ref: '#/definitions/balance'
+        400:
+          description: bad request
+  /blockchain/detailed-balance/{address}:
+    get:
+      tags:
+      - Blockchain
+      summary: returns a detailed balance of the address (in BTC)
+      description: When you pass an address, this method returns a detailed balance of the address, incluiding the total amount of Satoshi received and spent, plus the final balance. To convert from Satoshi to BTC, divide by 10^8.
+      operationId: getDetailedAddressBalance
       produces:
       - application/json
       parameters:
@@ -38,207 +60,333 @@ paths:
         200:
           description: OK, balance of the address
           schema:
-            $ref: '#/definitions/address'
+            $ref: '#/definitions/detailed-balance'
         400:
           description: bad request
-  /blockchain/detailed-address/{address}:
-    get:
-      tags:
-      - Blockchain
-      summary: returns a detailed balance of the address (in BTC)
-      description: When you pass an address, this method returns a detailed balance of the address, incluiding the total amount of BTC received and spent, plus the final balance.
-      operationId: getDetailedAddress
-      produces:
-      - aplication/json
-      parameters:
-      - name: address
-        in: path
-        description: The address you want to know the balance of, on base58.
-        required: true
-        type: string
-      responses:
-        200:
-          description: OK, balance of the address
-          schema:
-            $ref: '#/definitions/detailed-address'
-        400:
-          description: bad request
-  /blockchain/current-price/{currency}:
+  /blockchain/prices/{currency}:
     get:
       tags:
       - Blockchain
       summary: returns the price of 1BTC
-      description: When you pass a fiat currency symbol (EUR, USD, GBP...), it returns the current priceof 1BTC in the specified currency.
-      operationId: getCurrentPrice
+      description: When you pass a fiat currency symbol (EUR, USD, GBP, JPY, KRW), it returns the current price of 1BTC in the specified currency.
+      operationId: getPrice
       produces:
-      - aplication/json
+      - application/json
       parameters:
       - name: currency
         in: path
-        description: The fiat currency symbol.
+        description: The fiat currency symbol IN UPPERCASE.
         required: true
         type: string
       responses:
         200:
           description: OK, price
           schema:
-            $ref: '#/definitions/current-price'
+            $ref: '#/definitions/prices'
         400:
           description: bad request
         404:
           description: the query was valid but the specified currency isn't
-  /venues:
+  /blockchain/convert:
     get:
       tags:
-      - Venues
-      summary: returns all the venues (on the database) where you can use BTC
-      description: Calling this method will return all the venues registered both on our database and on Coimap's where you can use BTC 55kms around the specified city. If you don't provide a city, it returns all the venues in the database.
-      operationId: getVenues
+      - Blockchain
+      summary: converts the specified amount to BTC
+      description: This method converts the specified amount of an specified currency (EUR, JPY, USD, KRW or GBP) to BTC.
+      operationId: getConverted
       produces:
-      - aplication/json
+      - text/plain
       parameters:
-      - name: location
+      - name: cur
         in: query
-        description: The name of the city you want to know the venues from.
+        description: The fiat currency symbol IN UPPERCASE.
         required: true
+        type: string
+      - name: val
+        in: query
+        description: The amount to convert
+        required: true
+        type: number
+      responses:
+        200:
+          description: OK, amount converted
+          schema:
+            $ref: '#/definitions/convert'
+        400:
+          description: bad request
+  /blockchain/historical:
+    get:
+      tags:
+      - Blockchain
+      summary: returns the historical value of a BTC in USD
+      description: This method returns the historical value of the number of days specified, or of 30 days if not specified
+      operationId: getHistorical
+      produces:
+      - application/json
+      parameters:
+      - name: days
+        in: query
+        description: The number of days you want to get
+        required: false
+        type: number
+      responses:
+        200:
+          description: OK, historical data
+          schema:
+            $ref: '#/definitions/historical'
+        400:
+          description: bad request
+  /places:
+    get:
+      tags:
+      - Places
+      summary: returns all the places (on the database) where you can use BTC
+      description: Calling this method will return all the places registered on our database. If you specify a city, it will return all the places inside the specified city.
+      operationId: getPlaces
+      produces:
+      - application/json
+      parameters:
+      - name: city
+        in: query
+        description: The name of the city you want to know the places from.
+        required: false
         type: string
       responses:
         200:
-          description: OK, venues
+          description: OK, places
           schema:
             type: array
             items:
-              $ref: '#/definitions/get-venues-ex1'
+              $ref: '#/definitions/get-places'
         400:
           description: bad request
+        404:
+          description: not found
     post:
       tags:
-      - Venues
-      summary: adds a new venue to our database.
-      description: This method lets you add a new Venue-object to our databse.
-      operationId: addVenue
+      - Places
+      summary: adds a new place to our database.
+      description: This method lets you add a new Place to our databse.
+      operationId: addPlace
       consumes:
-      - aplication/json
+      - application/json
       parameters:
       - in: body
-        name: venue
-        description: The venue you want to add.
+        name: place
+        description: The place you want to add, on json and without the id, as it is supplied by our server.
         required: true
         schema:
-          $ref: '#/definitions/get-venues-ex1'
+          $ref: '#/definitions/post-places'
       responses:
         201:
-          description: OK, venue created
+          description: OK, place created
         400:
           description: bad request
-        401:
-          description: venue was already created
     put:
       tags:
-      - Venues
-      summary: updates a venue on our database.
-      description: This method lets you update a Venue that is in our database.
-      operationId: updateVenues
+      - Places
+      summary: updates a place on our database.
+      description: This method lets you update a Place that is in our database.
+      operationId: updatePlace
       consumes:
-      - aplication/json
+      - application/json
       produces:
-      - aplication/json
+      - application/json
       parameters:
       - in: body
-        name: venue
-        description: The venue you want to update, updated.
+        name: place
+        description: The place you want to update, updated.
         required: true
         schema:
-          $ref: '#/definitions/get-venues-ex1'
+          $ref: '#/definitions/get-places'
       responses:
         200:
-          description: OK, venue updated
-          schema:
-            $ref: '#/definitions/get-venues-ex1'
+          description: OK, place updated
         400:
           description: bad request
         404:
-          description: venue not found
-        405:
-          description: the venue was found but it's not on our database
+          description: place not found
+  /places/{id}:
+    get:
+      tags:
+      - Places
+      summary: gets the Place with the specified id
+      description: This method returns only the place with the specified id.
+      operationId: getById
+      parameters:
+      - name: id
+        in: path
+        description: The id of the place you want to consult.
+        required: true
+        type: string
+      responses:
+        200:
+          description: OK, place
+          schema:
+            $ref: '#/definitions/get-places'
     delete:
       tags:
-      - Venues
-      summary: deletes a venue from our database.
-      description: This method lets you delete a Venue that is on our database.
-      operationId: deleteVenueus
+      - Places
+      summary: deletes a place from our database.
+      description: This method lets you delete a Place that is on our database.
+      operationId: deletePlace
       consumes:
-      - aplication/json
+      - application/json
       parameters:
-      - in: body
-        name: venue
-        description: The venue you want to delete.
+      - name: id
+        in: path
+        description: The id of the place you want to delete.
         required: true
-        schema:
-          $ref: '#/definitions/get-venues-ex1'
+        type: string
       responses:
         200:
-          description: OK, venue deleted
+          description: OK, place deleted
         400:
           description: bad request
         404:
-          description: venue not found
-        405:
-          description: the venue was found but it's not on our database
+          description: place not found
 definitions:
-  address:
+  balance:
     type: object
     required:
-    - address
     - finalBalance
     properties:
-      address:
-        type: string
-        format: base58
-        example: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
       finalBalance:
         type: number
-        example: 12.3412843
-    example:
-      address: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
-      finalBalance: 12.3412843
-  detailed-address:
+        example: 8.25E7
+  detailed-balance:
     type: object
     required:
     - address
     - finalBalance
+    - hash160
+    - nTx
     - totalReceived
-    - totalSpent
+    - totalSent
     properties:
+      hash160:
+        type: string
+        example: 0ff375cdffa5af09812ac0f42101ea269edb88c5
       address:
         type: string
         format: base58
-        example: 1BjVRkWWApsgbGF1ArMir8Z7m3UzjyVagq
+        example: mgyJ5qjF5N7hhvW7aQV9cb3Jt3HpH4B9V1
       totalReceived:
         type: number
-        example: 12.132435
-      totalSpent:
+        example: 0.825
+      totalSent:
         type: number
-        example: 10.132435
+        example: 0.0
       finalBalance:
         type: number
+        example: 0.825
+      nTx:
+        type: number
         example: 2.0
-  current-price:
+    example:
+      address: mgyJ5qjF5N7hhvW7aQV9cb3Jt3HpH4B9V1
+      nTx: 2.0
+      finalBalance: 0.825
+      totalReceived: 0.825
+      totalSent: 0.0
+      hash160: 0ff375cdffa5af09812ac0f42101ea269edb88c5
+  prices:
     type: object
     required:
-    - currentPrice
+    - 15m
+    - buy
+    - last
+    - sell
     - symbol
     properties:
+      last:
+        type: number
+        example: 8193.22
+      buy:
+        type: number
+        example: 8193.22
+      sell:
+        type: number
+        example: 8193.22
       symbol:
         type: string
-        format: fiat currency symbol
-        example: EUR
-      currentPrice:
+        example: $
+      15m:
         type: number
-        example: 7492.81
-  get-venues-ex1:
+        example: 8193.22
+    example:
+      symbol: $
+      last: 8193.22
+      buy: 8193.22
+      sell: 8193.22
+      15m: 8193.22
+  convert:
+    type: string
+    example: "1.43713883"
+  historical:
     type: object
     required:
+    - name
+    - period
+    - status
+    - unit
+    - values
+    properties:
+      status:
+        type: string
+        example: ok
+      name:
+        type: string
+        example: Market Price (USD)
+      unit:
+        type: string
+        example: USD
+      period:
+        type: string
+        example: days
+      descriptions:
+        type: string
+        example: Average USD market price across major bitcoin exchanges.
+      values:
+        $ref: '#/definitions/values-historical'
+    example:
+      unit: USD
+      period: days
+      values:
+        cero:
+          x: 1.526256E9
+          y: 8652.038333333332
+      name: Market Price (USD)
+      descriptions: Average USD market price across major bitcoin exchanges.
+      status: ok
+  values-historical:
+    type: object
+    properties:
+      cero:
+        $ref: '#/definitions/cero-historical'
+    example:
+      cero:
+        x: 1.526256E9
+        y: 8652.038333333332
+  cero-historical:
+    type: object
+    required:
+    - x
+    - y
+    properties:
+      x:
+        type: number
+        example: 1.526256E9
+      y:
+        type: number
+        example: 8652.038333333332
+    example:
+      x: 1.526256E9
+      y: 8652.038333333332
+  get-places:
+    type: object
+    required:
+    - category
     - city
     - email
     - facebook
@@ -246,25 +394,78 @@ definitions:
     - lat
     - lon
     - name
+    - twitter
     properties:
       id:
         type: string
-        example: "8225"
+        example: l0
       name:
         type: string
-        example: One And All
+        example: CryptOle
       lat:
         type: number
-        example: 50.1220639499942
+        example: 37.350581
       lon:
         type: number
-        example: -5.53289830684662
+        example: -5.985418
       city:
         type: string
-        example: Penzance
+        example: Sevilla
+      category:
+        type: string
+        example: atm
+      twitter:
+        type: string
+        example: cryptole
       facebook:
         type: string
-        example: cryptodechange
+        example: CryptOle
       email:
         type: string
-        example: contact@cryptodechange.com
+        example: cryptole@gmail.com
+    example:
+      twitter: cryptole
+      city: Sevilla
+      facebook: CryptOle
+      name: CryptOle
+      lon: -5.985418
+      id: l0
+      category: atm
+      lat: 37.350581
+      email: cryptole@gmail.com
+  post-places:
+    type: object
+    required:
+    - category
+    - city
+    - email
+    - facebook
+    - lat
+    - lon
+    - name
+    - twitter
+    properties:
+      name:
+        type: string
+        example: CryptOle
+      lat:
+        type: number
+        example: 37.350581
+      lon:
+        type: number
+        example: -5.985418
+      city:
+        type: string
+        example: Sevilla
+      category:
+        type: string
+        example: atm
+      twitter:
+        type: string
+        example: cryptole
+      facebook:
+        type: string
+        example: CryptOle
+      email:
+        type: string
+        example: cryptole@gmail.com

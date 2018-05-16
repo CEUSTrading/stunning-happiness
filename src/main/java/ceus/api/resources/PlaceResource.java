@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.jboss.resteasy.spi.BadRequestException;
+import org.jboss.resteasy.spi.NotFoundException;
 
 import ceus.model.repository.MapPlaceRepository;
 import ceus.model.repository.PlaceRepository;
@@ -50,10 +51,26 @@ public class PlaceResource {
 		List<Place> res = new ArrayList<>();
 		if(city == null || "".equals(city)) {
 			log.info("Retrieving all the places in the repo");
-			res.addAll(repository.getAllPlaces());
+			try {
+				res.addAll(repository.getAllPlaces());
+			}catch(Exception e) {
+				throw new BadRequestException(e);
+			}
+			if(res.isEmpty()) {
+				log.severe("There were no places on the repo but we had a get");
+				throw new NotFoundException("Something went wrong, as no places were retrieved");
+			}
 		} else {
 			log.info("Retrieving all the places in " + city);
-			res.addAll(repository.getPlacesByCity(city));
+			try {
+				res.addAll(repository.getPlacesByCity(city));
+			}catch(Exception e) {
+				throw new BadRequestException(e);
+			}
+			if(res.isEmpty()) {
+				log.warning("There are no places in " + city);
+				throw new NotFoundException("There are no registered places in " + city);
+			}
 		}
 		return res;
 	}
@@ -63,7 +80,11 @@ public class PlaceResource {
 	@Produces("application/json")
 	public static Place getById(@PathParam("id") String id) { //Devuelve el Place con id especificada
 		log.info("Retrieving the place with id " + id);
-		return repository.getPlace(id);
+		Place res = repository.getPlace(id);
+		if(res == null) {
+			throw new NotFoundException("The place with id " + id + " wasn't found");
+		}
+		return res;
 	}
 	
 	@POST
@@ -82,7 +103,12 @@ public class PlaceResource {
 		if(l.getCity() == null || "".equals(l.getCity())) {
 			throw new BadRequestException("The city of the place can't be empty");
 		}
-		Place p = repository.addPlace(l);
+		Place p = null;
+		try {
+			p = repository.addPlace(l);
+		} catch (Exception e) {
+			throw new BadRequestException(e);
+		}
 		log.warning("A new place has been added to the repository");
 //		
 		//This is the response
@@ -102,33 +128,37 @@ public class PlaceResource {
 	public Response updatePlace(Place l) { //actualiza un place
 		Place oldplace = repository.getPlace(l.getId());
 		if(oldplace == null) {
-			throw new BadRequestException("The place with id " + l.getId() + " wasn't found");
+			throw new NotFoundException("The place with id " + l.getId() + " wasn't found");
 		}
 		
 		//Actualizamos de uno en uno en oldplace
-		if(l.getCategory() != null) {
-			oldplace.setCategory(l.getCategory());
-		}
-		if(l.getCity() != null) {
-			oldplace.setCity(l.getCity());
-		}
-		if(l.getEmail() != null) {
-			oldplace.setEmail(l.getEmail());
-		}
-		if(l.getFacebook() != null) {
-			oldplace.setFacebook(l.getFacebook());
-		}
-		if(l.getLat() != null) {
-			oldplace.setLat(l.getLat());
-		}
-		if(l.getLon() != null) {
-			oldplace.setLon(l.getLon());
-		}
-		if(l.getName() != null) {
-			oldplace.setName(l.getName());
-		}
-		if(l.getTwitter() != null) {
-			oldplace.setTwitter(l.getTwitter());
+		try {
+			if(l.getCategory() != null) {
+				oldplace.setCategory(l.getCategory());
+			}
+			if(l.getCity() != null) {
+				oldplace.setCity(l.getCity());
+			}
+			if(l.getEmail() != null) {
+				oldplace.setEmail(l.getEmail());
+			}
+			if(l.getFacebook() != null) {
+				oldplace.setFacebook(l.getFacebook());
+			}
+			if(l.getLat() != null) {
+				oldplace.setLat(l.getLat());
+			}
+			if(l.getLon() != null) {
+				oldplace.setLon(l.getLon());
+			}
+			if(l.getName() != null) {
+				oldplace.setName(l.getName());
+			}
+			if(l.getTwitter() != null) {
+				oldplace.setTwitter(l.getTwitter());
+			}
+		} catch(Exception e) {
+			throw new BadRequestException(e);
 		}
 		log.warning("The place with id " + l.getId() + " has been updated");
 		//return Response.noContent().build();
@@ -140,9 +170,13 @@ public class PlaceResource {
 	public Response removePlace(@PathParam("id") String id) { //borra el Place de id especificada
 		Place toremove = repository.getPlace(id);
 		if(toremove == null) {
-			throw new BadRequestException("The place with id " + id + " wasn't found");
+			throw new NotFoundException("The place with id " + id + " wasn't found");
 		} else {
-			repository.deletePlace(id);
+			try {
+				repository.deletePlace(id);
+			} catch(Exception e) {
+				throw new BadRequestException(e);
+			}
 			log.warning("The place with id " + id + " has been deleted");
 		}
 		
