@@ -1,11 +1,9 @@
 package ceus.resources;
 
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
-import org.restlet.resource.ResourceException;
 
 import ceus.model.blockchain.historical.HistoricalData;
 
@@ -26,7 +24,7 @@ public class BlockchainHistoricalDataResource {
 		return res;
 	}
 
-	public static HistoricalData getHistoricalData(Integer dias) {
+	public static HistoricalData getHistoricalData(Integer dias ) {
 
 		String url = uri_ini + dias + uri_fin;
 

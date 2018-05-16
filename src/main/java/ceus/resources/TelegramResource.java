@@ -28,7 +28,7 @@ public class TelegramResource {
 			res = true;
 		} catch (ResourceException re) {
 			log.log(Level.SEVERE, "There was an error sending the message");
-			throw re;
+			re.printStackTrace();
 		}
 		return res;
 	}
