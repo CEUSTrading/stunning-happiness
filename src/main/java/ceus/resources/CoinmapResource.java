@@ -2,7 +2,6 @@ package ceus.resources;
 
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;

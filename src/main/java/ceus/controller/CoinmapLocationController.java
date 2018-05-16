@@ -2,7 +2,6 @@ package ceus.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,18 +21,6 @@ public class CoinmapLocationController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-
-	public CoinmapLocationController() {
-		super();
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -64,8 +51,7 @@ public class CoinmapLocationController extends HttpServlet {
 		log.log(Level.INFO, "Requesting all venues from CoinMap");
     
 		// consigo la información de los negocios en ese radio de búsqueda
-		CoinmapResource cmap = new CoinmapResource();
-		Venues venues = cmap.getVenuesInLocation(lon1.toString(), lon2.toString(), lat1.toString(), lat2.toString());
+		Venues venues = CoinmapResource.getVenuesInLocation(lon1.toString(), lon2.toString(), lat1.toString(), lat2.toString());
 
 		if (venues != null) {
 			// creo unos strings almacenados en arrays para ser llevados al jsp

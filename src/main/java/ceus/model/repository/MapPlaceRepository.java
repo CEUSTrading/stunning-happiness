@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ceus.utility.Place;
-import twitter4j.api.PlacesGeoResources;
 
 
 public class MapPlaceRepository implements PlaceRepository {
