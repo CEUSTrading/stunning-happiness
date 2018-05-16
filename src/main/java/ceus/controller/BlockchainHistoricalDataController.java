@@ -24,10 +24,6 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(BlockchainHistoricalDataResource.class.getName());
 	private static final long serialVersionUID = 1L;
 
-	public BlockchainHistoricalDataController() {
-		super();
-	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);

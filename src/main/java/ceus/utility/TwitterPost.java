@@ -3,8 +3,6 @@ package ceus.utility;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import ceus.resources.BlockchainPriceResource;
-import ceus.resources.ExchangeLayerResource;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;

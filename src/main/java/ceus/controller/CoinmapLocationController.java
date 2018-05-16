@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.resteasy.spi.BadRequestException;
-
 import ceus.model.google.geocoding.GeocodingSearchLatLon;
 import ceus.model.map.Venues;
 import ceus.resources.CoinmapResource;
@@ -43,10 +41,12 @@ public class CoinmapLocationController extends HttpServlet {
 		/*
 		 * Con la ciudad pasada, busco información de la localidad mediante geocoding
 		 */
-		System.out.println(request.getParameter("asdf"));
 		if (request.getParameter("City") != null) {
 			city = request.getParameter("City");
-
+		} else {
+			log.log(Level.SEVERE, "There was an error retrieving the parameter 'City'");
+			rd = request.getRequestDispatcher("error.jsp");
+		}
 			/*
 			 * Comprobamos que tipo de petición se está realizando, si no se a introducido
 			 * ninguna localidad, se buscan todos los negocios
@@ -101,10 +101,6 @@ public class CoinmapLocationController extends HttpServlet {
 				log.log(Level.SEVERE, "There was an error retrieving venues");
 				rd = request.getRequestDispatcher("error.jsp");
 			}
-		} else {
-			log.log(Level.SEVERE, "There was an error retrieving the parameter 'City'");
-			rd = request.getRequestDispatcher("error.jsp");
-		}
 		rd.forward(request, response);
 	}
 
