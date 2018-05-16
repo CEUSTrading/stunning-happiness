@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
 
 import ceus.model.layer.ExchangeData;
 
@@ -14,11 +15,17 @@ public class ExchangeLayerResource {
 	
 	
 	public static ExchangeData getLayer() {
+		ExchangeData res = null;
 		
+		try {
 		ClientResource cr = new ClientResource(url);
 		log.log(Level.FINE, "Recogiendo valores de cambio actualizados.");
-		
-		return cr.get(ExchangeData.class);
+		res = cr.get(ExchangeData.class);
+		} catch (ResourceException re) {
+			log.log(Level.INFO, "Error when retrieving the location info"+ res);
+			System.err.println("Error when retrieving the location info: " + re);
+		}
+		return res;
 		
 	}
 	
