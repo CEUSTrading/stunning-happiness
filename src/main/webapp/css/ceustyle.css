@@ -24,7 +24,12 @@ a{
   text-decoration: none;
   color:black;
 }
+
+a:hover{
+	text-decoration: underline;
+}
 .nav{
+  text-align: center;
   width: 100%;
   background-color: #160f29;
   color: #FFF5EE;
@@ -151,7 +156,7 @@ footer{
   display: block;
   border-top: 2px black solid;
   background-color: white;
-  width: 100%;
+  width: 99%;
   height: 12%;
   text-align: center;
   clear: both;
@@ -176,6 +181,7 @@ ul,ol>footer{
 
 #fot-der{
   margin-right: 27%;
+  clear: right;
   float: right !important;
   padding: 8px 0 16px 0;
 }
@@ -187,6 +193,20 @@ ul,ol>footer{
 	text-align: center;
 	margin-top: 1em;
 	margin-bottom: 1em;
+}
+
+.c-left{
+	float: left;
+	clear: left;
+}
+
+.c-center{
+	display: inline-block;
+}
+
+.c-right{
+	float: right;
+	clear: right;
 }
 
 .au-left{
@@ -215,5 +235,46 @@ ul,ol>footer{
 
 .au-img{
 	border-radius: 50%;
+}
+
+#menu-header{
+    list-style-type: none;
+    margin: 0;
+    float: left;
+    width: 100%;
+	background-color: #255498;
+	color: #FFF5EE;
+	overflow: hidden;
+}
+
+#menu-header li{
+	display: inline;
+	padding: 10px 8px;
+}
+
+#menu-header a{
+	color: white;
+	font-size: 16px;
+	padding: 4px
+	
+}
+
+#menu-header li:hover{
+	background-color: #6060ff;
+}
+
+#bot-header{
+	display: inline;
+	float: left !important;
+  	padding: 10px 8px;
+
+}
+
+
+#nav-login{
+	display: inline;
+	float: right !important;
+  	padding: 10px 8px;
+
 }
 
