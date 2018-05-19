@@ -5,17 +5,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Histórico BTC</title>
+<title>Historico BTC</title>
 </head>
 <body>
 	<!-- HEADER -->
 
 	<div class="tabla-h">
+		<form action="">
+			<select>
+				<option value="1">$</option>
+				<option value="2">€</option>
+				<option value="3">£</option>
+				<option value="4">¥</option>
+				<option value="5">₩</option>
+			</select> <input type="submit" />
+		</form>
 
-		<c:forEach items="${requestScope.map}" var="entry">
-			<span><p>Día: ${entry.key}</p><p>Valor: ${entry.value}</p></span>
-		</c:forEach>
-
+		<table>
+			<tr>
+				<th>DIA</th>
+				<th>VALOR</th>
+			</tr>
+			<c:forEach items="${requestScope.map}" var="entry">
+				<tr>
+					<td>${entry.key}</td>
+					<td>${entry.value}</td>
+				</tr>
+			</c:forEach>
+		</table>
 	</div>
 
 	<!-- FOOTER -->
