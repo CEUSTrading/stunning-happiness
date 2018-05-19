@@ -1,5 +1,6 @@
 package ceus.model.repository;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -49,8 +50,6 @@ public class PersonaRepository {
 		return personaMap.get(email);
 	}
 	
-	//TODO: si se requiere, añadir metodos de actualizacion y eliminacion
-	
 	public Persona addPersona(Persona p) {
 		
 		boolean b = UtilFicheros.escribeLineaFichero("./ficheros/basePersonas.txt", p.toStringFormat());
@@ -70,7 +69,10 @@ public class PersonaRepository {
 			Persona j = personaMap.get(email);
 			j.setNombre(p.getNombre());
 			List<String> a = j.getDirecciones();
-			a.addAll(p.getDirecciones());
+			List<String> d = p.getDirecciones();
+			for(String s : d) {
+				a.add(s);
+			}
 			j.setDirecciones(a);
 			actualizaBase();
 			return j;
@@ -79,10 +81,33 @@ public class PersonaRepository {
 		}
 	}
 	
-	private void actualizaBase() {
-		for(String s : personaMap.keySet()) {
-			UtilFicheros.escribeLineaFichero("./ficheros/basePersonas.txt", personaMap.get(s).toStringFormat());
+	public boolean eliminaPersona(String email) {
+		boolean res  = false;
+		
+		if(personaMap.containsKey(email)) {
+			personaMap.remove(email);
+			personaMap.keySet().remove(email);
+			
+			actualizaBase();
+			
+			res = true;
+		}else {
+			System.out.println("La persona asociada a: "+email+", no existe.");
 		}
+		
+		return res;
+	}
+	
+	private void actualizaBase() {
+		
+		/*File f = new File("./ficheros/basePersonas.txt");
+		f.delete();
+		*/
+		String f = "";
+		for(String s : personaMap.keySet()) {
+			f+=personaMap.get(s).toStringFormat()+"\n";
+		}
+		UtilFicheros.escribeFicheroCompletoComun("./ficheros/basePersonas.txt", f);
 	}
 	
 }
