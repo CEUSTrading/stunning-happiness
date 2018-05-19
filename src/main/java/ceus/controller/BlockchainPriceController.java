@@ -72,7 +72,7 @@ public class BlockchainPriceController extends HttpServlet {
 				results.add(dl.getSymbol());
 			}
 			request.setAttribute("results", results);
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("test/testPrecios.jsp");
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving the information");
 			rd = request.getRequestDispatcher("error.jsp");

@@ -31,7 +31,7 @@ public class GoogleLoginController extends HttpServlet {
 			request.setAttribute("Infos", info);
 			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email ["
 					+ gp.getNames().get(0).getDisplayName() + ", " + gp.getEmailAddresses().get(0).getValue() + "]");
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("test/exitoGoogle.jsp");
 			rd.forward(request, response);
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving this person");
