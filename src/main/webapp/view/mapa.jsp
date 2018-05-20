@@ -16,17 +16,18 @@
         padding: 0;
       }
     </style>
-  <p>4. Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
-		<form id="searchForm" action="../CoinmapLocationController" method="post">
+  <h2 class="center">Búsqueda de lugares donde usar BTC</h2>
+		<p>Introduce la ciudad donde quieras gastar tus BTC:</p> 
+			<form id="searchForm" action="../CoinmapLocationController" method="post">
 			<input type="text" name="City" placeholder="Ciudad/localidad">
-			<input type="submit" value="Probar VenuesInLocation">
-		</form> <br />
+			<input type="submit" value="Buscar">
+			</form><br />
 		<span hidden="" id="Name"><c:out value="${requestScope.venues[0]}"/></span>
 		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
 		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
 		<span hidden="" id="Cat"><c:out value="${requestScope.venues[3]}"/></span>
 		<span hidden="" id="Address"><c:out value="${requestScope.venues[4]}"/></span>
-    <div id="map"></div>
+    <div class="center" id="map"></div>
     <script>
     	// Array de información de las localizaciones obtenidas de coinmap
         var nameString = document.getElementById('Name').innerHTML;

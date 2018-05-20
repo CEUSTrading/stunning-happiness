@@ -2,8 +2,9 @@
 <%@ include file="header.jsp" %>
 <title>Precio del bitcoin</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-	<p class="center">Convertir una cantidad dada de cualquier moneda a BTC</p>
-	<form  class="center" action="BlockchainConverterController">
+	<h2 class="center">Convertir una cantidad dada de cualquier moneda a BTC</h2>
+	<br/>
+	<form  class="center" action="../BlockchainConverterController">
 		<input  class="center" type="number" name="cantidad" placeholder="Cantidad"  min="0" required="">
 		 <select name="moneda" required="">
 			<option value="USD">USD</option>
