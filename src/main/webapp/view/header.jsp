@@ -19,7 +19,7 @@
 			<li><a href="header.html">Mapa</a></li>
 			<li><a href="#">Consulta de precios</a></li>
 			<li><a href="#">Consulta de direcciones</a></li>
-			<c:set var="infos" value="${requestScope.Infos}" />
+			<c:set var="infos" value="${sessionScope.Infos}" />
 			<c:if test="${empty infos}">
     		<div class="dropdown">
 				  <button class="dropbtn">Login</button>
@@ -30,7 +30,7 @@
 				</div>
 			</c:if>
 			<c:if test="${not empty infos}">
-			   	<li>¡Bienvenido, <c:out value="${requestScope.Infos[0]}"></c:out>!</li>
+			   	<li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>
 			</c:if>
 			<!-- <div id="nav-login">
 				<p>Login</p>
