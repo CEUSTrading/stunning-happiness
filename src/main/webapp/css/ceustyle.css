@@ -323,3 +323,16 @@ ul,ol>footer{
     background-color: #6060ff;
 }
 
+.l-left{
+	clear: left;
+	text-align: left;
+}
+
+.converter{
+	margin-left: 10%;
+}
+
+.converter2{
+	margin-right: 10%;
+	
+}

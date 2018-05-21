@@ -3,11 +3,11 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
+      	margin-top: 4em;
         height: 50%;
         width: 50%;
         position: fixed;
-        left: 50%;
-        border: 3px solid #73AD21;
+        border: 3px solid #160f29;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -16,18 +16,20 @@
         padding: 0;
       }
     </style>
-  <h2 class="center">Búsqueda de lugares donde usar BTC</h2>
-		<p>Introduce la ciudad donde quieras gastar tus BTC:</p> 
-			<form id="searchForm" action="../CoinmapLocationController" method="post">
-			<input type="text" name="City" placeholder="Ciudad/localidad">
+    <div class="container c-left">
+  <p>Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
+		<form id="searchForm" action="../CoinmapLocationController" method="post">
+			<input type="text" name="City" placeholder="Localización" required="">
 			<input type="submit" value="Buscar">
-			</form><br />
+		</form> <br />
+	<p>Si tiene problemas con una localización, especifiquela más (localidad, provincia, país, código postal, calle... ) </p>
 		<span hidden="" id="Name"><c:out value="${requestScope.venues[0]}"/></span>
 		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
 		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
 		<span hidden="" id="Cat"><c:out value="${requestScope.venues[3]}"/></span>
 		<span hidden="" id="Address"><c:out value="${requestScope.venues[4]}"/></span>
-    <div class="center" id="map"></div>
+	</div>
+    <div class="container" id="map"></div>
     <script>
     	// Array de información de las localizaciones obtenidas de coinmap
         var nameString = document.getElementById('Name').innerHTML;
@@ -88,7 +90,7 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7AUgzLoCOLuNWjWlYQEHVTuVqP7jUJtI&callback=initMap">
     </script>
-    <p class="center" id="Write"></p>
+    <p class="container l-left" id="Write"></p>
   </body>
   <%@ include file = "footer.html" %>
 </html>

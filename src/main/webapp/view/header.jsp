@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/ceustyle.css">
- <link rel="icon" href="../images/favicon.png" type="image/gif" sizes="16x16">
+<link rel="icon" href="../images/favicon.png" type="image/gif" sizes="16x16">
 </head>
 <body>
 <header>
@@ -31,7 +31,7 @@
 				</div>
 			</c:if>
 			<c:if test="${not empty infos}">
-			   	<li>¡Bienvenido, <c:out value="${requestScope.Infos[0]}"></c:out>!</li>
+			   	<li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>
 			</c:if>
 			<!-- <div id="nav-login">
 				<p>Login</p>
