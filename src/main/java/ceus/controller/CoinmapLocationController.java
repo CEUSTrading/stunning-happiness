@@ -94,7 +94,7 @@ public class CoinmapLocationController extends HttpServlet {
 				info.add(sLon);
 				info.add(sCat);
 				info.add(sAddress);
-				rd = request.getRequestDispatcher("test/testMapas.jsp");
+				rd = request.getRequestDispatcher("view/mapa.jsp");
 				request.setAttribute("venues", info);
 
 			} else {

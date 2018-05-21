@@ -1,6 +1,7 @@
 package ceus.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -32,20 +33,19 @@ public class BlockchainConverterController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		RequestDispatcher rd = null;
 		String cant = request.getParameter("cantidad");
 		String mon = request.getParameter("moneda");
 		log.log(Level.INFO, "Asking to blockchain.info");
 		String conversion = BlockchainConverterResource.getConversion(mon, cant);
-		
 		if(conversion != null) {
 			List<String> res = new ArrayList<>();
 			res.add(cant);
 			res.add(mon);
 			res.add(conversion);
 			request.setAttribute("results", res);
-			rd = request.getRequestDispatcher("test/testConversion.jsp");
+			rd = request.getRequestDispatcher("view/converter.jsp");
 		} else {
 			log.log(Level.SEVERE, "There was an error doing the conversion");
 			rd = request.getRequestDispatcher("error.jsp");

@@ -44,35 +44,35 @@ public class BlockchainPriceController extends HttpServlet {
 		Integer cur = new Integer(request.getParameter("moneda-price"));
 
 		if (all != null) {
-			List<String> results = new ArrayList<>();
+			List<String> results1BTC = new ArrayList<>();
 			switch (cur) {
 			case 1:
 				USD d = all.getUSD();
-				results.add((Math.floor(d.getLast()*100)/100)+"");
-				results.add(d.getSymbol());
+				results1BTC.add((Math.floor(d.getLast()*100)/100)+"");
+				results1BTC.add(d.getSymbol());
 			case 2:
 				Double e = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
-				results.add(Math.floor(e*100)/100+"");
-				results.add("€");
+				results1BTC.add(Math.floor(e*100)/100+"");
+				results1BTC.add("€");
 			case 3:
 				Double l = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDGBP();
-				results.add((Math.floor(l*100)/100)+"");
-				results.add("£");
+				results1BTC.add((Math.floor(l*100)/100)+"");
+				results1BTC.add("£");
 			case 4:
 				Double k = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
-				results.add((Math.floor(k*100)/100)+"");
-				results.add("₩");
+				results1BTC.add((Math.floor(k*100)/100)+"");
+				results1BTC.add("₩");
 			case 5:
 				Double j = all.getUSD().getLast() * ExchangeLayerResource.getLayer().getQuotes().getUSDJPY();
-				results.add((Math.floor(j*100)/100)+"");
-				results.add("¥");
+				results1BTC.add((Math.floor(j*100)/100)+"");
+				results1BTC.add("¥");
 			default:
 				USD dl = all.getUSD();
-				results.add((Math.floor(dl.getLast()*100)/100)+"");
-				results.add(dl.getSymbol());
+				results1BTC.add((Math.floor(dl.getLast()*100)/100)+"");
+				results1BTC.add(dl.getSymbol());
 			}
-			request.setAttribute("results", results);
-			rd = request.getRequestDispatcher("index.jsp");
+			request.setAttribute("results1BTC", results1BTC);
+			rd = request.getRequestDispatcher("view/converter.jsp");
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving the information");
 			rd = request.getRequestDispatcher("error.jsp");
