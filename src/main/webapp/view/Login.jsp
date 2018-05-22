@@ -18,7 +18,7 @@
 			<c:out value="${sessionScope.err }"></c:out>
 		</c:if>
 		
-		<form action="../LoginController" method="Post">
+		<form action="../loginController" method="Post">
 			<label>email:</label><input name="email" type="text" placeholder="example@somewhere.com">
 			<input type="submit" value="Entrar">
 		</form>

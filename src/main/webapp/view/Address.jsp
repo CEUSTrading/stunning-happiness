@@ -8,41 +8,48 @@
 <title>Cuentas</title>
 </head>
 <body>
+	<c:set var="email" value="${ sessionScope.email}" />
 
-	<div id="selector_cuentas">
-		<div id="nueva_cuenta">
-			<form action="./BlockchainAddressController.java">
-				<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
-					type="submit" />
-			</form>
+	<c:if test="${empty email}">
+		<h1>WOPS! Parece que no estás loggeado.</h1>
+		<a href="../index.jsp">Volver</a>
+	</c:if>
+	<c:if test="${not empty email}">
+		<div id="selector_cuentas">
+			<div id="nueva_cuenta">
+				<form action="../AddAddressController.java"><!-- TODO: añadir AddAddressController -->
+					<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
+						type="submit" />
+				</form>
+			</div>
+
+			<div id="lista_cuentas">
+				<!-- TODO: consultar lista de cuentas de persona y mostrarlas AJAX -->
+			</div>
+
 		</div>
 
-		<div id="lista_cuentas">
-			<!-- TODO: consultar lista de cuentas de persona y mostrarlas -->
+		<div id="vista_movimientos">
+			<h2>
+				Cuenta:
+				<c:out value="${requestScope.values[0]}"></c:out>
+			</h2>
+			<p>
+				Total enviado:
+				<c:out value="${requestScope.values[1]}"></c:out>
+				BTC
+			</p>
+			<p>
+				Total recibido:
+				<c:out value="${requestScope.values[2]}"></c:out>
+				BTC
+			</p>
+			<p>
+				Balance total:
+				<c:out value="${requestScope.values[3]}"></c:out>
+				BTC
+			</p>
 		</div>
-
-	</div>
-
-	<div id="vista_movimientos">
-		<h2>
-			Cuenta:
-			<c:out value="${requestScope.values[0]}"></c:out>
-		</h2>
-		<p>
-			Total enviado:
-			<c:out value="${requestScope.values[1]}"></c:out>
-			BTC
-		</p>
-		<p>
-			Total recibido:
-			<c:out value="${requestScope.values[2]}"></c:out>
-			BTC
-		</p>
-		<p>
-			Balance total:
-			<c:out value="${requestScope.values[3]}"></c:out>
-			BTC
-		</p>
-	</div>
+	</c:if>
 </body>
 </html>

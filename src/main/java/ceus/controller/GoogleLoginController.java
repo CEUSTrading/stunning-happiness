@@ -27,6 +27,10 @@ public class GoogleLoginController extends HttpServlet {
 		log.log(Level.INFO, "Accessing to the data from the Google Login");
 		GooglePerson gp = GooglePersonResource.getInfo(request);
 		ArrayList<String> info = new ArrayList<String>();
+		
+		//TODO: añadir al map el nuevo usuario
+		//TODO: setear solo variables nombre y email
+		
 		if (gp != null) {
 			info.add(gp.getNames().get(0).getDisplayName());
 			info.add(gp.getEmailAddresses().get(0).getValue());

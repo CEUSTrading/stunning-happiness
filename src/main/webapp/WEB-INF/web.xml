@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	
+
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/api</param-value>
@@ -15,12 +15,12 @@
 			<param-name>javax.ws.rs.Application</param-name>
 			<param-value>ceus.api.CEUSApplication</param-value>
 		</init-param>
-	</servlet>	
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Resteasy</servlet-name>
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>HelloWorld</servlet-name>
 		<servlet-class>aiss.HelloWorldServlet</servlet-class>
@@ -147,7 +147,7 @@
 		<servlet-name>BlockchainHistoricalDataController</servlet-name>
 		<url-pattern>/BlockchainHistoricalDataController</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>Scheduler</display-name>
@@ -158,7 +158,7 @@
 		<servlet-name>Scheduler</servlet-name>
 		<url-pattern>/scheduler</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>CloseSessionController</display-name>
@@ -169,7 +169,7 @@
 		<servlet-name>CloseSessionController</servlet-name>
 		<url-pattern>/closeSession</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<description></description>
 		<display-name>LoginController</display-name>
@@ -181,6 +181,27 @@
 		<url-pattern>/loginController</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<description></description>
+		<display-name>AddUsuarioController</display-name>
+		<servlet-name>AddUsuarioController</servlet-name>
+		<servlet-class>ceus.controller.AddUsuarioController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddUsuarioController</servlet-name>
+		<url-pattern>/AddUsuarioController</url-pattern>
+	</servlet-mapping>
+	
+	<!--  <servlet>
+		<description></description>
+		<display-name>AddAddressController</display-name>
+		<servlet-name>AddAddressController</servlet-name>
+		<servlet-class>ceus.controller.AddAddressController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddAddressController</servlet-name>
+		<url-pattern>/AddAddressController</url-pattern>
+	</servlet-mapping>-->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
