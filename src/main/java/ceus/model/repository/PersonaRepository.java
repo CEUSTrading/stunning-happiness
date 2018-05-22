@@ -15,6 +15,8 @@ import ceus.utility.Persona;
 
 public class PersonaRepository {
 
+	//FIXME: arreglar tratamiento de archivos
+	
 	Map<String, Persona> personaMap = new HashMap<>();
 	private static PersonaRepository instance = null;
 	
@@ -27,7 +29,7 @@ public class PersonaRepository {
 	}
 	
 	private void init() {
-		List<String> l = UtilFicheros.leeFicheroCompletoALista("./ficheros/basePersonas.txt");
+		/*List<String> l = UtilFicheros.leeFicheroCompletoALista("./ficheros/basePersonas.txt");
 		
 		if(l.size()==0) {
 			throw new IllegalArgumentException();
@@ -38,7 +40,15 @@ public class PersonaRepository {
 				personaMap.put(p.getEmail(), p);
 			}
 			
-		}
+		}*/
+		
+		Persona p0 = Persona.create("Gonzalo#gongargra@alum.us.es#[]");
+		Persona p1 = Persona.create("Chema#chema@alum.us.es#[]");
+		Persona p2 = Persona.create("Manuel#manuel@alum.us.es#[]");
+		
+		personaMap.put(p0.getEmail(), p0);
+		personaMap.put(p1.getEmail(), p1);
+		personaMap.put(p2.getEmail(), p2);
 		
 	}
 	
@@ -74,7 +84,7 @@ public class PersonaRepository {
 				a.add(s);
 			}
 			j.setDirecciones(a);
-			actualizaBase();
+			//actualizaBase();
 			return j;
 		}else {
 			return null;
@@ -88,7 +98,7 @@ public class PersonaRepository {
 			personaMap.remove(email);
 			personaMap.keySet().remove(email);
 			
-			actualizaBase();
+			//actualizaBase();
 			
 			res = true;
 		}else {
@@ -98,16 +108,12 @@ public class PersonaRepository {
 		return res;
 	}
 	
-	private void actualizaBase() {
-		
-		/*File f = new File("./ficheros/basePersonas.txt");
-		f.delete();
-		*/
+	/*private void actualizaBase() {
 		String f = "";
 		for(String s : personaMap.keySet()) {
 			f+=personaMap.get(s).toStringFormat()+"\n";
 		}
 		UtilFicheros.escribeFicheroCompletoComun("./ficheros/basePersonas.txt", f);
-	}
+	}*/
 	
 }
