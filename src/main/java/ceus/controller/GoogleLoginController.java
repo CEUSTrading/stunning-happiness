@@ -39,6 +39,7 @@ public class GoogleLoginController extends HttpServlet {
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving this person");
 			rd = request.getRequestDispatcher("error.jsp");
+			rd.forward(request, response);
 		}
 	}
 
