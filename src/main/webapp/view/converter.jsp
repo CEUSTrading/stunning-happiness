@@ -11,7 +11,7 @@
 	</p>
 	<form action="../BlockchainPriceController">
 		<p class="center">
-			Puedes verlo en <select name="moneda-price" required="">
+			Puedes verlo en <select name="moneda-price" required>
 				<option value="1">USD</option>
 				<option value="2">EUR</option>
 				<option value="3">GBP</option>
@@ -26,8 +26,8 @@
 		que desees a BTC</p>
 	<form class="center" action="../BlockchainConverterController">
 		<input class="center" type="number" name="cantidad"
-			placeholder="Cantidad" min="0" required=""> <select
-			name="moneda" required="">
+			placeholder="Cantidad" min="0" required> <select
+			name="moneda" required>
 			<option value="USD">USD</option>
 			<option value="EUR">EUR</option>
 			<option value="GBP">GBP</option>

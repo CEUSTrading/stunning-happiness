@@ -25,16 +25,16 @@
     		<div class="dropdown">
 				  <button class="dropbtn">Login</button>
 				  <div class="dropdown-content">
-				    <a href="#">Registro con CEUS</a>
-				    <a href="../googleAuth">Registro con Google</a>
+				  	<a href="./view/Login.jsp">Entrar</a>
+				    <!-- <a href="#">Registro con CEUS</a> -->
+				    <!-- <a href="../googleAuth">Registro con Google</a> -->
+				    <a href="./view/Logup.jsp">Registrate</a>
 				  </div>
 				</div>
 			</c:if>
 			<c:if test="${not empty infos}">
-			   	<li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>
+			   	<!-- <li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>  -->
+			   	<li>!Bienvenido, <c:out value="${sessionScope.nombre}"></c:out></li>
 			</c:if>
-			<!-- <div id="nav-login">
-				<p>Login</p>
-				</div> -->
 		</ul>
 </header>
