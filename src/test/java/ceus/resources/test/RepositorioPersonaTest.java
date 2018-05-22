@@ -20,7 +20,7 @@ public class RepositorioPersonaTest {
 			System.out.println(l.getNombre() + " - - "+l.getEmail());
 		}
 		
-		Persona m = p.addPersona(new Persona("Manuel", "manpergut@alum.us.es"));
+		Persona m = p.addPersona(new Persona("Manuel", "manpergut@alum.us.es", "manu3"));
 		
 		System.out.println(p.getPersona("manpergut@alum.us.es").getNombre());
 	
@@ -36,7 +36,7 @@ public class RepositorioPersonaTest {
 	public void test2() {
 		PersonaRepository p = PersonaRepository.getInstace();
 		
-		Persona m = new Persona(p.getPersona("manpergut@alum.us.es").getNombre(), "manpergut@alum.us.es");
+		Persona m = new Persona(p.getPersona("manpergut@alum.us.es").getNombre(), "manpergut@alum.us.es", "manu3");
 		String[] e = {"1estoNoEsUnaDireccion123435"};
 		m.setDirecciones(Arrays.asList(e));
 		

@@ -1,7 +1,6 @@
 package ceus.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,18 +25,19 @@ public class GoogleLoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 		log.log(Level.INFO, "Accessing to the data from the Google Login");
 		GooglePerson gp = GooglePersonResource.getInfo(request);
-		ArrayList<String> info = new ArrayList<String>();
+		
+		String nombre;
+		String email;
 		
 		//TODO: añadir al map el nuevo usuario
-		//TODO: setear solo variables nombre y email
 		
 		if (gp != null) {
-			info.add(gp.getNames().get(0).getDisplayName());
-			info.add(gp.getEmailAddresses().get(0).getValue());
-			request.setAttribute("Infos", info);
+			nombre = gp.getNames().get(0).getDisplayName();
+			email = gp.getEmailAddresses().get(0).getValue();
+			request.setAttribute("nombre", nombre);
 			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email ["
-					+ gp.getNames().get(0).getDisplayName() + ", " + gp.getEmailAddresses().get(0).getValue() + "]");
-			session.setAttribute("Infos", info);
+					+ nombre + ", " + email + "]");
+			session.setAttribute("email", email);
 			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} else {

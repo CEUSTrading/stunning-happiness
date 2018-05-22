@@ -20,6 +20,7 @@
 		
 		<form action="../loginController" method="Post">
 			<label>email:</label><input name="email" type="text" placeholder="example@somewhere.com">
+			<label>contraseña:</label><input name="pass" type="password">
 			<input type="submit" value="Entrar">
 		</form>
 	</div>

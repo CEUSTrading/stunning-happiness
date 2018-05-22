@@ -1,15 +1,10 @@
 package ceus.model.repository;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.mcpg.ficheros.UtilFicheros;
-
-import com.google.appengine.repackaged.com.google.common.io.Files;
 
 import ceus.utility.Persona;
 
@@ -41,9 +36,9 @@ public class PersonaRepository {
 		 * }
 		 */
 
-		Persona p0 = Persona.create("Gonzalo#gongargra@alum.us.es#[]");
-		Persona p1 = Persona.create("Chema#chema@alum.us.es#[]");
-		Persona p2 = Persona.create("Manuel#manuel@alum.us.es#[]");
+		Persona p0 = Persona.create("Gonzalo#gongargra@alum.us.es#gonza1#[]");
+		Persona p1 = Persona.create("Chema#chema@alum.us.es#chema2#[]");
+		Persona p2 = Persona.create("Manuel#manuel@alum.us.es#manu3#[]");
 
 		personaMap.put(p0.getEmail(), p0);
 		personaMap.put(p1.getEmail(), p1);
@@ -77,7 +72,7 @@ public class PersonaRepository {
 			personaMap.put(p.getEmail(), p);
 			return p;
 		} else {
-			return new Persona("", "", new ArrayList<String>());
+			return new Persona("", "", "",new ArrayList<String>());
 		}
 	}
 
@@ -86,6 +81,7 @@ public class PersonaRepository {
 		if (email != null) {
 			Persona j = personaMap.get(email);
 			j.setNombre(p.getNombre());
+			j.setPass(p.getPass());
 			List<String> a = j.getDirecciones();
 			List<String> d = p.getDirecciones();
 			for (String s : d) {

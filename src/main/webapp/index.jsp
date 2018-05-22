@@ -51,11 +51,14 @@
 	}
 </script>
 <main>
+
+	<c:set var="email" value="${sessionScope.email }" />
 	<h1 class="center">Un único lugar para todo lo que necesitas saber sobre Bitcoin</h1>
 		
 		<p class="center">Además, también puedes:</p>
 		<div class="container c-left">
-			<form action="#">
+			<c:if test="${not empty email}"><form action="../view/HistoricalData.jsp"></c:if>
+			<c:if test="${empty email}"><form action="../view/Login.jsp"></c:if>
 			<button class="boton-light">Consultar el histórico de precios de un Bitcoin</button>
 			</form>
 		</div>

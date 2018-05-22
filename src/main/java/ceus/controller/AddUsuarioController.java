@@ -29,10 +29,11 @@ public class AddUsuarioController extends HttpServlet{
 		log.log(Level.FINE, "Recogiendo parámetros 'nombre' e 'email'.");
 		String nombre = request.getParameter("nombre");
 		String email = request.getParameter("email");
+		String pass = request.getParameter("pass");
 		
-		if(nombre != null && email!=null && !("".equals(nombre)) && !("".equals(email))) {
+		if(nombre != null && email!=null && pass!=null && !("".equals(nombre)) && !("".equals(email)) && !("".equals(pass))) {
 			log.log(Level.FINE, "Creando presona con: 'nombre' e 'email'.");
-			Persona p = new Persona(nombre, email);
+			Persona p = new Persona(nombre, email, pass);
 			PersonaRepository.getInstace().addPersona(p);
 			
 			log.log(Level.FINE, "Seteando parámetros: 'nombre' e 'email'.");

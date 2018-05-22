@@ -22,10 +22,10 @@
 			<li><a href="../view/mapa.jsp">Mapa</a></li>
 			<li><a href="../view/converter.jsp">Consulta de precios</a></li>
 			<c:if test="${empty email}">
-				<li><a href="./view/Login.jsp">Consulta de direcciones</a></li>
+				<li><a href="../view/Login.jsp">Consulta de direcciones</a></li>
 			</c:if>
 			<c:if test="${not empty email}">
-				<li><a href="./view/Address.jsp">Consulta de direcciones</a></li>
+				<li><a href="../view/Address.jsp">Consulta de direcciones</a></li>
 			</c:if>
 
 			<c:if test="${empty nombre}">
