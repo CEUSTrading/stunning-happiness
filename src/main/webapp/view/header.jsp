@@ -41,7 +41,7 @@
 			</c:if>
 			<c:if test="${not empty nombre}">
 				<!-- <li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>  -->
-				<li>!Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>¡</li>
+				<li>¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>
 				<li><a href="../closeSession">Cerrar sesión</a></li>
 			</c:if>
 		</ul>

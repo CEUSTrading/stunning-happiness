@@ -38,7 +38,7 @@
 		</form>
 	</div>
 	<div id="google">
-		<p>Si lo prefieres puedes registrarte atraves de Google</p>
+		<p>Si lo prefieres puedes registrarte a través de Google</p>
 		<a href="../googleAuth">Google</a>
 	</div>
 </body>

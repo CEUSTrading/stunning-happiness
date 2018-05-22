@@ -34,11 +34,11 @@ public class GoogleLoginController extends HttpServlet {
 		if (gp != null) {
 			nombre = gp.getNames().get(0).getDisplayName();
 			email = gp.getEmailAddresses().get(0).getValue();
-			request.setAttribute("nombre", nombre);
 			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email ["
 					+ nombre + ", " + email + "]");
+			session.setAttribute("nombre", nombre);
 			session.setAttribute("email", email);
-			rd = request.getRequestDispatcher("index.jsp");
+			rd = request.getRequestDispatcher("view/Logup.jsp");
 			rd.forward(request, response);
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving this person");
