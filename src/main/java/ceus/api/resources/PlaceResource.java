@@ -120,8 +120,6 @@ public class PlaceResource {
 		ResponseBuilder resp = Response.created(uri);
 		resp.entity(p);			
 		return resp.build();
-//		return Response.ok().build();
-//		return Response.created(new URI("http://cryptoeus.appspot.com/api/places/" + p.getId())).build();
 	}
 	
 	@PUT
