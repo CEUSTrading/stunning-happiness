@@ -5,7 +5,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/ceustyle.css">
+<link rel="icon" href="../images/favicon.png" type="image/gif"
+	sizes="16x16">
 <title>Historico BTC</title>
+</head>
+<body>
+
+	<%@ include file="../view/header.jsp"%>
 </head>
 <body>
 	<!-- HEADER -->
@@ -22,8 +29,8 @@
 	<c:if test="${not empty email }">
 		<div class="tabla-h">
 			<form action="/BlockchainHistoricalDataController" method="Post">
-				<label>Dias:</label><input name="nCons" type="number" /> 
-				<select	name="cCons">
+				<label>Dias:</label><input name="nCons" type="number" /> <select
+					name="cCons">
 					<option value="1">$</option>
 					<option value="2">€</option>
 					<option value="3">£</option>
@@ -52,7 +59,7 @@
 	</c:if>
 
 
-
+	<%@ include file="../view/footer.html"%>
 	<!-- FOOTER -->
 </body>
 </html>

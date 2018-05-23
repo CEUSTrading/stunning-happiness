@@ -5,9 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/ceustyle.css">
+<link rel="icon" href="../images/favicon.png" type="image/gif"
+	sizes="16x16">
 <title>Cuentas</title>
 </head>
 <body>
+
+	<%@ include file="../view/header.jsp"%>
+
 	<c:set var="email" value="${ sessionScope.email}" />
 
 	<c:if test="${empty email}">
@@ -17,7 +23,8 @@
 	<c:if test="${not empty email}">
 		<div id="selector_cuentas">
 			<div id="nueva_cuenta">
-				<form action="../AddAddressController.java"><!-- TODO: añadir AddAddressController -->
+				<form action="../AddAddressController.java">
+					<!-- TODO: añadir AddAddressController -->
 					<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
 						type="submit" />
 				</form>
@@ -51,5 +58,8 @@
 			</p>
 		</div>
 	</c:if>
+	
+	<%@ include file="../view/footer.html"%>
+	
 </body>
 </html>

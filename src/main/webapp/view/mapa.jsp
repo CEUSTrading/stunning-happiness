@@ -1,4 +1,18 @@
-<%@ include file="header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/ceustyle.css">
+<link rel="icon" href="../images/favicon.png" type="image/gif"
+	sizes="16x16">
+<title>Cuentas</title>
+</head>
+<body>
+
+	<%@ include file="../view/header.jsp"%>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -19,10 +33,10 @@
     <div class="container c-left">
   <p>Listado de los lugares donde se pueden usar BTC cerca de una ciudad dada</p>
 		<form id="searchForm" action="../CoinmapLocationController" method="post">
-			<input type="text" name="City" placeholder="Localizaci髇" required="">
+			<input type="text" name="City" placeholder="Localizaci贸n" required="">
 			<input type="submit" value="Buscar">
 		</form> <br />
-	<p>Si tiene problemas con una localizaci髇, especifiquela m醩 (localidad, provincia, pa韘, c骴igo postal, calle... ) </p>
+	<p>Si tiene problemas con una localizaci贸n, especifiquela m谩s (localidad, provincia, pa铆s, c贸digo postal, calle... ) </p>
 		<span hidden="" id="Name"><c:out value="${requestScope.venues[0]}"/></span>
 		<span hidden="" id="Lat"><c:out value="${requestScope.venues[1]}"/></span>
 		<span hidden="" id="Lon"><c:out value="${requestScope.venues[2]}"/></span>
@@ -31,7 +45,7 @@
 	</div>
     <div class="container" id="map"></div>
     <script>
-    	// Array de informaci髇 de las localizaciones obtenidas de coinmap
+    	// Array de informaci贸n de las localizaciones obtenidas de coinmap
         var nameString = document.getElementById('Name').innerHTML;
         var latString = document.getElementById('Lat').innerHTML;
         var lonString = document.getElementById('Lon').innerHTML;
@@ -68,15 +82,15 @@
         	  });
             var content = '<h3>'+nameArray[i]+'</h3>'+
             'Tipo: '+catArray[i]+'</br>'+
-            'Direcci髇: '+addressArray[i]+'</br>'+
+            'Direcci贸n: '+addressArray[i]+'</br>'+
             '<a href="https://www.google.com/maps?q='+latArray[i]+','+lonArray[i]+'" target="_blank">Como ir.</a>';
-          	//Ventanas de informaci髇 de negocio
+          	//Ventanas de informaci贸n de negocio
             var infowindow = new google.maps.InfoWindow()
             google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
     	   	    return function() {
     	   	    	/*
-    	   	    	en vez de una pantalla de infowindow, se muestra la informaci髇 del negocio
-    	   	    	para que sean ventanas de infowindow basta con descomentar las dos l韓eas
+    	   	    	en vez de una pantalla de infowindow, se muestra la informaci贸n del negocio
+    	   	    	para que sean ventanas de infowindow basta con descomentar las dos l铆neas
     	   	    	*/
     	   	    	var escribir = document.getElementById("Write");
     	   	    	escribir.innerHTML = content;
@@ -92,5 +106,5 @@
     </script>
     <p class="container l-left" id="Write"></p>
   </body>
-  <%@ include file = "footer.html" %>
+  <%@ include file="../view/footer.html"%>
 </html>

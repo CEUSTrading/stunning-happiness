@@ -1,6 +1,19 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ include file="header.jsp"%>
-<title>Precio del bitcoin</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../css/ceustyle.css">
+<link rel="icon" href="../images/favicon.png" type="image/gif"
+	sizes="16x16">
+<title>Conversion BTC</title>
+</head>
+<body>
+
+	<%@ include file="../view/header.jsp"%>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <div class="container c-left converter">
 	<p class="center">
@@ -47,5 +60,5 @@
 </div>
 <br />
 </body>
-<%@ include file="footer.html"%>
+<%@ include file="../view/footer.html"%>
 </html>
