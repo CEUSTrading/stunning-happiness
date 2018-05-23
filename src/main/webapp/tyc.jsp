@@ -14,7 +14,7 @@
 
 	<%@ include file="../view/header.jsp"%>
 	<main>
-	<div class="container l-left">
+	<div class="justificado l-left">
 		<p>
 			<strong>1. Introducción</strong>
 		</p>
@@ -125,6 +125,7 @@
 			realizadas cuando hayan sido recibidas en la siguiente dirección
 			(contact.ceus@gmail.com).</p>
 	</div>
+	</main>
 	<%@ include file="../view/footer.html"%>
 </body>
 </html>

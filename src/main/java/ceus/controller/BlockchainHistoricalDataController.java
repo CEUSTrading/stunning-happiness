@@ -72,7 +72,8 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 				log.log(Level.FINE, "Enviando valores");
 				request.getRequestDispatcher("view/HistoricalData.jsp").forward(request, response);				
 			}else {
-				request.getRequestDispatcher("error404.jsp").forward(request, response);
+				log.log(Level.SEVERE, "Parámetros inválidos.");
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 				
 			
@@ -108,12 +109,13 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 				log.log(Level.FINE, "Enviando valores");
 				request.getRequestDispatcher("view/HistoricalData.jsp").forward(request, response);
 			}else {
-				request.getRequestDispatcher("error404.jsp").forward(request, response);
+				log.log(Level.SEVERE, "Parámetros inválidos.");
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 				
 			
 		}else {
-			log.severe("Parámetros inválidos.");
+			log.log(Level.SEVERE, "Parámetros inválidos.");
 			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 	}
