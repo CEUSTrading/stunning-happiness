@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ceus.model.blockchain.address.Address;
+import ceus.model.repository.PersonaRepository;
 import ceus.resources.BlockchainAddressResource;
 
 public class BlockchainAddressController extends HttpServlet{
@@ -51,9 +52,11 @@ public class BlockchainAddressController extends HttpServlet{
 			valores.add(finalBalance.toString());
 			
 			request.setAttribute("values", valores);
+			List<String> lista = PersonaRepository.getInstace().getPersona(email).getDirecciones();
+			request.setAttribute("lista", lista);
 			rd = request.getRequestDispatcher("view/Address.jsp");
 		} else {
-			log.log(Level.SEVERE, "There was an error the information");
+			log.log(Level.SEVERE, "There was a information error");
 			rd = request.getRequestDispatcher("error.jsp");
 		}
 		rd.forward(request, response);

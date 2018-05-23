@@ -40,10 +40,13 @@ public class AddAddressController extends HttpServlet {
 				String zero = addr.substring(0, 1);
 				if(zero.equals("m") || zero.equals("2") || zero.equals("n") || zero.equals("1") || zero.equals("3")) {
 					
-					log.log(Level.FINE, "Dreccion valida.");
+					log.log(Level.FINE, "Direccion valida.");
 					
-					PersonaRepository.getInstace().actualizaDireccion(email, addr);
 					List<String> lista = PersonaRepository.getInstace().getPersona(email).getDirecciones();
+					if(!lista.contains(addr)) {
+						PersonaRepository.getInstace().actualizaDireccion(email, addr);
+						lista = PersonaRepository.getInstace().getPersona(email).getDirecciones();
+					}
 					log.log(Level.FINE, "Direccion añadida");
 
 					request.setAttribute("lista", lista);
