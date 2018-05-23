@@ -21,19 +21,13 @@
 					<button class="dropbtn">Login</button>
 					<div class="dropdown-content">
 						<a href="../view/Login.jsp">Entrar</a>
-<<<<<<< HEAD
-=======
-						<!-- <a href="#">Registro con CEUS</a> -->
-						<!-- <a href="../googleAuth">Registro con Google</a> -->
->>>>>>> 078b6f57baf1600f77ead7eb37005d1842d1fe76
 						<a href="../view/Logup.jsp">Registrate</a>
 					</div>
 				</div>
 			</c:if>
 			<c:if test="${not empty nombre}">
-				<!-- <li><a href="../closeSession">¡Bienvenido, <c:out value="${sessionScope.Infos[0]}"></c:out>!</a></li>  -->
-				<li>¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>
-				<li><a href="../closeSession">Cerrar sesión</a></li>
+				<li>Â¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>
+				<li><a href="../closeSession">Cerrar sesiÃ³n</a></li>
 			</c:if>
 		</ul>
 	</header>
