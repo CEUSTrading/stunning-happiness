@@ -18,6 +18,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import org.jboss.resteasy.spi.BadRequestException;
@@ -113,13 +115,11 @@ public class PlaceResource {
 //		
 		//This is the response
 		
-//		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(PlaceResource.class, "get");
-//		URI uri = ub.build(p.getId());
-//		ResponseBuilder resp = Response.created(uri);
-//		resp.entity(p);			
-//		return resp.build();
-//		return Response.ok().build();
-		return Response.created(new URI("http://cryptoeus.appspot.com/api/places/" + p.getId())).build();
+		UriBuilder ub = uriInfo.getAbsolutePathBuilder().path(PlaceResource.class, "getById");
+		URI uri = ub.build(p.getId());
+		ResponseBuilder resp = Response.created(uri);
+		resp.entity(p);			
+		return resp.build();
 	}
 	
 	@PUT

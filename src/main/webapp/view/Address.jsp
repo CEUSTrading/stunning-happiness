@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +10,20 @@
 <link rel="icon" href="../images/favicon.png" type="image/gif"
 	sizes="16x16">
 <title>Cuentas</title>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function cargaValorCuenta(cuenta){
+		
+	}
+</script>
 </head>
 <body>
 
 	<%@ include file="../view/header.jsp"%>
 
-	<c:set var="email" value="${ sessionScope.email}" />
+	<c:set var="email" value="${sessionScope.email}" />
+	<c:set var="lista" value="${requestScope.lista}" />
 
 	<c:if test="${empty email}">
 		<h1>WOPS! Parece que no estás loggeado.</h1>
@@ -23,15 +32,21 @@
 	<c:if test="${not empty email}">
 		<div id="selector_cuentas">
 			<div id="nueva_cuenta">
-				<form action="../AddAddressController.java">
-					<!-- TODO: añadir AddAddressController -->
+				<form action="../AddAddressController" method="Post">
 					<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
 						type="submit" />
 				</form>
 			</div>
 
 			<div id="lista_cuentas">
-				<!-- TODO: consultar lista de cuentas de persona y mostrarlas AJAX -->
+				<form action="../BlockchainAddressController" method="Post">
+				<select name="address" size="${fn:length(lista)}">
+					<c:forEach items="${lista}" var="dir">
+						 <option value="${dir}">${dir}</option>
+					</c:forEach>
+				</select>
+				<input value="Consultar" type="submit">
+				</form>
 			</div>
 
 		</div>
@@ -58,8 +73,8 @@
 			</p>
 		</div>
 	</c:if>
-	
+
 	<%@ include file="../view/footer.html"%>
-	
+
 </body>
 </html>
