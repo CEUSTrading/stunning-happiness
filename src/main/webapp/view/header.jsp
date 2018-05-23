@@ -21,6 +21,11 @@
 					<button class="dropbtn">Login</button>
 					<div class="dropdown-content">
 						<a href="../view/Login.jsp">Entrar</a>
+<<<<<<< HEAD
+=======
+						<!-- <a href="#">Registro con CEUS</a> -->
+						<!-- <a href="../googleAuth">Registro con Google</a> -->
+>>>>>>> 078b6f57baf1600f77ead7eb37005d1842d1fe76
 						<a href="../view/Logup.jsp">Registrate</a>
 					</div>
 				</div>
