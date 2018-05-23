@@ -20,10 +20,10 @@
 				<div class="dropdown">
 					<button class="dropbtn">Login</button>
 					<div class="dropdown-content">
-						<a href="./view/Login.jsp">Entrar</a>
+						<a href="../view/Login.jsp">Entrar</a>
 						<!-- <a href="#">Registro con CEUS</a> -->
 						<!-- <a href="../googleAuth">Registro con Google</a> -->
-						<a href="./view/Logup.jsp">Registrate</a>
+						<a href="../view/Logup.jsp">Registrate</a>
 					</div>
 				</div>
 			</c:if>
