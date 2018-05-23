@@ -27,9 +27,9 @@
 		</p>
 	</c:if>
 	<c:if test="${not empty email }">
-		<div class="tabla-h">
+		<div class="tabla-h" id="busqueda">
 			<form action="/BlockchainHistoricalDataController" method="Post">
-				<label>Dias:</label><input name="nCons" type="number" /> <select
+				<label>Días:</label><input name="nCons" type="number" min="0" max="30"/> <select
 					name="cCons">
 					<option value="1">$</option>
 					<option value="2">€</option>
@@ -38,6 +38,10 @@
 					<option value="5">₩</option>
 				</select> <input type="submit" />
 			</form>
+			<p>Si desea, puede buscar los últimos 30 días si no incluye ningún día, se mostrarán los últimos 30.
+			</p>
+		</div>
+		<div class="tabla-h" id="mostrar busqueda">
 
 			<c:set var="map" value="${requestScope.map}" />
 			<c:if test="${not empty map }">

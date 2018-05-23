@@ -26,8 +26,8 @@
 				</div>
 			</c:if>
 			<c:if test="${not empty nombre}">
-				<li>Â¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>
-				<li><a href="../closeSession">Cerrar sesiÃ³n</a></li>
+				<li>¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>
+				<li><a href="../closeSession">Cerrar sesión</a></li>
 			</c:if>
 		</ul>
 	</header>
