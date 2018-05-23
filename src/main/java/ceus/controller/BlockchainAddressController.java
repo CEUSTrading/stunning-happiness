@@ -15,30 +15,32 @@ import javax.servlet.http.HttpServletResponse;
 import ceus.model.blockchain.address.Address;
 import ceus.resources.BlockchainAddressResource;
 
-public class BlockchainAddressController extends HttpServlet{
+public class BlockchainAddressController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(CoinmapController.class.getName());
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	 /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+
 	public BlockchainAddressController() {
 		super();
 	}
-	
+
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		RequestDispatcher rd = null;
 		log.log(Level.INFO, "Requesting information about the address from Blockchain.info");
 		String address = request.getParameter("address");
 		Address addr = BlockchainAddressResource.getInfoFromAddress(address);
-		
-		if(address != null) {
+		if (addr != null) {
+
 			List<String> valores = new ArrayList<>();
 			Double totalSent = ((double) addr.getTotalSent()) / 100000000;
 			Double totalReceived = ((double) addr.getTotalReceived()) / 100000000;
@@ -53,10 +55,12 @@ public class BlockchainAddressController extends HttpServlet{
 			log.log(Level.SEVERE, "There was an error the information");
 			rd = request.getRequestDispatcher("error.jsp");
 		}
+
 		rd.forward(request, response);
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 }

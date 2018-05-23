@@ -45,13 +45,14 @@ public class CoinmapLocationController extends HttpServlet {
 			city = request.getParameter("City");
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving the parameter 'City'");
-			rd = request.getRequestDispatcher("error.jsp");
+			rd = request.getRequestDispatcher("../error.jsp");
 		}
-			/*
-			 * Comprobamos que tipo de petición se está realizando, si no se a introducido
-			 * ninguna localidad, se buscan todos los negocios
-			 */
-			GeocodingSearchLatLon location = GeocodingResource.getLocationInfo(city);
+		/*
+		 * Comprobamos que tipo de petición se está realizando, si no se a introducido
+		 * ninguna localidad, se buscan todos los negocios
+		 */
+		GeocodingSearchLatLon location = GeocodingResource.getLocationInfo(city);
+		if (location != null) {
 			// latitud y longitud del centro de la localidad
 			String lat = location.getResults().get(0).getGeometry().getLocation().getLat().toString();
 			String lon = location.getResults().get(0).getGeometry().getLocation().getLng().toString();
@@ -101,6 +102,10 @@ public class CoinmapLocationController extends HttpServlet {
 				log.log(Level.SEVERE, "There was an error retrieving venues");
 				rd = request.getRequestDispatcher("error.jsp");
 			}
+		} else {
+			log.log(Level.SEVERE, "There was an error retrieving the location");
+			rd = request.getRequestDispatcher("error.jsp");
+		}
 		rd.forward(request, response);
 	}
 

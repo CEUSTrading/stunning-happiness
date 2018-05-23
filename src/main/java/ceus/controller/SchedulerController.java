@@ -14,10 +14,10 @@ import ceus.resources.ExchangeLayerResource;
 import ceus.resources.TelegramResource;
 import ceus.utility.TwitterPost;
 
-public class Scheduler extends HttpServlet{
+public class SchedulerController extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(Scheduler.class.getName());
+	private static final Logger log = Logger.getLogger(SchedulerController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

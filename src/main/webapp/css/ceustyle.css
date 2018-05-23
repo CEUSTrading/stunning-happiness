@@ -333,6 +333,17 @@ ul,ol>footer{
 }
 
 .converter2{
-	margin-right: 10%;
-	
+	margin-right: 10%;	
+}
+
+.justificado{
+	margin :4em;
+	text-align: justify;
+}
+
+.c-medium-left{
+	float: left;
+	margin-left: 20%;
+	clear: left;
+	text-align: left;
 }
