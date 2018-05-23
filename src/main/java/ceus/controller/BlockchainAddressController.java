@@ -38,7 +38,9 @@ public class BlockchainAddressController extends HttpServlet{
 		String address = request.getParameter("address");
 		Address addr = BlockchainAddressResource.getInfoFromAddress(address);
 		
-		if(address != null) {
+		String email = request.getSession().getAttribute("email").toString();
+		
+		if(address != null && email != null && !("".equals(email)) && !("".equals(address))) {
 			List<String> valores = new ArrayList<>();
 			Double totalSent = ((double) addr.getTotalSent()) / 100000000;
 			Double totalReceived = ((double) addr.getTotalReceived()) / 100000000;
@@ -47,8 +49,9 @@ public class BlockchainAddressController extends HttpServlet{
 			valores.add(totalSent.toString());
 			valores.add(totalReceived.toString());
 			valores.add(finalBalance.toString());
+			
 			request.setAttribute("values", valores);
-			rd = request.getRequestDispatcher("test/testAddress.jsp");
+			rd = request.getRequestDispatcher("view/Address.jsp");
 		} else {
 			log.log(Level.SEVERE, "There was an error the information");
 			rd = request.getRequestDispatcher("error.jsp");

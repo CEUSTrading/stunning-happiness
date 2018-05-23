@@ -63,14 +63,25 @@ public class Persona {
 	public static Persona create(String s) {
 		String[] a = s.split("#");
 		List<String> l = new ArrayList<>();
-		a[2].trim().replace('[', ' ');
-		a[2].trim().replace(']', ' ');
+		a[3].trim().replace('[', ' ');
+		a[3].trim().replace(']', ' ');
 		
 		for(String d : a[3].trim().split(",")) {
 			l.add(d.trim());
 		}
 		
 		return new Persona(a[0].trim(), a[1].trim(), a[2].trim(), l);
+	}
+	
+	public void addDireccion(String dir) {
+		this.direcciones.add(dir);
+	}
+	
+	public static Persona create(String n, String email, String pass, List<String> l) {
+		return new Persona(n, email, pass, l);
+	}
+	public static Persona create(String n, String email, String pass) {
+		return new Persona(n, email, pass);
 	}
 	
 	public String toStringFormat() {

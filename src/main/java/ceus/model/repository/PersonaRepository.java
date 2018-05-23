@@ -24,21 +24,11 @@ public class PersonaRepository {
 	}
 
 	private void init() {
-		/*
-		 * List<String> l =
-		 * UtilFicheros.leeFicheroCompletoALista("./ficheros/basePersonas.txt");
-		 * 
-		 * if(l.size()==0) { throw new IllegalArgumentException(); }else {
-		 * 
-		 * for(String s : l) { Persona p = Persona.create(s);
-		 * personaMap.put(p.getEmail(), p); }
-		 * 
-		 * }
-		 */
-
-		Persona p0 = Persona.create("Gonzalo#gongargra@alum.us.es#gonza1#[]");
-		Persona p1 = Persona.create("Chema#chema@alum.us.es#chema2#[]");
-		Persona p2 = Persona.create("Manuel#manuel@alum.us.es#manu3#[]");
+		List<String> l = new ArrayList<>();
+		l.add("mgyJ5qjF5N7hhvW7aQV9cb3Jt3HpH4B9V1");
+		Persona p0 = Persona.create("Gonzalo","gongargra@alum.us.es","gonza1",l);
+		Persona p1 = Persona.create("Chema","chema@alum.us.es","chema2");
+		Persona p2 = Persona.create("Manuel","manuel@alum.us.es","manu3");
 
 		personaMap.put(p0.getEmail(), p0);
 		personaMap.put(p1.getEmail(), p1);
@@ -74,6 +64,12 @@ public class PersonaRepository {
 		} else {
 			return new Persona("", "", "",new ArrayList<String>());
 		}
+	}
+	
+	public void actualizaDireccion(String email, String dir) {
+		Persona p = personaMap.get(email);
+		p.addDireccion(dir);
+		personaMap.put(email, p);
 	}
 
 	public Persona actualizaPersona(Persona p, String email) {

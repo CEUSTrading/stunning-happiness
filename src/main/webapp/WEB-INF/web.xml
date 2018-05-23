@@ -192,7 +192,7 @@
 		<url-pattern>/AddUsuarioController</url-pattern>
 	</servlet-mapping>
 	
-	<!--  <servlet>
+	<servlet>
 		<description></description>
 		<display-name>AddAddressController</display-name>
 		<servlet-name>AddAddressController</servlet-name>
@@ -201,7 +201,19 @@
 	<servlet-mapping>
 		<servlet-name>AddAddressController</servlet-name>
 		<url-pattern>/AddAddressController</url-pattern>
-	</servlet-mapping>-->
+	</servlet-mapping>
+	
+	<servlet>
+		<description></description>
+		<display-name>LoadAddressController</display-name>
+		<servlet-name>LoadAddressController</servlet-name>
+		<servlet-class>ceus.controller.LoadAddressController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoadAddressController</servlet-name>
+		<url-pattern>/LoadAddressController</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

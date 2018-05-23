@@ -9,12 +9,20 @@
 <link rel="icon" href="../images/favicon.png" type="image/gif"
 	sizes="16x16">
 <title>Cuentas</title>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	function cargaValorCuenta(cuenta){
+		
+	}
+</script>
 </head>
 <body>
 
 	<%@ include file="../view/header.jsp"%>
 
-	<c:set var="email" value="${ sessionScope.email}" />
+	<c:set var="email" value="${sessionScope.email}" />
+	<c:set var="lista" value="${requestScope.lista}" />
 
 	<c:if test="${empty email}">
 		<h1>WOPS! Parece que no estás loggeado.</h1>
@@ -23,15 +31,19 @@
 	<c:if test="${not empty email}">
 		<div id="selector_cuentas">
 			<div id="nueva_cuenta">
-				<form action="../AddAddressController.java">
-					<!-- TODO: añadir AddAddressController -->
+				<form action="../AddAddressController" method="Post">
 					<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
 						type="submit" />
 				</form>
 			</div>
 
 			<div id="lista_cuentas">
-				<!-- TODO: consultar lista de cuentas de persona y mostrarlas AJAX -->
+				<form action="../BlockchainAddressController" method="Post">
+					<c:forEach items="${lista}" var="dir">
+						<input name="address" type="hidden" value="${dir}" /><p>${dir}</p>
+						<input type="submit" value="consultar"/>
+					</c:forEach>
+				</form>
 			</div>
 
 		</div>
@@ -58,8 +70,8 @@
 			</p>
 		</div>
 	</c:if>
-	
+
 	<%@ include file="../view/footer.html"%>
-	
+
 </body>
 </html>
