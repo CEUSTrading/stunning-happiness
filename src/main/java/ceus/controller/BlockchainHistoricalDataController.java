@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.repackaged.org.joda.time.LocalDate;
 import com.google.appengine.repackaged.org.joda.time.LocalDateTime;
 
 import ceus.model.blockchain.historical.HistoricalData;
@@ -32,7 +33,7 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		SortedMap<String, String> res = new TreeMap<>();
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		HistoricalData h = null;
 
 		log.log(Level.INFO, "Recogiendo valores de consulta.");
@@ -67,6 +68,9 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 					res = getMapUSD(h);
 					break;
 				}
+				
+				
+				
 				log.log(Level.FINE, "Formateando valores");
 				request.setAttribute("map", res);
 				log.log(Level.FINE, "Enviando valores");
@@ -120,73 +124,68 @@ public class BlockchainHistoricalDataController extends HttpServlet {
 		}
 	}
 
-	public static SortedMap<String, String> getMapUSD(HistoricalData h) {
-		SortedMap<String, String> res = new TreeMap<>();
+	public static SortedMap<LocalDate, String> getMapUSD(HistoricalData h) {
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		List<Value> s = h.getValues();
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
-			String fecha = time.getDayOfMonth() + "/" + time.getMonthOfYear() + "/" + time.getYear();
-			res.put(fecha, Math.floor(v.getY() * 100) / 100 + " $");
+			res.put(time.toLocalDate(), Math.floor(v.getY() * 100) / 100 + " $");
 		}
-
+		
 		return res;
 	}
-
-	private static SortedMap<String, String> getMapGBP(HistoricalData h) {
-		SortedMap<String, String> res = new TreeMap<>();
+	
+	private static SortedMap<LocalDate, String> getMapGBP(HistoricalData h) {
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		List<Value> s = h.getValues();
 
 		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDGBP();
 
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
-			String fecha = time.getDayOfMonth() + "/" + time.getMonthOfYear() + "/" + time.getYear();
-			res.put(fecha, (Math.floor(i * v.getY() * 100) / 100) + " £");
+			res.put(time.toLocalDate(), (Math.floor(i * v.getY() * 100) / 100) + " £");
 		}
 
 		return res;
 	}
 
-	private static SortedMap<String, String> getMapEUR(HistoricalData h) {
-		SortedMap<String, String> res = new TreeMap<>();
+	private static SortedMap<LocalDate, String> getMapEUR(HistoricalData h) {
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		List<Value> s = h.getValues();
 
 		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDEUR();
 
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
-			String fecha = time.getDayOfMonth() + "/" + time.getMonthOfYear() + "/" + time.getYear();
-			res.put(fecha, (Math.floor(i * v.getY() * 100) / 100) + " €");
+			res.put(time.toLocalDate(), (Math.floor(i * v.getY() * 100) / 100) + " €");
 		}
 
 		return res;
 	}
 
-	private static SortedMap<String, String> getMapJPY(HistoricalData h) {
-		SortedMap<String, String> res = new TreeMap<>();
+	private static SortedMap<LocalDate, String> getMapJPY(HistoricalData h) {
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		List<Value> s = h.getValues();
 
 		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
 
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
-			String fecha = time.getDayOfMonth() + "/" + time.getMonthOfYear() + "/" + time.getYear();
-			res.put(fecha, (Math.floor(i * v.getY() * 100) / 100) + " ¥");
+			res.put(time.toLocalDate(), (Math.floor(i * v.getY() * 100) / 100) + " ¥");
 		}
 
 		return res;
 	}
 
-	private static SortedMap<String, String> getMapKRW(HistoricalData h) {
-		SortedMap<String, String> res = new TreeMap<>();
+	private static SortedMap<LocalDate, String> getMapKRW(HistoricalData h) {
+		SortedMap<LocalDate, String> res = new TreeMap<>();
 		List<Value> s = h.getValues();
 
 		final double i = ExchangeLayerResource.getLayer().getQuotes().getUSDKRW();
 
 		for (Value v : s) {
 			LocalDateTime time = new LocalDateTime((long) v.getX() * 1000);
-			String fecha = time.getDayOfMonth() + "/" + time.getMonthOfYear() + "/" + time.getYear();
-			res.put(fecha, (Math.floor(i * v.getY() * 100) / 100) + " ₩");
+			res.put(time.toLocalDate(), (Math.floor(i * v.getY() * 100) / 100) + " ₩");
 		}
 
 		return res;

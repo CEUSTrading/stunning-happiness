@@ -16,23 +16,11 @@ public class CloseSessionController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
-	 /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
-	public CloseSessionController() {
-		super();
-	}
-	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
-		log.log(Level.INFO, "Closing session");
-		if(request.getSession()!=null) {
-			HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
+		log.log(Level.INFO, "Closing session: "+session.getId());
+		if(session!=null) {
 			session.invalidate();
 		}
 		rd = request.getRequestDispatcher("index.jsp");

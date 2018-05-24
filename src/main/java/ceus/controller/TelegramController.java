@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import ceus.model.telegram.TelegramMessage;
 import ceus.resources.BlockchainPriceResource;
-import ceus.resources.ExchangeLayerResource;
 import ceus.resources.TelegramResource;
 import ceus.utility.TwitterPost;
 import twitter4j.TwitterException;
