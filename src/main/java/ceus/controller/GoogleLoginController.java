@@ -38,11 +38,15 @@ public class GoogleLoginController extends HttpServlet {
 			email = gp.getEmailAddresses().get(0).getValue();
 			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email ["
 					+ nombre + ", " + email + "]");
-			/*Persona p = new Persona(nombre, email, null);
-			PersonaRepository.getInstace().addPersona(p);*/
+			
+			Persona p = new Persona(nombre, email, null);
+			if(PersonaRepository.getInstace().getPersona(email)==null) {
+				PersonaRepository.getInstace().addPersona(p);
+			}
+			
 			session.setAttribute("nombre", nombre);
 			session.setAttribute("email", email);
-			rd = request.getRequestDispatcher("view/Logup.jsp");
+			rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		} else {
 			log.log(Level.SEVERE, "There was an error retrieving this person");

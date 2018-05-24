@@ -28,7 +28,7 @@ public class TwitterPost {
 		log.log(Level.FINE, "Setting credentials at Twitter");
 		
 		log.log(Level.FINE, "Getting BTC value.");
-		Status s = t.updateStatus("El valor actual del BTC es de "+valor+" €.\nPara saber más: cryptoeus.appspot.com");
+		Status s = t.updateStatus("El valor actual del BTC es de "+valor+" $.\nPara saber más: cryptoeus.appspot.com");
 		if(s!=null) {
 			res = true;
 			log.log(Level.FINE, "Tweet updated");

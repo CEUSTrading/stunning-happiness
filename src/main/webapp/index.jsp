@@ -67,8 +67,12 @@
 	<main> <c:set var="email" value="${sessionScope.email }" />
 	<h1 class="center">Un único lugar para todo lo que necesitas saber
 		sobre Bitcoin</h1>
-
-	<p class="center">Además, también puedes:</p>
+	<c:if test="${email=='gongargra@alum.us.es' or email=='chema@alum.us.es' or email=='manuel@alum.us.es'}">
+			<p class="center">Además, también puedes postear en Twitter y Telegram:</p>
+			<form class="center" action="../TelegramController">
+				<input type="submit" value="Postear">
+			</form>
+	</c:if>
 	<div class="container c-left">
 		<c:if test="${not empty email}">
 			<form action="../view/HistoricalData.jsp">

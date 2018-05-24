@@ -18,7 +18,7 @@ public class TelegramResource {
 	public static Boolean postMessage(Double valor) {
 		Boolean res = false;
 		log.log(Level.INFO, "Trying to send a message to @CryptoEUS");
-		String message = "El precio de 1BTC en este instante es de " + valor + "€\n"
+		String message = "El precio de 1BTC en este instante es de " + valor + "$\n"
 				+ "Más información en cryptoeus.appspot.com";
 		try {
 			String url = urlbase + botid + "/sendMessage?chat_id=" + channelid + "&text=" + message;

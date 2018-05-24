@@ -38,7 +38,7 @@
 				</select>
 				 <input type="submit" />
 			</form>
-			<p>Si desea, puede buscar los últimos 30 días si no incluye ningún día, se mostrarán los últimos 30.
+			<p>Si desea, puede buscar los últimos 30 días si no incluye ningún día.
 			</p>
 		</div>
 		<div class="container c-center" id="mostrar busqueda">

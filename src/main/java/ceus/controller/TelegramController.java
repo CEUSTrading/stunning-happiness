@@ -21,7 +21,7 @@ public class TelegramController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(TelegramMessage.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR()*100))/100;
+		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*100))/100;
 		
 		boolean successTelegram = TelegramResource.postMessage(value);
 		boolean successTwitter = false;

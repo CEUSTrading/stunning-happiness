@@ -31,11 +31,11 @@ public class SchedulerController extends HttpServlet{
 			log.log(Level.FINE, "Enviando mensaje a Telegram");
 			TelegramResource.postMessage(round);
 			log.log(Level.FINE, "Proceso completado");
-			//request.getRequestDispatcher("/index.html").forward(request, response);
+			//request.getRequestDispatcher("index.html");
 		}catch(Exception e) {
 			log.log(Level.SEVERE, "Se produjo un error");
 			e.printStackTrace();
-			//request.getRequestDispatcher("/error.html").forward(request, response);
+			//request.getRequestDispatcher("error.html");
 		}
 		
 	}

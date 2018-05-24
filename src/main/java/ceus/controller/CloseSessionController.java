@@ -31,8 +31,10 @@ public class CloseSessionController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher rd = null;
 		log.log(Level.INFO, "Closing session");
-		HttpSession session = request.getSession();
-		session.invalidate();
+		if(request.getSession()!=null) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+		}
 		rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
