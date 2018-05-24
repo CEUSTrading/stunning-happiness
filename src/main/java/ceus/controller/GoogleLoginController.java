@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import ceus.model.google.login.GooglePerson;
+import ceus.model.repository.PersonaRepository;
 import ceus.resources.GooglePersonResource;
+import ceus.utility.Persona;
 
 public class GoogleLoginController extends HttpServlet {
 	private static final Logger log = Logger.getLogger(CoinmapController.class.getName());
@@ -36,6 +38,8 @@ public class GoogleLoginController extends HttpServlet {
 			email = gp.getEmailAddresses().get(0).getValue();
 			log.log(Level.INFO, "Seteados logged-user-name y logged-user-email ["
 					+ nombre + ", " + email + "]");
+			/*Persona p = new Persona(nombre, email, null);
+			PersonaRepository.getInstace().addPersona(p);*/
 			session.setAttribute("nombre", nombre);
 			session.setAttribute("email", email);
 			rd = request.getRequestDispatcher("view/Logup.jsp");

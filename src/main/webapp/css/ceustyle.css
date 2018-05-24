@@ -347,3 +347,20 @@ ul,ol>footer{
 	clear: left;
 	text-align: left;
 }
+
+.c-medium-right{
+	float: right;
+	margin-right: 10%;
+	clear: right;
+	text-align: left;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid black;
+}
+th {
+    background-color: #255498;
+    color: white;
+}

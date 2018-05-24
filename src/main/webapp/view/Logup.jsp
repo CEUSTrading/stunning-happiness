@@ -13,37 +13,48 @@
 <body>
 
 	<%@ include file="../view/header.jsp"%>
-	<h2>Bienvenido al sistema de registro de CEUS</h2>
-
-	<div id="reg-pro">
+	<div class="center">
+		<h2>Bienvenido al sistema de registro de CEUS</h2>
 		<p>Puedes registrarte añadiendo tu nombre y email</p>
-		<form action="../AddUsuarioController" method="Post">
-			<c:if test="${empty sessionScope.email}">
-				<label>Nombre:</label>
-				<input type="text" name="nombre" placeholder="nombre" />
-				<label>email:</label>
-				<input type="text" name="email" placeholder="example@somewhere.com" />
-				<label>contraseña:</label>
-				<input name="pass" type="password">
-			</c:if>
-			<c:if test="${not empty sessionScope.email}">
+		<div class="center">
+			<div class="container c-medium-left">
+				<form action="../AddUsuarioController" method="Post">
 
-				<label>Nombre:</label>
-				<input type="text" name="nombre" placeholder="nombre" value="${sessionScope.nombre }"/>
-				<label>email:</label>
-				<input type="text" name="email" placeholder="example@somewhere.com" value="${sessionScope.email }"/>
-				<label>contraseña:</label>
-				<input name="pass" type="password">
+					<c:if test="${empty sessionScope.email}">
+						<span><label>Nombre:</label> <input type="text"
+							name="nombre" placeholder="nombre" /></span>
+						</br>
+						<span><label>email:</label> <input type="text" name="email"
+							placeholder="example@somewhere.com" /></span>
+						</br>
+						<span><label>contraseña:</label> <input name="pass"
+							type="password"></span>
+						</br>
+					</c:if>
+					<c:if test="${not empty sessionScope.email}">
+						<span><label>Nombre:</label> <input type="text"
+							name="nombre" placeholder="nombre"
+							value="${sessionScope.nombre }" /></span>
+						</br>
+						<span><label>email:</label> <input type="text" name="email"
+							placeholder="example@somewhere.com"
+							value="${sessionScope.email }" /></span>
+						</br>
+						<span><label>contraseña:</label> <input name="pass"
+							type="password"></span>
+						</br>
 
-			</c:if>
+					</c:if>
 
-			<input type="submit" value="Registrate">
-		</form>
-	</div>
-	<div id="google">
-		<p>Si lo prefieres puedes registrarte a través de Google</p>
-		<a href="../googleAuth">Google</a>
-	</div>
-	<%@ include file="../view/footer.html"%>
+					<input type="submit" value="Registrate">
+
+				</form>
+			</div>
+		</div>
+		<div class="container c-medium-right">
+			<p>Si lo prefieres puedes registrarte a través de Google</p>
+			<a href="../googleAuth">Google</a>
+		</div>
+		<%@ include file="../view/footer.html"%>
 </body>
 </html>

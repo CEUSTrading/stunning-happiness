@@ -14,17 +14,19 @@
 
 	<%@ include file="../view/header.jsp"%>
 
-	<div id="centrado">
+	<div class="center">
 		<h1>Bienvenido a CEUS</h1>
 		<img src="../images/protologo.png" />
+	
 		<c:set var="err" value="${sessionScope.err}" />
 		<c:if test="${empty err }">
 			<c:out value="${sessionScope.err }"></c:out>
 		</c:if>
-		
+	</div>
+	<div class="container c-medium-left">
 		<form action="../loginController" method="Post">
-			<label>email:</label><input name="email" type="text" placeholder="example@somewhere.com">
-			<label>contraseña:</label><input name="pass" type="password">
+			<span><label>email:</label><input name="email" type="text" placeholder="example@somewhere.com"></span></br>
+			<span><label>contraseña:</label><input name="pass" type="password"></span></br>
 			<input type="submit" value="Entrar">
 		</form>
 	</div>

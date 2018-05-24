@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,8 +13,8 @@
 <script type="text/javascript"
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript">
-	function cargaValorCuenta(cuenta){
-		
+	function cargaValorCuenta(cuenta) {
+
 	}
 </script>
 </head>
@@ -30,28 +30,28 @@
 		<a href="../index.jsp">Volver</a>
 	</c:if>
 	<c:if test="${not empty email}">
-		<div id="selector_cuentas">
+		<div id="selector_cuentas" class="container c-left">
 			<div id="nueva_cuenta">
 				<form action="../AddAddressController" method="Post">
 					<label>Nueva Cuenta: </label><input type="text" name="addr" /> <input
 						type="submit" />
 				</form>
 			</div>
-
-			<div id="lista_cuentas">
-				<form action="../BlockchainAddressController" method="Post">
-				<select name="address" size="${fn:length(lista)}">
-					<c:forEach items="${lista}" var="dir">
-						 <option value="${dir}">${dir}</option>
-					</c:forEach>
-				</select>
-				<input value="Consultar" type="submit">
-				</form>
-			</div>
+			<c:if test="${not empty lista }">
+				<div id="lista_cuentas"  class="container c-medium-left">
+					<form action="../BlockchainAddressController" method="Post">
+						<select name="address" size="${fn:length(lista)}">
+							<c:forEach items="${lista}" var="dir">
+								<option value="${dir}">${dir}</option>
+							</c:forEach>
+						</select> <input value="Consultar" type="submit">
+					</form>
+				</div>
+			</c:if>
 
 		</div>
 
-		<div id="vista_movimientos">
+		<div class="container c-medium-left" id="vista_movimientos">
 			<h2>
 				Cuenta:
 				<c:out value="${requestScope.values[0]}"></c:out>

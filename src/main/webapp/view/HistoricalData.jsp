@@ -11,14 +11,12 @@
 <title>Historico BTC</title>
 </head>
 <body>
-
 	<%@ include file="../view/header.jsp"%>
 </head>
 <body>
 	<!-- HEADER -->
 
 	<c:set var="email" value="${sessionScope.email}" />
-
 	<c:if test="${empty email}">
 		<h1>WOPS! Algo no va bien!</h1>
 		<br />
@@ -27,25 +25,26 @@
 		</p>
 	</c:if>
 	<c:if test="${not empty email }">
-		<div class="tabla-h" id="busqueda">
+		<div class="container c-left" id="busqueda">
 			<form action="/BlockchainHistoricalDataController" method="Post">
-				<label>Días:</label><input name="nCons" type="number" min="0" max="30"/> <select
-					name="cCons">
+				<label>Días:</label>
+				<input name="nCons" type="number" min="0" max="30"/>
+				 <select name="cCons">
 					<option value="1">$</option>
 					<option value="2">€</option>
 					<option value="3">£</option>
 					<option value="4">¥</option>
 					<option value="5">₩</option>
-				</select> <input type="submit" />
+				</select>
+				 <input type="submit" />
 			</form>
 			<p>Si desea, puede buscar los últimos 30 días si no incluye ningún día, se mostrarán los últimos 30.
 			</p>
 		</div>
-		<div class="tabla-h" id="mostrar busqueda">
-
+		<div class="container c-center" id="mostrar busqueda">
 			<c:set var="map" value="${requestScope.map}" />
 			<c:if test="${not empty map }">
-				<table>
+				<table id="tabla-precios">
 					<tr>
 						<th>DIA</th>
 						<th>VALOR</th>
@@ -59,10 +58,7 @@
 				</table>
 			</c:if>
 		</div>
-
 	</c:if>
-
-
 	<%@ include file="../view/footer.html"%>
 	<!-- FOOTER -->
 </body>
