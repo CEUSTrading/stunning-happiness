@@ -40,7 +40,7 @@ public class TelegramController extends HttpServlet {
 			log.log(Level.FINE, "The message couldn't be posted.");
 		}
 		
-		request.getRequestDispatcher("index.html").forward(request, response);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 
 
