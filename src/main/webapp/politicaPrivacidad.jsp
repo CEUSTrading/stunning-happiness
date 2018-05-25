@@ -14,7 +14,7 @@
 
 	<%@ include file="../view/header.jsp"%>
 	<main>
-	<div class="container l-left">
+	<div class="justificado l-left">
 		<p>
 			<strong>POLÍTICA DE PRIVACIDAD</strong>
 		</p>

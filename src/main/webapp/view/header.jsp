@@ -18,13 +18,8 @@
 			</c:if>
 
 			<c:if test="${empty nombre}">
-				<div class="dropdown">
-					<button class="dropbtn">Login</button>
-					<div class="dropdown-content">
-						<a href="../view/Login.jsp">Entrar</a>
-						<a href="../view/Logup.jsp">Registrate</a>
-					</div>
-				</div>
+				<li><a href="../view/Login.jsp">Entrar</a></li>
+				<li><a href="../view/Logup.jsp">Registrate</a></li>
 			</c:if>
 			<c:if test="${not empty nombre}">
 				<li>¡Bienvenid@, <c:out value="${sessionScope.nombre}"></c:out>!</li>

@@ -17,11 +17,11 @@ public class TelegramResourceTest {
 	
 	@Test
 	public void testTelegramCombined() {
-		Double value = (Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast()*ExchangeLayerResource.getLayer().getQuotes().getUSDEUR()*100))/100;
+		Double value = Math.floor(BlockchainPriceResource.getPrices().getUSD().getLast());
 		boolean success = TelegramResource.postMessage(value);
 		
 		assertTrue("The message was posted", success);
-		String message = "El precio de 1BTC en este instante es de " + value + "€\n"
+		String message = "El precio de 1BTC en este instante es de " + value + "$\n"
 				+ "Más información en cryptoeus.appspot.com";
 		System.out.println(message);
 

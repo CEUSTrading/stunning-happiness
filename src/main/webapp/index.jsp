@@ -73,6 +73,7 @@
 				<input type="submit" value="Postear">
 			</form>
 	</c:if>
+	<div>
 	<div class="container c-left">
 		<c:if test="${not empty email}">
 			<form action="../view/HistoricalData.jsp">
@@ -85,7 +86,7 @@
 		</form>
 	</div>
 	<div class="container c-center">
-		<form action="#">
+		<form action="../view/mapa.jsp">
 			<button class="boton-light">Consultar lugares donde usar tus
 				Bitcoin</button>
 		</form>

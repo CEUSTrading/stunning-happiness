@@ -198,15 +198,18 @@ ul,ol>footer{
 .c-left{
 	float: left;
 	clear: left;
+	text-align: justify;
 }
 
 .c-center{
 	display: inline-block;
+	text-align: justify;
 }
 
 .c-right{
 	float: right;
 	clear: right;
+	text-align: justify;
 }
 
 .au-left{

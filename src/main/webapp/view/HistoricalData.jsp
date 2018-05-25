@@ -18,11 +18,12 @@
 
 	<c:set var="email" value="${sessionScope.email}" />
 	<c:if test="${empty email}">
-		<h1>WOPS! Algo no va bien!</h1>
-		<br />
-		<p>
-			<a href="../../index.jsp">INICIO</a>
-		</p>
+		<div class="justificado">
+			<h1>¡Necesitas estar logueado para ver esto!</h1>
+			<br />
+			<p>Por favor, <a href="login.jsp">inicia sesión</a> o <a href="logup.jsp">regístrate</a>
+			 para ver el histórico de precios</p>
+		</div>
 	</c:if>
 	<c:if test="${not empty email }">
 		<div class="container c-left" id="busqueda">
