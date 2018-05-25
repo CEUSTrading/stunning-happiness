@@ -2,8 +2,8 @@
 <cronentries>
 	<cron>
 		<url>/Scheduler</url>
-		<!-- <target></target> -->
+		<target></target>
 		<description>send a tweet and a message between 9am to 15pm</description>
-		<schedule>every 3 hours from 09:00 to 15:01</schedule>
+		<schedule>every day at 7:00</schedule>
 	</cron>
 </cronentries>

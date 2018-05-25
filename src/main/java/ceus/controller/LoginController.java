@@ -28,11 +28,12 @@ public class LoginController extends HttpServlet {
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		log.log(Level.FINE, "Recogiendo el parámetro 'email'.");
+		log.log(Level.INFO, "[" + email + ", " + pass + "]");
 
 		if (email != null && !("".equals(email)) && pass != null && !("".equals(pass))) {
 			log.log(Level.FINE, "Parámetro válido.");
 			Persona p = PersonaRepository.getInstace().getPersona(email);
-
+			
 			if (p == null) {
 				log.log(Level.WARNING, "Email no registrado.");
 				request.setAttribute("err", "email no registrado.");

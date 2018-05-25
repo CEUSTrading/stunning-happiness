@@ -30,6 +30,10 @@
 			<input type="submit" value="Entrar">
 		</form>
 	</div>
+	<div class="container c-medium-right">
+			<p>O inicia sesión con <a href="../googleAuth">Google</a></p>
+			
+		</div>
 	<%@ include file="../view/footer.html"%>
 </body>
 </html>

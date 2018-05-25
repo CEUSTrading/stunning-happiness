@@ -31,7 +31,7 @@
 							type="password"></span>
 						</br>
 					</c:if>
-					<c:if test="${not empty sessionScope.email}">
+					<%-- <c:if test="${not empty sessionScope.email}">
 						<span><label>Nombre:</label> <input type="text"
 							name="nombre" placeholder="nombre"
 							value="${sessionScope.nombre }" /></span>
@@ -44,7 +44,7 @@
 							type="password"></span>
 						</br>
 
-					</c:if>
+					</c:if> --%>
 
 					<input type="submit" value="Registrate">
 

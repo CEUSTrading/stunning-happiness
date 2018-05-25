@@ -34,7 +34,7 @@ public class AddUsuarioController extends HttpServlet {
 		if (nombre != null && email != null && pass != null && !("".equals(nombre)) && !("".equals(email))
 				&& !("".equals(pass))) {
 
-			Persona p = new Persona(nombre, email, null);
+			Persona p = new Persona(nombre, email, pass);
 			if (PersonaRepository.getInstace().getPersona(email) == null) {
 				log.log(Level.FINE, "Creando presona con: 'nombre' e 'email'.");
 				PersonaRepository.getInstace().addPersona(p);

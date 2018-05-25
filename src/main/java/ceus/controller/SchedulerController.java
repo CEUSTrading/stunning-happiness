@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ceus.resources.BlockchainPriceResource;
-import ceus.resources.ExchangeLayerResource;
 import ceus.resources.TelegramResource;
 import ceus.utility.TwitterPost;
 
@@ -22,8 +21,7 @@ public class SchedulerController extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Double valor = BlockchainPriceResource.getPrices().getUSD().getLast();
-		Double euro = (valor * ExchangeLayerResource.getLayer().getQuotes().getUSDEUR());
-		Double round = Math.floor(euro*100)/100;
+		Double round = Math.floor(valor*100)/100;
 		
 		try {
 			log.log(Level.FINE, "Enviando Tweet");
