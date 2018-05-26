@@ -156,7 +156,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SchedulerController</servlet-name>
-		<url-pattern>/schedulerController</url-pattern>
+		<url-pattern>/cron/schedulerController</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

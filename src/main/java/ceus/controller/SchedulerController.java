@@ -19,24 +19,33 @@ public class SchedulerController extends HttpServlet{
 	private static final Logger log = Logger.getLogger(SchedulerController.class.getName());
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		Boolean res=false;
 		Double valor = BlockchainPriceResource.getPrices().getUSD().getLast();
 		Double round = Math.floor(valor*100)/100;
 		
 		try {
 			log.log(Level.FINE, "Enviando Tweet");
-			TwitterPost.publicarTweet(round);
-			log.log(Level.FINE, "Enviando mensaje a Telegram");
-			TelegramResource.postMessage(round);
-			log.log(Level.FINE, "Proceso completado");
-			//request.getRequestDispatcher("index.html");
+			res=TwitterPost.publicarTweet(round);
+			
 		}catch(Exception e) {
-			log.log(Level.SEVERE, "Se produjo un error");
+			log.log(Level.SEVERE, "Se produjo un error con twitter");
 			e.printStackTrace();
-			//request.getRequestDispatcher("error.html");
+			request.getRequestDispatcher("/error.html");
 		}
-		
+		try {
+			log.log(Level.FINE, "Enviando mensaje a Telegram");
+			res=TelegramResource.postMessage(round);
+		}catch(Exception e) {
+			log.log(Level.SEVERE, "Se produjo un error con telegram");
+			e.printStackTrace();
+			request.getRequestDispatcher("/error.html");
+		}
+		if(res==true) {
+			log.log(Level.FINE, "Proceso completado");
+			request.getRequestDispatcher("/index.jsp");
+		}
 	}
+	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);

@@ -19,7 +19,7 @@ public class TwitterPost {
 	
 	private static final Logger log = Logger.getLogger(Twitter.class.getName());
 	
-	public static boolean publicarTweet(Double valor) throws TwitterException  {
+	public static Boolean publicarTweet(Double valor) throws TwitterException  {
 		Boolean res = null;
 		
 		Twitter t = TwitterFactory.getSingleton();
