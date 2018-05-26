@@ -26,8 +26,12 @@
 	<c:set var="lista" value="${requestScope.lista}" />
 
 	<c:if test="${empty email}">
-		<h1>WOPS! Parece que no estás loggeado.</h1>
-		<a href="../index.jsp">Volver</a>
+		<div class="justificado">
+			<h1>¡Necesitas estar logueado para ver esto!</h1>
+			<br />
+			<p>Por favor, <a href="login.jsp">inicia sesión</a> o <a href="logup.jsp">regístrate</a>
+			 para ver el histórico de precios</p>
+		</div>
 	</c:if>
 	<c:if test="${not empty email}">
 		<div id="selector_cuentas" class="container c-left">
