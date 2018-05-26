@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
 	<cron>
-		<url>/scheduler</url>
-		<target>final</target>
+		<url>/schedulerController</url>
 		<description>send a tweet and a message between 9am to 15pm</description>
 		<schedule>every day 7:00</schedule>
 	</cron>

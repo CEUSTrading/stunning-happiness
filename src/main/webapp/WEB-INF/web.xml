@@ -150,13 +150,13 @@
 
 	<servlet>
 		<description></description>
-		<display-name>Scheduler</display-name>
-		<servlet-name>Scheduler</servlet-name>
+		<display-name>SchedulerController</display-name>
+		<servlet-name>SchedulerController</servlet-name>
 		<servlet-class>ceus.controller.SchedulerController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Scheduler</servlet-name>
-		<url-pattern>/scheduler</url-pattern>
+		<servlet-name>SchedulerController</servlet-name>
+		<url-pattern>/schedulerController</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

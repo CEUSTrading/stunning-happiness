@@ -52,10 +52,7 @@
 					+ '<p>Si te registras en nuestra aplicación, a todas las funcionalidades anteriores se unirá también el poder '
 					+ 'guardar las direcciones que consultas. De este modo, en vez de tener que copiar y pegar tus direcciones de '
 					+ 'la Blockchain cada vez que quieras consultarlas, al introducirlas una vez podrás acceder a ellas siempre '
-					+ 'que quieras. '
-					+ 'En CEUS solo almacenamos, si nos das acceso, tu correo electrónico, nombre, contraseña si te logueas por nuestra '
-					+ 'aplicación, y direcciones de Blockchain si las has usado estando logueado. La información es usada por CEUS y por '
-					+ 'la Universidad de Sevilla con fines didácticos.</p>'
+					+ 'que quieras. </p>'
 					+ '</div>';
 		}
 		function menosInfo() {

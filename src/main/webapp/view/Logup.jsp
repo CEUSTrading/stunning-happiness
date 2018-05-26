@@ -55,6 +55,23 @@
 			<p>Si lo prefieres puedes registrarte a través de Google</p>
 			<a href="../googleAuth">Google</a>
 		</div>
+		<div class="justificado l-left">
+			<strong>En cumplimiento de la legislación europea le informamos:</strong>
+			<p>En CEUS solo almacenamos, si nos das acceso, tu correo
+				electrónico, nombre, contraseña si te registras por nuestra
+				aplicación, y direcciones de Blockchain si las has usado estando
+				logueado. Las direcciones almacenadas aparecen en el apartado de
+				direcciones.</p> </br>
+			<p>La información es usada por CEUS y por la Universidad de
+				Sevilla con fines didácticos.</p></br>
+			<p>
+				Actualmente la aplicación no posee forma de eliminar su cuenta
+				registrada ni su información, si desea que procedamos a su
+				eliminación o cualquier otra información, por favor, pongase en contacto con nosotros en nuestro
+				correo de <a href="mailto:contact.ceus@gmail.com">contacto</a>.
+			</p></br>
+			<p>*La inclusión directamente de su información en los campos anteriormente mencionados: nombre, email, contraseña, direcciones, y en caso de acceso mediante Google, nombre, correo y direcciones, supondrán que esta de acuerdo con que obtengamos esta información, si no desea proporcionarla, sigue teniendo acceso a todas las funcionalidades sin registro de la aplicación.</p>
+		</div>
 		<%@ include file="../view/footer.html"%>
 </body>
 </html>
